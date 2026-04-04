@@ -491,6 +491,17 @@
 
   .bar-fill.advancing { background: #2b4c6f !important; }
   .bar-fill.eliminated { background: #c6d8e4 !important; opacity: 0.55; }
+  .bar-fill.write-in { background: var(--gray-300) !important; }
+
+  .candidate-row.write-in-row .candidate-name {
+    color: var(--gray-500);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .candidate-row.write-in-row .candidate-votes,
+  .candidate-row.write-in-row .candidate-pct {
+    color: var(--gray-400);
+  }
 
   /* ── PRECINCT REPORTING ── */
   .precinct-bar {
@@ -987,6 +998,23 @@ function raceCard(race) {
         </div>
       </div>`;
   }).join("");
+
+  // Write-in row — shown whenever writeIns > 0
+  if (race.writeIns > 0) {
+    const wiP = totalVotes > 0 ? (race.writeIns / totalVotes) * 100 : 0;
+    rows += `
+      <div class="candidate-row write-in-row">
+        <div class="candidate-name-area">
+          <span class="advance-check"></span>
+          <span class="candidate-name">Write-In</span>
+        </div>
+        <span class="candidate-votes">${fmt(race.writeIns)} votes</span>
+        <span class="candidate-pct">${pct(wiP)}</span>
+        <div class="bar-area">
+          <div class="bar-fill write-in" data-width="${wiP}" style="width:0%"></div>
+        </div>
+      </div>`;
+  }
 
   // Ward table
   let wardHTML = "";
