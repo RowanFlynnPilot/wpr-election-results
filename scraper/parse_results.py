@@ -1,23 +1,25 @@
 """
-Marathon County Election Results PDF Scraper
+Marathon County Election Results Scraper
 Wausau Pilot & Review
 
-Fetches election results PDFs from the Marathon County Clerk's website,
-parses them into structured JSON, and writes to public/data/election.json.
+Auto-discovers election result PDF links from the Marathon County Clerk's
+website, parses them into structured JSON, and writes to public/data/election.json.
 
 Usage:
     python scraper/parse_results.py
     python scraper/parse_results.py --pdf path/to/local.pdf
     python scraper/parse_results.py --url https://marathoncounty.gov/...pdf
 
-The scraper handles two PDF formats published by Marathon County:
-  1. Election Summary — countywide totals per race
-  2. Precinct Summary — ward-by-ward breakdowns
+On election night, simply run `python scraper/parse_results.py` with no arguments.
+The scraper will fetch the results page, find the PDF links automatically, and
+parse them. No manual URL updates needed.
+
+Fallback: if auto-discovery fails, set SUMMARY_PDF_URL / PRECINCT_PDF_URL below.
 """
 
 import argparse
+import io
 import json
-import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -26,29 +28,32 @@ from pathlib import Path
 try:
     import pdfplumber
 except ImportError:
-    print("ERROR: pdfplumber not installed. Run: pip install pdfplumber")
+    print("ERROR: pdfplumber not installed. Run: pip install -r scraper/requirements.txt")
     sys.exit(1)
 
 try:
     import requests
 except ImportError:
-    print("ERROR: requests not installed. Run: pip install requests")
+    print("ERROR: requests not installed. Run: pip install -r scraper/requirements.txt")
+    sys.exit(1)
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    print("ERROR: beautifulsoup4 not installed. Run: pip install -r scraper/requirements.txt")
     sys.exit(1)
 
 
 # ── CONFIGURATION ────────────────────────────────────────────────
-# Update these URLs when Marathon County publishes new results.
-# They typically appear at:
-# https://www.marathoncounty.gov/services/elections-voting/results
-#
-# The page shows links like "Election Summary" and "Precinct Summary"
-# which point to PDF documents. Copy those URLs here.
+# The scraper will auto-discover PDF links from this page.
+# Only set the fallback URLs below if auto-discovery fails on election night.
 
 RESULTS_PAGE_URL = "https://www.marathoncounty.gov/services/elections-voting/results"
+MARATHON_COUNTY_BASE = "https://www.marathoncounty.gov"
 
-# Direct PDF URLs — update these on election night when links appear
-SUMMARY_PDF_URL = ""   # Election Summary PDF
-PRECINCT_PDF_URL = ""  # Precinct Summary (By Ward Detail) PDF
+# Fallback URLs — leave empty for auto-discovery, or paste URLs here if needed
+SUMMARY_PDF_URL = ""    # e.g. "https://www.marathoncounty.gov/home/showpublisheddocument/15125"
+PRECINCT_PDF_URL = ""   # e.g. "https://www.marathoncounty.gov/home/showpublisheddocument/15126"
 
 # Election metadata — update per election
 ELECTION_CONFIG = {
@@ -60,6 +65,76 @@ ELECTION_CONFIG = {
 }
 
 OUTPUT_PATH = Path(__file__).parent.parent / "public" / "data" / "election.json"
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (compatible; WPR-ElectionBot/1.0; +https://wausaupilotandreview.com)"
+}
+
+
+# ── AUTO-DISCOVERY ───────────────────────────────────────────────
+
+def discover_pdf_urls() -> tuple[str, str]:
+    """
+    Fetch the Marathon County results page and extract the Election Summary
+    and Precinct Summary PDF links.
+
+    Returns (summary_url, precinct_url). Either may be empty string if not found.
+    """
+    print(f"  Fetching results page: {RESULTS_PAGE_URL}")
+    try:
+        resp = requests.get(RESULTS_PAGE_URL, headers=HEADERS, timeout=30)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        print(f"  WARNING: Could not fetch results page: {e}")
+        return "", ""
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    summary_url = ""
+    precinct_url = ""
+
+    # Find all links on the page
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        text = a.get_text(strip=True).lower()
+
+        # Resolve relative URLs
+        if href.startswith("/"):
+            href = MARATHON_COUNTY_BASE + href
+        elif not href.startswith("http"):
+            continue
+
+        # Match by link text
+        if "election summary" in text and not summary_url:
+            summary_url = href
+            print(f"  Found Election Summary: {href}")
+        elif "precinct summary" in text and not precinct_url:
+            precinct_url = href
+            print(f"  Found Precinct Summary: {href}")
+
+        # Also match by URL pattern as fallback (showpublisheddocument)
+        if "showpublisheddocument" in href:
+            if not summary_url and "summary" in text:
+                summary_url = href
+            elif not precinct_url and "precinct" in text:
+                precinct_url = href
+
+    if not summary_url:
+        print("  WARNING: Could not find Election Summary link on results page.")
+    if not precinct_url:
+        print("  WARNING: Could not find Precinct Summary link on results page.")
+
+    return summary_url, precinct_url
+
+
+# ── PDF FETCHING ─────────────────────────────────────────────────
+
+def fetch_pdf(url: str) -> bytes:
+    """Download a PDF from a URL."""
+    print(f"  Fetching: {url}")
+    resp = requests.get(url, headers=HEADERS, timeout=60)
+    resp.raise_for_status()
+    return resp.content
 
 
 # ── CATEGORY DETECTION ───────────────────────────────────────────
@@ -75,7 +150,6 @@ def detect_category(race_name: str) -> str:
         return "county"
     if any(k in name_lower for k in ["referendum", "question", "amendment"]):
         return "referendum"
-    # Municipal: alderperson, mayor, city council, village trustee, etc.
     return "municipal"
 
 
@@ -95,15 +169,14 @@ def slugify(text: str) -> str:
 
 # ── PDF PARSING ──────────────────────────────────────────────────
 
-def fetch_pdf(url: str) -> bytes:
-    """Download a PDF from a URL."""
-    print(f"  Fetching: {url}")
-    resp = requests.get(url, timeout=30)
-    resp.raise_for_status()
-    return resp.content
+def open_pdf(pdf_path_or_bytes):
+    """Open a pdfplumber PDF from a path or bytes."""
+    if isinstance(pdf_path_or_bytes, (str, Path)):
+        return pdfplumber.open(pdf_path_or_bytes)
+    return pdfplumber.open(io.BytesIO(pdf_path_or_bytes))
 
 
-def parse_summary_pdf(pdf_path_or_bytes) -> dict:
+def parse_summary_pdf(pdf_source) -> dict:
     """
     Parse the Election Summary PDF into structured data.
 
@@ -113,16 +186,10 @@ def parse_summary_pdf(pdf_path_or_bytes) -> dict:
     - Statistics block (Registered Voters, Ballots Cast, etc.)
     - Race blocks with "Vote For N", candidate names, and vote counts
     """
-    if isinstance(pdf_path_or_bytes, (str, Path)):
-        pdf = pdfplumber.open(pdf_path_or_bytes)
-    else:
-        import io
-        pdf = pdfplumber.open(io.BytesIO(pdf_path_or_bytes))
-
+    pdf = open_pdf(pdf_source)
     full_text = "\n".join(page.extract_text() or "" for page in pdf.pages)
     pdf.close()
 
-    # Extract statistics
     stats = {
         "registeredVoters": extract_number(full_text, r"Registered Voters\s*[-–]\s*Total\s+([\d,]+)"),
         "ballotsCast": extract_number(full_text, r"Ballots Cast\s*[-–]\s*Total\s+([\d,]+)"),
@@ -130,15 +197,12 @@ def parse_summary_pdf(pdf_path_or_bytes) -> dict:
         "turnoutPct": extract_float(full_text, r"Voter Turnout\s*[-–]\s*Total\s+([\d.]+)%"),
     }
 
-    # Extract precincts reported
     precincts_match = re.search(r"Precincts Complete\s+(\d+)\s+of\s+(\d+)", full_text)
     precincts_reported = int(precincts_match.group(1)) if precincts_match else 0
     precincts_total = int(precincts_match.group(2)) if precincts_match else 0
 
-    # Determine status
     status = "final" if precincts_reported == precincts_total and precincts_total > 0 else "live"
 
-    # Extract timestamp from PDF footer
     time_match = re.search(r"(\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2}[AP]M)", full_text)
     if time_match:
         try:
@@ -149,7 +213,6 @@ def parse_summary_pdf(pdf_path_or_bytes) -> dict:
     else:
         last_updated_iso = datetime.now(timezone.utc).isoformat()
 
-    # Parse races
     races = parse_races_from_text(full_text, precincts_reported, precincts_total)
 
     return {
@@ -178,9 +241,6 @@ def parse_races_from_text(text: str, precincts_reported: int, precincts_total: i
         Write-In Totals  12
     """
     races = []
-
-    # Split on "TOTAL\nVote For" pattern
-    # This regex captures each race block
     blocks = re.split(r"(?=TOTAL\s*\nVote For\s+\d+)", text)
 
     for block in blocks:
@@ -189,7 +249,6 @@ def parse_races_from_text(text: str, precincts_reported: int, precincts_total: i
 
         lines = [l.strip() for l in block.strip().split("\n") if l.strip()]
 
-        # Extract Vote For N
         seats = 1
         race_name_start = 0
         for i, line in enumerate(lines):
@@ -202,24 +261,19 @@ def parse_races_from_text(text: str, precincts_reported: int, precincts_total: i
         if race_name_start >= len(lines):
             continue
 
-        # Race name is the line after "Vote For N"
         race_name = lines[race_name_start]
 
-        # Candidates are lines with a name followed by a number
         candidates = []
         write_ins = 0
         for line in lines[race_name_start + 1:]:
-            # Skip page footers
             if "Election Summary" in line or "Page " in line or "Summary Results" in line:
                 break
 
-            # Check for "Write-In Totals  N"
             wm = re.match(r"Write-In Totals\s+([\d,]+)", line)
             if wm:
                 write_ins = parse_int(wm.group(1))
                 continue
 
-            # Candidate line: "Name  Votes"
             cm = re.match(r"(.+?)\s{2,}([\d,]+)\s*$", line)
             if cm:
                 candidates.append({
@@ -230,53 +284,31 @@ def parse_races_from_text(text: str, precincts_reported: int, precincts_total: i
         if not candidates:
             continue
 
-        race_id = slugify(race_name)
-        category = detect_category(race_name)
-
         races.append({
-            "id": race_id,
+            "id": slugify(race_name),
             "name": race_name,
             "type": "general",
             "seats": seats,
             "jurisdiction": ELECTION_CONFIG["county"],
-            "category": category,
+            "category": detect_category(race_name),
             "candidates": sorted(candidates, key=lambda c: c["votes"], reverse=True),
             "writeIns": write_ins,
             "precincts": {
                 "reported": precincts_reported,
                 "total": precincts_total,
             },
-            "wardData": [],  # Populated from precinct PDF
+            "wardData": [],
         })
 
     return races
 
 
-def parse_precinct_pdf(pdf_path_or_bytes, races: list) -> list:
+def parse_precinct_pdf(pdf_source, races: list) -> list:
     """
     Parse the Precinct Summary (By Ward Detail) PDF and merge ward data
     into the existing races list.
-
-    Each page covers one precinct/ward with format:
-        WARD_NAME
-        Summary Results Report UNOFFICIAL RESULTS
-        ...
-        Statistics  TOTAL
-        Registered Voters - Total  N
-        Ballots Cast - Total  N
-        ...
-        Vote For N
-        Race Name
-        Candidate  Votes
-        ...
     """
-    if isinstance(pdf_path_or_bytes, (str, Path)):
-        pdf = pdfplumber.open(pdf_path_or_bytes)
-    else:
-        import io
-        pdf = pdfplumber.open(io.BytesIO(pdf_path_or_bytes))
-
-    # Build a lookup by race name
+    pdf = open_pdf(pdf_source)
     race_lookup = {r["name"].lower(): r for r in races}
 
     for page in pdf.pages:
@@ -286,18 +318,13 @@ def parse_precinct_pdf(pdf_path_or_bytes, races: list) -> list:
         if not lines:
             continue
 
-        # First line is the ward name
         ward_name = lines[0]
-
-        # Skip if it's a header line
         if "Summary Results" in ward_name or "UNOFFICIAL" in ward_name:
             continue
 
-        # Extract ward statistics
         registered = extract_number(text, r"Registered Voters\s*[-–]\s*Total\s+([\d,]+)")
         ballots_cast = extract_number(text, r"Ballots Cast\s*[-–]\s*Total\s+([\d,]+)")
 
-        # Find race blocks in this ward page
         blocks = re.split(r"(?=Vote For\s+\d+)", text)
         for block in blocks:
             if "Vote For" not in block:
@@ -305,7 +332,6 @@ def parse_precinct_pdf(pdf_path_or_bytes, races: list) -> list:
 
             blines = [l.strip() for l in block.split("\n") if l.strip()]
 
-            # Find race name
             race_name = None
             for i, line in enumerate(blines):
                 if re.match(r"Vote For\s+\d+", line) and i + 1 < len(blines):
@@ -315,12 +341,10 @@ def parse_precinct_pdf(pdf_path_or_bytes, races: list) -> list:
             if not race_name:
                 continue
 
-            # Match to our known races
             race = race_lookup.get(race_name.lower())
             if not race:
                 continue
 
-            # Parse candidate votes for this ward
             ward_candidates = {}
             for line in blines:
                 if "Write-In" in line or "Vote For" in line or line == race_name:
@@ -363,73 +387,79 @@ def parse_int(s: str) -> int:
 # ── MAIN ─────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="Parse Marathon County election results PDFs")
-    parser.add_argument("--pdf", help="Path to a local summary PDF")
+    parser = argparse.ArgumentParser(description="Parse Marathon County election results")
+    parser.add_argument("--pdf", help="Path to a local summary PDF (skips auto-discovery)")
     parser.add_argument("--precinct-pdf", help="Path to a local precinct/ward detail PDF")
-    parser.add_argument("--url", help="URL to fetch summary PDF from")
-    parser.add_argument("--precinct-url", help="URL to fetch precinct PDF from")
+    parser.add_argument("--url", help="Direct URL to summary PDF (skips auto-discovery)")
+    parser.add_argument("--precinct-url", help="Direct URL to precinct PDF")
     parser.add_argument("--output", help="Output JSON path", default=str(OUTPUT_PATH))
     args = parser.parse_args()
-
-    summary_source = args.pdf or args.url or SUMMARY_PDF_URL
-    precinct_source = args.precinct_pdf or args.precinct_url or PRECINCT_PDF_URL
-
-    if not summary_source:
-        print("ERROR: No PDF source specified.")
-        print("Either:")
-        print("  1. Set SUMMARY_PDF_URL in this script")
-        print("  2. Pass --pdf <path> or --url <url>")
-        print()
-        print("Check https://www.marathoncounty.gov/services/elections-voting/results")
-        print("for the latest PDF links on election night.")
-        sys.exit(1)
 
     print(f"=== Marathon County Election Results Scraper ===")
     print(f"Election: {ELECTION_CONFIG['name']}")
     print()
 
-    # Fetch/load summary PDF
-    print("[1/3] Loading summary PDF...")
+    # Determine summary PDF source — priority: CLI arg > hardcoded fallback > auto-discover
+    summary_source = args.pdf or args.url or SUMMARY_PDF_URL
+    precinct_source = args.precinct_pdf or args.precinct_url or PRECINCT_PDF_URL
+
+    if not summary_source:
+        print("[1/3] Auto-discovering PDF links from results page...")
+        discovered_summary, discovered_precinct = discover_pdf_urls()
+        summary_source = discovered_summary
+        if not precinct_source:
+            precinct_source = discovered_precinct
+
+    if not summary_source:
+        print()
+        print("ERROR: Could not find Election Summary PDF.")
+        print("Options:")
+        print("  1. Check the results page manually:", RESULTS_PAGE_URL)
+        print("  2. Set SUMMARY_PDF_URL in this script")
+        print("  3. Pass --url <pdf_url> or --pdf <path>")
+        sys.exit(1)
+
+    # Parse summary PDF
+    print("\n[2/3] Parsing Election Summary PDF...")
     if summary_source.startswith("http"):
-        pdf_bytes = fetch_pdf(summary_source)
-        data = parse_summary_pdf(pdf_bytes)
+        data = parse_summary_pdf(fetch_pdf(summary_source))
     else:
         data = parse_summary_pdf(summary_source)
 
     print(f"  Found {len(data['races'])} races")
     print(f"  Precincts: {data['election']['precinctsReported']}/{data['election']['precinctsTotal']}")
     print(f"  Ballots cast: {data['statistics']['ballotsCast']}")
+    print(f"  Status: {data['election']['status'].upper()}")
 
-    # Fetch/load precinct PDF if available
+    # Parse precinct PDF if available
     if precinct_source:
-        print("\n[2/3] Loading precinct detail PDF...")
+        print("\n[3/3] Parsing Precinct Summary PDF...")
         if precinct_source.startswith("http"):
-            precinct_bytes = fetch_pdf(precinct_source)
-            data["races"] = parse_precinct_pdf(precinct_bytes, data["races"])
+            data["races"] = parse_precinct_pdf(fetch_pdf(precinct_source), data["races"])
         else:
             data["races"] = parse_precinct_pdf(precinct_source, data["races"])
 
         ward_counts = [len(r["wardData"]) for r in data["races"]]
         print(f"  Ward data loaded for {sum(1 for w in ward_counts if w > 0)} races")
     else:
-        print("\n[2/3] No precinct PDF specified, skipping ward detail...")
+        print("\n[3/3] No Precinct Summary PDF found, skipping ward detail...")
 
     # Write output
-    print(f"\n[3/3] Writing JSON to {args.output}")
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-
     with open(output_path, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
-    print(f"\n  Done! {output_path.stat().st_size:,} bytes written")
+    print(f"\n  Written to {output_path} ({output_path.stat().st_size:,} bytes)")
 
-    # Summary
+    # Results summary
     print(f"\n=== Results Summary ===")
-    print(f"Status: {data['election']['status'].upper()}")
     for race in data["races"]:
         leader = race["candidates"][0] if race["candidates"] else None
-        print(f"  {race['name']}: {leader['name']} leads ({leader['votes']} votes)" if leader else f"  {race['name']}: No votes yet")
+        if leader:
+            print(f"  {race['name']}: {leader['name']} leads ({leader['votes']:,} votes)")
+        else:
+            print(f"  {race['name']}: no votes yet")
 
 
 if __name__ == "__main__":
