@@ -285,35 +285,39 @@
      ═══════════════════════════════════════ */
   .tab-nav {
     display: flex;
-    gap: 0;
-    border-bottom: 2px solid var(--wpr-black);
+    flex-wrap: wrap;
+    gap: 6px;
     margin-bottom: 20px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    overflow: visible;
   }
 
   .tab-btn {
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 10px 18px;
-    background: none;
-    border: none;
-    border-bottom: 3px solid transparent;
-    color: var(--gray-400);
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+    background: var(--gray-100);
+    border: 2px solid var(--gray-200);
+    border-radius: 20px;
+    color: var(--gray-500);
     cursor: pointer;
     white-space: nowrap;
-    transition: color 0.15s, border-color 0.15s;
-    margin-bottom: -2px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
 
-  .tab-btn:hover { color: var(--gray-600); }
+  .tab-btn:hover {
+    background: var(--gray-200);
+    color: var(--wpr-black);
+    border-color: var(--gray-300);
+  }
 
   .tab-btn.active {
-    color: var(--wpr-black);
-    border-bottom-color: var(--wpr-teal);
+    background: var(--wpr-teal);
+    color: #fff;
+    border-color: var(--wpr-teal);
   }
 
   /* ═══════════════════════════════════════
