@@ -55,13 +55,12 @@
       "jurisdiction": "Marathon County",
       "category": "county",
       "candidates": [
-        { "name": "Candidate A", "votes": 0 },
-        { "name": "Candidate B", "votes": 0 }
+        { "name": "Katie Rosenberg", "votes": 0 },
+        { "name": "Dane Suleski", "votes": 0 }
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 2 },
-      "wardData": [],
-      "_note": "UPDATE: Replace placeholder names with actual candidates from county filing records"
+      "wardData": []
     },
     {
       "id": "county-board-dist-8",
@@ -71,13 +70,12 @@
       "jurisdiction": "Marathon County",
       "category": "county",
       "candidates": [
-        { "name": "Candidate A", "votes": 0 },
-        { "name": "Candidate B", "votes": 0 }
+        { "name": "Kim Ungerer", "votes": 0 },
+        { "name": "Sarah Watson", "votes": 0 }
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 2 },
-      "wardData": [],
-      "_note": "UPDATE: Replace placeholder names with actual candidates"
+      "wardData": []
     },
     {
       "id": "county-board-dist-13",
@@ -102,13 +100,12 @@
       "jurisdiction": "Marathon County",
       "category": "county",
       "candidates": [
-        { "name": "Candidate A", "votes": 0 },
-        { "name": "Candidate B", "votes": 0 }
+        { "name": "Bill Conway", "votes": 0 },
+        { "name": "Tony Sherfinski", "votes": 0 }
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 2 },
-      "wardData": [],
-      "_note": "UPDATE: Replace placeholder names with actual candidates"
+      "wardData": []
     },
     {
       "id": "county-board-dist-25",
@@ -118,29 +115,12 @@
       "jurisdiction": "Marathon County",
       "category": "county",
       "candidates": [
-        { "name": "Candidate A", "votes": 0 },
-        { "name": "Candidate B", "votes": 0 }
+        { "name": "Timothy M. Sondelski", "votes": 0 },
+        { "name": "Susan Stankowski", "votes": 0 }
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 2 },
-      "wardData": [],
-      "_note": "UPDATE: Replace placeholder names with actual candidates"
-    },
-    {
-      "id": "county-board-dist-33",
-      "name": "County Supervisor, District 33",
-      "type": "general",
-      "seats": 1,
-      "jurisdiction": "Marathon County",
-      "category": "county",
-      "candidates": [
-        { "name": "Candidate A", "votes": 0 },
-        { "name": "Candidate B", "votes": 0 }
-      ],
-      "writeIns": 0,
-      "precincts": { "reported": 0, "total": 2 },
-      "wardData": [],
-      "_note": "UPDATE: Replace placeholder names with actual candidates"
+      "wardData": []
     },
     {
       "id": "wausau-alderperson-d6",
