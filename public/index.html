@@ -288,23 +288,25 @@
     flex-wrap: wrap;
     gap: 6px;
     margin-bottom: 20px;
-    padding-bottom: 4px;
     overflow: visible;
   }
 
   .tab-btn {
+    flex: 1 1 auto;
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    padding: 8px 16px;
+    padding: 11px 12px;
+    min-height: 44px;
     background: var(--gray-100);
     border: 2px solid var(--gray-200);
     border-radius: 20px;
     color: var(--gray-500);
     cursor: pointer;
     white-space: nowrap;
+    text-align: center;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
 
@@ -717,7 +719,7 @@
     .race-card { padding: 16px 14px; }
     .race-name { font-size: 17px; }
     .candidate-name { font-size: 13px; }
-    .tab-btn { padding: 8px 12px; font-size: 12px; }
+    .tab-btn { padding: 10px 10px; font-size: 11px; min-height: 44px; flex: 1 1 calc(33% - 6px); }
     .header-brand-row { gap: 10px; }
     .brand-logo { width: 44px; height: 44px; }
     .brand-name { font-size: 15px; }
