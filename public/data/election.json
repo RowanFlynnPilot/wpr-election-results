@@ -123,6 +123,51 @@
       "wardData": []
     },
     {
+      "id": "wausau-council-d1",
+      "name": "Alderperson — Wausau, District 1",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Mary Kowatch", "votes": 0 },
+        { "name": "Carol Lukens", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "wausau-council-d2",
+      "name": "Alderperson — Wausau, District 2",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Michael J. Martens", "votes": 0 },
+        { "name": "Nick Nowak", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "wausau-council-d4",
+      "name": "Alderperson — Wausau, District 4",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Vylius V. Leskys", "votes": 0 },
+        { "name": "Tom Neal", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
       "id": "wausau-alderperson-d6",
       "name": "Alderperson — Wausau, District 6",
       "type": "general",
@@ -132,6 +177,36 @@
       "candidates": [
         { "name": "Kristin Slonski", "votes": 0 },
         { "name": "Keene Winters", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "wausau-council-d7",
+      "name": "Alderperson — Wausau, District 7",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Matt Hoenecke", "votes": 0 },
+        { "name": "Lisa Rasmussen", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "wausau-council-d11",
+      "name": "Alderperson — Wausau, District 11",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Timothy P. Howe", "votes": 0 },
+        { "name": "Bruce Trueblood", "votes": 0 }
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 2 },
@@ -150,6 +225,102 @@
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 1 },
+      "wardData": []
+    },
+    {
+      "id": "mosinee-council-d6",
+      "name": "Alderperson — Mosinee, District 6",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Mosinee",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Doug Mielke", "votes": 0 },
+        { "name": "Chad M. Peper", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 1 },
+      "wardData": []
+    },
+    {
+      "id": "marshfield-mayor",
+      "name": "Mayor — Marshfield",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Marshfield",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Nick Poeschel", "votes": 0 },
+        { "name": "Lois TeStrake", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 4 },
+      "wardData": []
+    },
+    {
+      "id": "maine-village-president",
+      "name": "Village President — Maine",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Village of Maine",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Judith Hase", "votes": 0 },
+        { "name": "Betty Hoenisch", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 1 },
+      "wardData": []
+    },
+    {
+      "id": "kronenwetter-village-trustee",
+      "name": "Village Trustee — Kronenwetter",
+      "type": "general",
+      "seats": 3,
+      "jurisdiction": "Village of Kronenwetter",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Craig Mortensen", "votes": 0 },
+        { "name": "Kelly R. Coyle", "votes": 0 },
+        { "name": "Kenneth Charneski", "votes": 0 },
+        { "name": "Kenneth J. Maciaz", "votes": 0 },
+        { "name": "Aaron Myszka", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 5 },
+      "wardData": []
+    },
+    {
+      "id": "rib-mountain-village-trustee",
+      "name": "Village Trustee — Rib Mountain",
+      "type": "general",
+      "seats": 2,
+      "jurisdiction": "Village of Rib Mountain",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Joe Hurst", "votes": 0 },
+        { "name": "Barbara Newton", "votes": 0 },
+        { "name": "Cory Sillars", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 3 },
+      "wardData": []
+    },
+    {
+      "id": "rothschild-village-trustee",
+      "name": "Village Trustee — Rothschild",
+      "type": "general",
+      "seats": 3,
+      "jurisdiction": "Village of Rothschild",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Deb Ehster", "votes": 0 },
+        { "name": "Paul Kennedy", "votes": 0 },
+        { "name": "Emily Ohlrich", "votes": 0 },
+        { "name": "Bill Schremp", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
       "wardData": []
     },
     {
@@ -205,6 +376,25 @@
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 4 },
+      "wardData": []
+    },
+    {
+      "id": "wausau-school-board",
+      "name": "School Board — Wausau",
+      "type": "general",
+      "seats": 3,
+      "jurisdiction": "Wausau School District",
+      "category": "school",
+      "candidates": [
+        { "name": "Charles Burger", "votes": 0 },
+        { "name": "John Huntington", "votes": 0 },
+        { "name": "Kathryn Ruland", "votes": 0 },
+        { "name": "Cory Sillars", "votes": 0 },
+        { "name": "Lance Trollop", "votes": 0 },
+        { "name": "Yauo Yang", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 12 },
       "wardData": []
     }
   ]
