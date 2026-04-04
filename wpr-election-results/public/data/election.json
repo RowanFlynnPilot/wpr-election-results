@@ -1,0 +1,231 @@
+{
+  "election": {
+    "name": "2026 Spring Election",
+    "date": "2026-04-07",
+    "displayDate": "April 7, 2026",
+    "county": "Marathon County",
+    "state": "Wisconsin",
+    "status": "upcoming",
+    "lastUpdated": "2026-04-07T00:00:00",
+    "precinctsReported": 0,
+    "precinctsTotal": 65
+  },
+  "statistics": {
+    "registeredVoters": 0,
+    "ballotsCast": 0,
+    "blanks": 0,
+    "turnoutPct": 0
+  },
+  "races": [
+    {
+      "id": "wi-supreme-court",
+      "name": "Justice of the Supreme Court",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "State of Wisconsin",
+      "category": "judicial",
+      "candidates": [
+        { "name": "Chris Taylor", "votes": 0 },
+        { "name": "Maria S. Lazar", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 65 },
+      "wardData": []
+    },
+    {
+      "id": "marathon-circuit-court-branch-3",
+      "name": "Circuit Court Judge, Branch 3",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "judicial",
+      "candidates": [
+        { "name": "Douglas Bauman", "votes": 0 },
+        { "name": "Michael D. Hughes", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 65 },
+      "wardData": []
+    },
+    {
+      "id": "county-board-dist-1",
+      "name": "County Supervisor, District 1",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "county",
+      "candidates": [
+        { "name": "Candidate A", "votes": 0 },
+        { "name": "Candidate B", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": [],
+      "_note": "UPDATE: Replace placeholder names with actual candidates from county filing records"
+    },
+    {
+      "id": "county-board-dist-8",
+      "name": "County Supervisor, District 8",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "county",
+      "candidates": [
+        { "name": "Candidate A", "votes": 0 },
+        { "name": "Candidate B", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": [],
+      "_note": "UPDATE: Replace placeholder names with actual candidates"
+    },
+    {
+      "id": "county-board-dist-13",
+      "name": "County Supervisor, District 13",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "county",
+      "candidates": [
+        { "name": "Beverly Krejci", "votes": 0 },
+        { "name": "Mike Ritter", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "county-board-dist-16",
+      "name": "County Supervisor, District 16",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "county",
+      "candidates": [
+        { "name": "Candidate A", "votes": 0 },
+        { "name": "Candidate B", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": [],
+      "_note": "UPDATE: Replace placeholder names with actual candidates"
+    },
+    {
+      "id": "county-board-dist-25",
+      "name": "County Supervisor, District 25",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "county",
+      "candidates": [
+        { "name": "Candidate A", "votes": 0 },
+        { "name": "Candidate B", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": [],
+      "_note": "UPDATE: Replace placeholder names with actual candidates"
+    },
+    {
+      "id": "county-board-dist-33",
+      "name": "County Supervisor, District 33",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Marathon County",
+      "category": "county",
+      "candidates": [
+        { "name": "Candidate A", "votes": 0 },
+        { "name": "Candidate B", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": [],
+      "_note": "UPDATE: Replace placeholder names with actual candidates"
+    },
+    {
+      "id": "wausau-alderperson-d6",
+      "name": "Alderperson — Wausau, District 6",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Kristin Slonski", "votes": 0 },
+        { "name": "Keene Winters", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "mosinee-alderperson-wd4",
+      "name": "Alderperson — Mosinee, Ward 4",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Mosinee",
+      "category": "municipal",
+      "candidates": [
+        { "name": "Todd Priest", "votes": 0 },
+        { "name": "Jocelyn Kuklinski Walters", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 1 },
+      "wardData": []
+    },
+    {
+      "id": "dce-school-board",
+      "name": "School Board — D.C. Everest Area",
+      "type": "general",
+      "seats": 2,
+      "jurisdiction": "D.C. Everest Area School District",
+      "category": "school",
+      "candidates": [
+        { "name": "Jennifer Douck", "votes": 0 },
+        { "name": "Yee Leng Xiong", "votes": 0 },
+        { "name": "Daron Juneau", "votes": 0 },
+        { "name": "Bill Conway", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 15 },
+      "wardData": []
+    },
+    {
+      "id": "antigo-school-board",
+      "name": "School Board — Antigo",
+      "type": "general",
+      "seats": 3,
+      "jurisdiction": "Antigo School District",
+      "category": "school",
+      "candidates": [
+        { "name": "Mike Parizek", "votes": 0 },
+        { "name": "Jean Adams", "votes": 0 },
+        { "name": "Daniel Nicholson", "votes": 0 },
+        { "name": "Christina Grant", "votes": 0 },
+        { "name": "Dawn M. McCann", "votes": 0 },
+        { "name": "Bobbi Braun", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 2 },
+      "wardData": []
+    },
+    {
+      "id": "marshfield-school-board",
+      "name": "School Board — Marshfield",
+      "type": "general",
+      "seats": 3,
+      "jurisdiction": "Marshfield School District",
+      "category": "school",
+      "candidates": [
+        { "name": "Ben Will", "votes": 0 },
+        { "name": "Faith Meyers", "votes": 0 },
+        { "name": "Mark Borchardt", "votes": 0 },
+        { "name": "Dominic Pernsteiner", "votes": 0 },
+        { "name": "Mason M. Gukenberger", "votes": 0 },
+        { "name": "Brandon Taylor", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 4 },
+      "wardData": []
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "election": {
+    "name": "2026 Spring Primary",
+    "date": "2026-02-17",
+    "displayDate": "February 17, 2026",
+    "county": "Marathon County",
+    "state": "Wisconsin",
+    "status": "final",
+    "lastUpdated": "2026-02-17T21:49:00",
+    "precinctsReported": 23,
+    "precinctsTotal": 23
+  },
+  "statistics": {
+    "registeredVoters": 27142,
+    "ballotsCast": 2844,
+    "blanks": 11,
+    "turnoutPct": 10.48
+  },
+  "races": [
+    {
+      "id": "wausau-d6",
+      "name": "Alderperson \u2014 Wausau, District 6",
+      "type": "primary",
+      "seats": 1,
+      "advanceTo": 2,
+      "jurisdiction": "City of Wausau",
+      "category": "municipal",
+      "candidates": [
+        {
+          "name": "Kristin Slonski",
+          "votes": 194
+        },
+        {
+          "name": "Keene Winters",
+          "votes": 176
+        },
+        {
+          "name": "Mario Diaz",
+          "votes": 71
+        }
+      ],
+      "writeIns": 0,
+      "precincts": {
+        "reported": 2,
+        "total": 2
+      },
+      "wardData": []
+    },
+    {
+      "id": "mosinee-wd4",
+      "name": "Alderperson \u2014 Mosinee, Ward 4",
+      "type": "primary",
+      "seats": 1,
+      "advanceTo": 2,
+      "jurisdiction": "City of Mosinee",
+      "category": "municipal",
+      "candidates": [
+        {
+          "name": "Todd Priest",
+          "votes": 34
+        },
+        {
+          "name": "Jocelyn Kuklinski Walters",
+          "votes": 22
+        },
+        {
+          "name": "Cally Gorski",
+          "votes": 16
+        }
+      ],
+      "writeIns": 0,
+      "precincts": {
+        "reported": 1,
+        "total": 1
+      },
+      "wardData": []
+    },
+    {
+      "id": "dce-school",
+      "name": "School Board \u2014 D.C. Everest Area",
+      "type": "primary",
+      "seats": 2,
+      "advanceTo": 4,
+      "jurisdiction": "D.C. Everest Area School District",
+      "category": "school",
+      "candidates": [
+        {
+          "name": "Jennifer Douck",
+          "votes": 1002
+        },
+        {
+          "name": "Yee Leng Xiong",
+          "votes": 960
+        },
+        {
+          "name": "Daron Juneau",
+          "votes": 790
+        },
+        {
+          "name": "Bill Conway",
+          "votes": 517
+        },
+        {
+          "name": "Tony Eilers",
+          "votes": 432
+        }
+      ],
+      "writeIns": 7,
+      "precincts": {
+        "reported": 15,
+        "total": 15
+      },
+      "wardData": []
+    },
+    {
+      "id": "antigo-school",
+      "name": "School Board \u2014 Antigo",
+      "type": "primary",
+      "seats": 3,
+      "advanceTo": 6,
+      "jurisdiction": "Antigo School District",
+      "category": "school",
+      "candidates": [
+        {
+          "name": "Mike Parizek",
+          "votes": 40
+        },
+        {
+          "name": "Jean Adams",
+          "votes": 28
+        },
+        {
+          "name": "Daniel Nicholson",
+          "votes": 25
+        },
+        {
+          "name": "Christina Grant",
+          "votes": 20
+        },
+        {
+          "name": "Dawn M. McCann",
+          "votes": 18
+        },
+        {
+          "name": "Bobbi Braun",
+          "votes": 8
+        },
+        {
+          "name": "Jeremy Henke, Sr.",
+          "votes": 7
+        }
+      ],
+      "writeIns": 0,
+      "precincts": {
+        "reported": 2,
+        "total": 2
+      },
+      "wardData": []
+    },
+    {
+      "id": "marshfield-school",
+      "name": "School Board \u2014 Marshfield",
+      "type": "primary",
+      "seats": 3,
+      "advanceTo": 6,
+      "jurisdiction": "Marshfield School District",
+      "category": "school",
+      "candidates": [
+        {
+          "name": "Ben Will",
+          "votes": 174
+        },
+        {
+          "name": "Faith Meyers",
+          "votes": 154
+        },
+        {
+          "name": "Mark Borchardt",
+          "votes": 150
+        },
+        {
+          "name": "Dominic Pernsteiner",
+          "votes": 129
+        },
+        {
+          "name": "Mason M. Gukenberger",
+          "votes": 118
+        },
+        {
+          "name": "Brandon Taylor",
+          "votes": 52
+        },
+        {
+          "name": "Mathew L. Samson",
+          "votes": 18
+        }
+      ],
+      "writeIns": 2,
+      "precincts": {
+        "reported": 4,
+        "total": 4
+      },
+      "wardData": []
+    }
+  ]
+}
