@@ -630,6 +630,142 @@
   .ward-table .ward-leading { font-weight: 700; color: var(--wpr-teal-deep); }
 
   /* ═══════════════════════════════════════
+     PRECINCT DRILL-DOWN PANEL
+     ═══════════════════════════════════════ */
+  .precinct-panel {
+    background: var(--wpr-white);
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--wpr-teal);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .precinct-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .precinct-panel-header:hover { background: var(--accent-ghost); }
+
+  .precinct-panel-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-500);
+  }
+
+  .precinct-panel-summary {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--wpr-teal-deep);
+  }
+
+  .precinct-toggle-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s;
+    color: var(--gray-400);
+    flex-shrink: 0;
+  }
+
+  .precinct-panel.open .precinct-toggle-icon { transform: rotate(180deg); }
+
+  .precinct-panel-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--gray-100);
+  }
+
+  .precinct-panel.open .precinct-panel-body { display: block; }
+
+  .precinct-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 480px) {
+    .precinct-columns { grid-template-columns: 1fr; }
+  }
+
+  .precinct-column-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .precinct-column-label.reported { color: var(--green); }
+  .precinct-column-label.not-reported { color: var(--gray-400); }
+
+  .precinct-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--gray-600);
+    padding: 3px 0;
+    line-height: 1.3;
+  }
+
+  .precinct-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .precinct-dot.reported { background: var(--green); }
+  .precinct-dot.not-reported { background: var(--gray-300); }
+
+  /* ═══════════════════════════════════════
+     AP-STYLE CATEGORY HEADERS
+     ═══════════════════════════════════════ */
+  .category-group-header {
+    margin: 28px 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--wpr-black);
+    position: relative;
+  }
+
+  .category-group-header:first-child { margin-top: 4px; }
+
+  .category-subheading {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--wpr-teal-dark);
+    margin-bottom: 4px;
+  }
+
+  .category-headline {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gray-600);
+    line-height: 1.4;
+    margin-top: 4px;
+    padding-left: 10px;
+    border-left: 3px solid var(--wpr-teal);
+  }
+
+  /* ═══════════════════════════════════════
      FOOTER
      ═══════════════════════════════════════ */
   .widget-footer {
@@ -797,6 +933,9 @@
   <!-- Overview Stats -->
   <div class="overview-stats" id="overviewStats"></div>
 
+  <!-- Precinct Drill-Down Panel (populated when precinctList data is available) -->
+  <div id="precinctPanel"></div>
+
   <!-- Tab Navigation -->
   <nav class="tab-nav" id="tabNav"></nav>
 
@@ -861,6 +1000,7 @@ const ELECTION_DATA = {
     precinctsTotal: 65
   },
   statistics: { registeredVoters: 0, ballotsCast: 0, blanks: 0, turnoutPct: 0 },
+  precinctList: [],
   races: [
     { id: "wi-supreme-court", name: "Justice of the Supreme Court", type: "general", seats: 1, jurisdiction: "State of Wisconsin", category: "judicial",
       candidates: [{ name: "Chris Taylor", votes: 0 }, { name: "Maria S. Lazar", votes: 0 }],
@@ -964,13 +1104,178 @@ function renderTabs(races) {
   });
 }
 
+function renderPrecinctStatus(data) {
+  const panel = document.getElementById("precinctPanel");
+  const list = data.precinctList || [];
+
+  if (!list.length) {
+    panel.innerHTML = "";
+    return;
+  }
+
+  const reported = list.filter(p => p.status === "reported").sort((a, b) => a.name.localeCompare(b.name));
+  const notReported = list.filter(p => p.status !== "reported").sort((a, b) => a.name.localeCompare(b.name));
+  const total = list.length;
+  const repCount = reported.length;
+
+  const reportedItems = reported.map(p =>
+    `<div class="precinct-item"><span class="precinct-dot reported"></span>${p.name}</div>`
+  ).join("");
+
+  const notReportedItems = notReported.map(p =>
+    `<div class="precinct-item"><span class="precinct-dot not-reported"></span>${p.name}</div>`
+  ).join("");
+
+  panel.innerHTML = `
+    <div class="precinct-panel" id="precinctPanelCard">
+      <div class="precinct-panel-header" onclick="togglePrecinctPanel()">
+        <span class="precinct-panel-title">Precinct Breakdown</span>
+        <span class="precinct-panel-summary">${repCount} of ${total} reporting</span>
+        <svg class="precinct-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="precinct-panel-body">
+        <div class="precinct-columns">
+          <div>
+            <div class="precinct-column-label reported">Reported (${repCount})</div>
+            ${reportedItems || '<div class="precinct-item" style="color:var(--gray-400);font-style:italic">None yet</div>'}
+          </div>
+          <div>
+            <div class="precinct-column-label not-reported">Not Yet Reported (${notReported.length})</div>
+            ${notReportedItems || '<div class="precinct-item" style="color:var(--gray-400);font-style:italic">All in!</div>'}
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function togglePrecinctPanel() {
+  const card = document.getElementById("precinctPanelCard");
+  if (card) card.classList.toggle("open");
+}
+
+// ── AP-STYLE CATEGORY HEADLINES ──
+
+const CAT_LABELS = {
+  judicial: "Judicial",
+  county: "County Board",
+  municipal: "Municipal",
+  school: "School Board",
+  referendum: "Referendums"
+};
+
+function generateCategoryHeadline(category, races) {
+  const totalVotes = races.reduce((s, r) => s + r.candidates.reduce((rs, c) => rs + c.votes, 0), 0);
+  if (totalVotes === 0) return "";
+
+  if (category === "judicial") {
+    const lines = races.map(r => {
+      const tv = r.candidates.reduce((s, c) => s + c.votes, 0);
+      if (tv === 0) return null;
+      const leader = r.candidates.reduce((a, b) => b.votes > a.votes ? b : a);
+      const p = Math.round((leader.votes / tv) * 100);
+      const done = r.precincts.reported === r.precincts.total && r.precincts.total > 0;
+      const verb = done ? "wins" : "leads";
+      return `${leader.name} ${verb} ${r.name.replace("Justice of the ", "").replace("Circuit Court ", "")} with ${p}%`;
+    }).filter(Boolean);
+    return lines.join("; ");
+  }
+
+  if (category === "county") {
+    const called = races.filter(r => {
+      const done = r.precincts.reported === r.precincts.total && r.precincts.total > 0;
+      return done && r.candidates.reduce((s, c) => s + c.votes, 0) > 0;
+    });
+    const total = races.length;
+    const calledN = called.length;
+    const suffix = calledN > 0
+      ? `, ${calledN} of ${total} decided`
+      : `, ${total} races on the ballot`;
+    const hottest = races
+      .filter(r => r.candidates.reduce((s, c) => s + c.votes, 0) > 0)
+      .sort((a, b) => {
+        const margin = r => {
+          const tv = r.candidates.reduce((s, c) => s + c.votes, 0);
+          if (tv === 0) return 100;
+          const sorted = [...r.candidates].sort((x, y) => y.votes - x.votes);
+          return (sorted[0].votes - (sorted[1]?.votes || 0)) / tv * 100;
+        };
+        return margin(a) - margin(b);
+      })[0];
+    if (hottest) {
+      const tv = hottest.candidates.reduce((s, c) => s + c.votes, 0);
+      const leader = [...hottest.candidates].sort((a, b) => b.votes - a.votes)[0];
+      const p = Math.round((leader.votes / tv) * 100);
+      const dist = hottest.name.match(/District\s+\d+/)?.[0] || hottest.name;
+      return `${leader.name} leads ${dist} with ${p}%${suffix}`;
+    }
+    return `${total} County Board races on the ballot`;
+  }
+
+  if (category === "municipal") {
+    const withVotes = races.filter(r => r.candidates.reduce((s, c) => s + c.votes, 0) > 0);
+    if (!withVotes.length) return "";
+    const called = withVotes.filter(r => r.precincts.reported === r.precincts.total && r.precincts.total > 0);
+    return `Results in for ${withVotes.length} of ${races.length} municipal races; ${called.length} decided`;
+  }
+
+  if (category === "school") {
+    const withVotes = races.filter(r => r.candidates.reduce((s, c) => s + c.votes, 0) > 0);
+    const called = withVotes.filter(r => r.precincts.reported === r.precincts.total && r.precincts.total > 0);
+    if (!withVotes.length) return "";
+    return `${called.length} of ${races.length} school board races decided`;
+  }
+
+  if (category === "referendum") {
+    return races.map(r => {
+      const tv = r.candidates.reduce((s, c) => s + c.votes, 0);
+      if (tv === 0) return null;
+      const yes = r.candidates.find(c => c.name.toLowerCase() === "yes") || r.candidates[0];
+      const no = r.candidates.find(c => c.name.toLowerCase() === "no") || r.candidates[1];
+      const yesP = Math.round((yes.votes / tv) * 100);
+      const noP = Math.round((no.votes / tv) * 100);
+      const passing = yes.votes >= no.votes;
+      const short = r.name.replace(/^(City|Village|Town) of\s+/i, "").replace("— ", "");
+      return `${short}: ${passing ? "Passing" : "Failing"} ${yesP}%–${noP}%`;
+    }).filter(Boolean).join(" · ");
+  }
+
+  return "";
+}
+
+function renderCategoryHeader(category, races) {
+  const label = CAT_LABELS[category] || category;
+  const headline = generateCategoryHeadline(category, races);
+  return `
+    <div class="category-group-header">
+      <span class="category-subheading">${label}</span>
+      ${headline ? `<p class="category-headline">${headline}</p>` : ""}
+    </div>`;
+}
+
 function renderRaces(races) {
   const c = document.getElementById("raceContainer");
-  const filtered = currentFilter === "all" ? races : races.filter(r => r.category === currentFilter);
 
-  if (!filtered.length) { c.innerHTML = '<div class="no-results">No races in this category.</div>'; return; }
+  if (currentFilter === "all") {
+    // Group by category with AP-style headers
+    const catOrder = ["judicial", "county", "municipal", "school", "referendum"];
+    const groups = {};
+    races.forEach(r => {
+      if (!groups[r.category]) groups[r.category] = [];
+      groups[r.category].push(r);
+    });
 
-  c.innerHTML = filtered.map(raceCard).join("");
+    const html = catOrder
+      .filter(cat => groups[cat] && groups[cat].length > 0)
+      .map(cat => renderCategoryHeader(cat, groups[cat]) + groups[cat].map(raceCard).join(""))
+      .join("");
+
+    if (!html) { c.innerHTML = '<div class="no-results">No races available.</div>'; return; }
+    c.innerHTML = html;
+  } else {
+    const filtered = races.filter(r => r.category === currentFilter);
+    if (!filtered.length) { c.innerHTML = '<div class="no-results">No races in this category.</div>'; return; }
+    c.innerHTML = filtered.map(raceCard).join("");
+  }
 
   requestAnimationFrame(() => {
     c.querySelectorAll(".bar-fill").forEach(b => { b.style.width = b.dataset.width + "%"; });
@@ -1094,6 +1399,7 @@ async function fetchData() {
       ELECTION_DATA.election = data.election;
       ELECTION_DATA.statistics = data.statistics;
       ELECTION_DATA.races = data.races;
+      ELECTION_DATA.precinctList = data.precinctList || [];
       return true;
     }
   } catch (e) { console.warn("Fetch failed:", e); }
@@ -1126,6 +1432,7 @@ function renderAll() {
   document.getElementById("electionDate").textContent = `${d.election.displayDate} — ${d.election.county}, ${d.election.state}`;
   renderStatus(d.election);
   renderOverview(d.statistics);
+  renderPrecinctStatus(d);
   renderTabs(d.races);
   renderRaces(d.races);
 }
