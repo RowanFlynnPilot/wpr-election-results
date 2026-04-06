@@ -332,6 +332,12 @@
     margin-bottom: 16px;
     padding: 20px;
     animation: fadeUp 0.35s ease both;
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+
+  .race-card:hover {
+    background: var(--accent-ghost);
+    box-shadow: 0 2px 8px rgba(92, 171, 163, 0.10);
   }
 
   .race-card:nth-child(2) { animation-delay: 0.04s; }
@@ -398,11 +404,18 @@
     grid-template-columns: 1fr auto auto;
     align-items: center;
     gap: 12px;
-    padding: 10px 0 6px;
+    padding: 10px 6px 6px;
+    margin: 0 -6px;
+    border-radius: 3px;
+    transition: background 0.12s;
   }
 
   .candidate-row + .candidate-row {
     border-top: 1px solid var(--gray-100);
+  }
+
+  .candidate-row:hover {
+    background: rgba(92, 171, 163, 0.07);
   }
 
   .candidate-row.advancing .candidate-name {
