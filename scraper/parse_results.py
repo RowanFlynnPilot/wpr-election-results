@@ -54,6 +54,7 @@ MARATHON_COUNTY_BASE = "https://www.marathoncounty.gov"
 # Fallback URLs — leave empty for auto-discovery, or paste URLs here if needed
 SUMMARY_PDF_URL = ""    # e.g. "https://www.marathoncounty.gov/home/showpublisheddocument/15125"
 PRECINCT_PDF_URL = ""   # e.g. "https://www.marathoncounty.gov/home/showpublisheddocument/15126"
+STATUS_PDF_URL = ""     # e.g. "https://www.marathoncounty.gov/home/showpublisheddocument/15127"
 
 # Election metadata — update per election
 ELECTION_CONFIG = {
@@ -73,12 +74,12 @@ HEADERS = {
 
 # ── AUTO-DISCOVERY ───────────────────────────────────────────────
 
-def discover_pdf_urls() -> tuple[str, str]:
+def discover_pdf_urls() -> tuple[str, str, str]:
     """
-    Fetch the Marathon County results page and extract the Election Summary
-    and Precinct Summary PDF links.
+    Fetch the Marathon County results page and extract the Election Summary,
+    Precinct Summary, and Precincts Reported/Not Reported PDF links.
 
-    Returns (summary_url, precinct_url). Either may be empty string if not found.
+    Returns (summary_url, precinct_url, status_url). Any may be empty string if not found.
     """
     print(f"  Fetching results page: {RESULTS_PAGE_URL}")
     try:
@@ -86,12 +87,13 @@ def discover_pdf_urls() -> tuple[str, str]:
         resp.raise_for_status()
     except requests.RequestException as e:
         print(f"  WARNING: Could not fetch results page: {e}")
-        return "", ""
+        return "", "", ""
 
     soup = BeautifulSoup(resp.text, "html.parser")
 
     summary_url = ""
     precinct_url = ""
+    status_url = ""
 
     # Find all links on the page
     for a in soup.find_all("a", href=True):
@@ -111,20 +113,27 @@ def discover_pdf_urls() -> tuple[str, str]:
         elif "precinct summary" in text and not precinct_url:
             precinct_url = href
             print(f"  Found Precinct Summary: {href}")
+        elif any(k in text for k in ("precincts reported", "precinct status", "reported/not reported")) and not status_url:
+            status_url = href
+            print(f"  Found Precinct Status: {href}")
 
         # Also match by URL pattern as fallback (showpublisheddocument)
         if "showpublisheddocument" in href:
             if not summary_url and "summary" in text:
                 summary_url = href
-            elif not precinct_url and "precinct" in text:
+            elif not precinct_url and "precinct" in text and "status" not in text and "reported" not in text:
                 precinct_url = href
+            elif not status_url and ("reported" in text or "status" in text):
+                status_url = href
 
     if not summary_url:
         print("  WARNING: Could not find Election Summary link on results page.")
     if not precinct_url:
         print("  WARNING: Could not find Precinct Summary link on results page.")
+    if not status_url:
+        print("  WARNING: Could not find Precinct Status link on results page (optional).")
 
-    return summary_url, precinct_url
+    return summary_url, precinct_url, status_url
 
 
 # ── PDF FETCHING ─────────────────────────────────────────────────
@@ -368,6 +377,77 @@ def parse_precinct_pdf(pdf_source, races: list) -> list:
     return races
 
 
+def parse_precinct_status_pdf(pdf_source) -> list:
+    """
+    Parse the "Precincts Reported / Not Reported" PDF into a list of precinct
+    status objects.
+
+    Expected row format (tab-separated columns):
+        Precinct ID    Precinct Name    ...    Reported  (or Not Reported)
+
+    Returns a list of {"id": str, "name": str, "status": "reported"|"notReported"}.
+    Returns [] on any parse error so the scraper never fails on this.
+    """
+    try:
+        pdf = open_pdf(pdf_source)
+        results = []
+        seen = set()
+
+        for page in pdf.pages:
+            text = page.extract_text() or ""
+            for line in text.split("\n"):
+                line = line.strip()
+                if not line:
+                    continue
+
+                # Pattern 1: lines ending with "Reported" or "Not Reported"
+                # e.g. "0001  City of Wausau Ward 1  ...  Reported"
+                m = re.search(r"^(\d{3,4})\s{2,}(.+?)\s{2,}(Not Reported|Reported)\s*$", line)
+                if m:
+                    name = m.group(2).strip()
+                    raw_status = m.group(3)
+                    key = name.lower()
+                    if key not in seen:
+                        seen.add(key)
+                        results.append({
+                            "id": slugify(name),
+                            "name": name,
+                            "status": "reported" if raw_status == "Reported" else "notReported",
+                        })
+                    continue
+
+                # Pattern 2: lines with just a name followed by status (no leading ID)
+                m2 = re.search(r"^(.+?)\s{2,}(Not Reported|Reported)\s*$", line)
+                if m2:
+                    name = m2.group(1).strip()
+                    raw_status = m2.group(2)
+                    # Skip header-like lines
+                    if any(h in name.lower() for h in ("precinct", "ward name", "municipality", "page")):
+                        continue
+                    key = name.lower()
+                    if key not in seen:
+                        seen.add(key)
+                        results.append({
+                            "id": slugify(name),
+                            "name": name,
+                            "status": "reported" if raw_status == "Reported" else "notReported",
+                        })
+
+        pdf.close()
+
+        if results:
+            reported_n = sum(1 for p in results if p["status"] == "reported")
+            print(f"  Precinct status: {reported_n} of {len(results)} reported")
+        else:
+            print("  WARNING: No precinct status rows found in PDF.")
+
+        return results
+
+    except Exception as e:
+        print(f"  WARNING: Could not parse precinct status PDF: {e}")
+        return []
+
+
 # ── HELPERS ──────────────────────────────────────────────────────
 
 def extract_number(text: str, pattern: str) -> int:
@@ -390,8 +470,10 @@ def main():
     parser = argparse.ArgumentParser(description="Parse Marathon County election results")
     parser.add_argument("--pdf", help="Path to a local summary PDF (skips auto-discovery)")
     parser.add_argument("--precinct-pdf", help="Path to a local precinct/ward detail PDF")
+    parser.add_argument("--status-pdf", help="Path to local Precincts Reported/Not Reported PDF")
     parser.add_argument("--url", help="Direct URL to summary PDF (skips auto-discovery)")
     parser.add_argument("--precinct-url", help="Direct URL to precinct PDF")
+    parser.add_argument("--status-url", help="Direct URL to Precincts Reported/Not Reported PDF")
     parser.add_argument("--output", help="Output JSON path", default=str(OUTPUT_PATH))
     args = parser.parse_args()
 
@@ -399,16 +481,19 @@ def main():
     print(f"Election: {ELECTION_CONFIG['name']}")
     print()
 
-    # Determine summary PDF source — priority: CLI arg > hardcoded fallback > auto-discover
+    # Determine PDF sources — priority: CLI arg > hardcoded fallback > auto-discover
     summary_source = args.pdf or args.url or SUMMARY_PDF_URL
     precinct_source = args.precinct_pdf or args.precinct_url or PRECINCT_PDF_URL
+    status_source = args.status_pdf or args.status_url or STATUS_PDF_URL
 
     if not summary_source:
         print("[1/3] Auto-discovering PDF links from results page...")
-        discovered_summary, discovered_precinct = discover_pdf_urls()
+        discovered_summary, discovered_precinct, discovered_status = discover_pdf_urls()
         summary_source = discovered_summary
         if not precinct_source:
             precinct_source = discovered_precinct
+        if not status_source:
+            status_source = discovered_status
 
     if not summary_source:
         print()
@@ -443,6 +528,21 @@ def main():
         print(f"  Ward data loaded for {sum(1 for w in ward_counts if w > 0)} races")
     else:
         print("\n[3/3] No Precinct Summary PDF found, skipping ward detail...")
+
+    # Parse precinct status PDF if available
+    if status_source:
+        print("\n[+] Parsing Precincts Reported/Not Reported PDF...")
+        try:
+            if status_source.startswith("http"):
+                data["precinctList"] = parse_precinct_status_pdf(fetch_pdf(status_source))
+            else:
+                data["precinctList"] = parse_precinct_status_pdf(status_source)
+        except Exception as e:
+            print(f"  WARNING: Status PDF failed, skipping: {e}")
+            data["precinctList"] = []
+    else:
+        print("\n[+] No Precinct Status PDF found, skipping precinct list...")
+        data["precinctList"] = []
 
     # Write output
     output_path = Path(args.output)

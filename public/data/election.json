@@ -429,5 +429,6 @@
       "precincts": { "reported": 0, "total": 25 },
       "wardData": []
     }
-  ]
+  ],
+  "precinctList": []
 }
