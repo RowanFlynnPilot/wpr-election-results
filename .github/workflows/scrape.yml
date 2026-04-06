@@ -2,18 +2,16 @@
 # Runs every 3 minutes during election night to fetch updated results.
 #
 # HOW TO USE:
-# 1. Before election night, update SUMMARY_PDF_URL and PRECINCT_PDF_URL
-#    in scraper/parse_results.py with the actual URLs from Marathon County
-# 2. Uncomment the cron schedule below
-# 3. Push to main
-# 4. After results are final, re-comment the cron to stop polling
+# 1. The scraper auto-discovers PDF links from the Marathon County results page —
+#    no manual URL updates needed.
+# 2. After results are final, re-comment the cron below to stop polling.
 
 name: Scrape Election Results
 
 on:
-  # Uncomment on election night — runs every 3 min from 8 PM to midnight CT
-  # schedule:
-  #   - cron: '*/3 1-5 8 4 *'  # 8 PM - midnight CT = 01:00-05:00 UTC on Apr 8
+  # Runs every 3 min from 8 PM to midnight CT (01:00–05:00 UTC on Apr 8)
+  schedule:
+    - cron: '*/3 1-5 8 4 *'
   workflow_dispatch:  # Manual trigger always available
 
 permissions:
