@@ -1437,6 +1437,19 @@ function renderAll() {
   renderRaces(d.races);
 }
 
+// ── AUTO-HEIGHT (postMessage to parent WordPress page) ──
+// Sends the widget's rendered height so the parent iframe can resize itself.
+function postHeight() {
+  const h = document.documentElement.scrollHeight;
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: "wpr-election-height", height: h }, "*");
+  }
+}
+
+// Post height after render and whenever content changes
+const _resizeObserver = new ResizeObserver(() => postHeight());
+_resizeObserver.observe(document.body);
+
 // Initial render with embedded data, then try to load fresh JSON
 renderAll();
 refreshLoop();
