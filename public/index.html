@@ -493,6 +493,21 @@
   .bar-fill.eliminated { background: #c6d8e4 !important; opacity: 0.55; }
   .bar-fill.write-in { background: var(--gray-300) !important; }
 
+  /* ── REFERENDUM ── */
+  .referendum-question {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gray-600);
+    background: var(--gray-100);
+    border-left: 3px solid var(--wpr-teal);
+    padding: 10px 12px;
+    margin: 10px 0 14px;
+    font-style: italic;
+  }
+  .bar-fill.yes-bar { background: #2b6b4f !important; }
+  .bar-fill.no-bar  { background: #6b2b2b !important; }
+
   .candidate-row.write-in-row .candidate-name {
     color: var(--gray-500);
     font-style: italic;
@@ -994,7 +1009,7 @@ function raceCard(race) {
         <span class="candidate-votes">${fmt(c.votes)} votes</span>
         <span class="candidate-pct">${pct(p)}</span>
         <div class="bar-area">
-          <div class="bar-fill color-${i}${adv ? ' advancing' : (done && i >= advN ? ' eliminated' : '')}" data-width="${p}" style="width:0%"></div>
+          <div class="bar-fill ${race.category === 'referendum' ? (c.name === 'Yes' ? 'yes-bar' : 'no-bar') : `color-${i}${adv ? ' advancing' : (done && i >= advN ? ' eliminated' : '')}`}" data-width="${p}" style="width:0%"></div>
         </div>
       </div>`;
   }).join("");
@@ -1052,10 +1067,11 @@ function raceCard(race) {
       <div class="race-header">
         <div>
           <div class="race-name">${race.name}</div>
-          <div class="race-meta">${race.jurisdiction} · Vote for ${race.seats}</div>
+          <div class="race-meta">${race.jurisdiction}${race.category !== 'referendum' ? ` · Vote for ${race.seats}` : ''}</div>
         </div>
         ${badge}
       </div>
+      ${race.question ? `<div class="referendum-question">${race.question}</div>` : ''}
       ${rows}
       <div class="precinct-bar">
         <span class="precinct-label">${race.precincts.reported}/${race.precincts.total} precincts</span>

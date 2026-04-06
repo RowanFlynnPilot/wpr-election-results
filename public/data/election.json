@@ -8,7 +8,7 @@
     "status": "upcoming",
     "lastUpdated": "2026-04-07T00:00:00",
     "precinctsReported": 0,
-    "precinctsTotal": 65
+    "precinctsTotal": 88
   },
   "statistics": {
     "registeredVoters": 0,
@@ -29,7 +29,7 @@
         { "name": "Maria S. Lazar", "votes": 0 }
       ],
       "writeIns": 0,
-      "precincts": { "reported": 0, "total": 65 },
+      "precincts": { "reported": 0, "total": 88 },
       "wardData": []
     },
     {
@@ -44,7 +44,7 @@
         { "name": "Michael D. Hughes", "votes": 0 }
       ],
       "writeIns": 0,
-      "precincts": { "reported": 0, "total": 65 },
+      "precincts": { "reported": 0, "total": 88 },
       "wardData": []
     },
     {
@@ -395,6 +395,38 @@
       ],
       "writeIns": 0,
       "precincts": { "reported": 0, "total": 12 },
+      "wardData": []
+    },
+    {
+      "id": "weston-fire-referendum",
+      "name": "Village of Weston — Fire/EMS Levy",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "Village of Weston",
+      "category": "referendum",
+      "question": "Under state law, the increase in the levy of the Village of Weston for the tax to be imposed for the next fiscal year, 2027, is limited to 2.293%, which results in a levy of $8,670,828. Shall the Village of Weston be allowed to exceed this limit and increase the levy for the next fiscal year, 2027, for the purpose of paying the Village of Weston's share of the cost for SAFER to hire and retain six additional full-time firefighters/paramedics, by a total of 6.92%, which results in a levy of $9,270,828 and on an ongoing basis, include the increase of $600,000 for each fiscal year going forward?",
+      "candidates": [
+        { "name": "Yes", "votes": 0 },
+        { "name": "No", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 10 },
+      "wardData": []
+    },
+    {
+      "id": "wausau-fire-referendum",
+      "name": "City of Wausau — Fire/EMS Levy",
+      "type": "general",
+      "seats": 1,
+      "jurisdiction": "City of Wausau",
+      "category": "referendum",
+      "question": "Under state law, the increase in the levy of the City of Wausau for the tax to be imposed for the next fiscal year, 2027, is limited to 3.544%, which results in a levy of $36,656,773. Shall the City of Wausau be allowed to exceed this limit and increase the levy for the next fiscal year, 2027, for the purpose of retaining 12 firefighter/paramedic positions and offset expiring federal grants, by a total of 3.956%, which results in a levy of $38,106,773, and on an ongoing basis, include the increase of $1,450,000 for each fiscal year going forward?",
+      "candidates": [
+        { "name": "Yes", "votes": 0 },
+        { "name": "No", "votes": 0 }
+      ],
+      "writeIns": 0,
+      "precincts": { "reported": 0, "total": 25 },
       "wardData": []
     }
   ]
