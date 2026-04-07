@@ -9,9 +9,9 @@
 name: Scrape Election Results
 
 on:
-  # Runs every 3 min from 8 PM to midnight CT (01:00–05:00 UTC on Apr 8)
+  # Runs every 3 min from 8 PM CT Apr 7 to 7 AM CT Apr 8 (01:00–12:00 UTC on Apr 8)
   schedule:
-    - cron: '*/3 1-5 8 4 *'
+    - cron: '*/3 1-12 8 4 *'
   workflow_dispatch:  # Manual trigger always available
 
 permissions:
