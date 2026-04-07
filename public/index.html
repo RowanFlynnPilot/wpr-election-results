@@ -280,6 +280,18 @@
     color: var(--gray-400);
   }
 
+  /* ── DATA TIMESTAMP ── */
+  .data-timestamp {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray-400);
+    text-align: right;
+    margin: -14px 0 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .data-timestamp:empty { display: none; }
+
   /* ═══════════════════════════════════════
      TAB NAVIGATION
      ═══════════════════════════════════════ */
@@ -946,6 +958,9 @@
   <!-- Overview Stats -->
   <div class="overview-stats" id="overviewStats"></div>
 
+  <!-- Data Timestamp -->
+  <div class="data-timestamp" id="dataTimestamp"></div>
+
   <!-- Precinct Drill-Down Panel (populated when precinctList data is available) -->
   <div id="precinctPanel"></div>
 
@@ -1060,20 +1075,24 @@ function renderStatus(el) {
   const banner = document.getElementById("statusBanner");
   const text = document.getElementById("statusText");
   const time = document.getElementById("statusTime");
+  const ts = document.getElementById("dataTimestamp");
   const pctR = el.precinctsTotal > 0 ? Math.round((el.precinctsReported / el.precinctsTotal) * 100) : 0;
 
   if (el.status === "live") {
     banner.className = "status-banner live";
     text.textContent = `Results coming in — ${el.precinctsReported} of ${el.precinctsTotal} precincts reporting (${pctR}%)`;
     time.textContent = timeLabel(el.lastUpdated);
+    ts.textContent = `Data as of ${timeLabel(el.lastUpdated)}`;
   } else if (el.status === "upcoming") {
     banner.className = "status-banner final";
     text.textContent = `Polls are open 7 AM – 8 PM · Results will appear here as they come in`;
     time.textContent = el.displayDate;
+    ts.textContent = "";
   } else {
     banner.className = "status-banner final";
     text.textContent = `All ${el.precinctsTotal} precincts reporting — Results complete`;
     time.textContent = timeLabel(el.lastUpdated);
+    ts.textContent = `Data as of ${timeLabel(el.lastUpdated)}`;
   }
 }
 
