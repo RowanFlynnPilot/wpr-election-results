@@ -172,17 +172,15 @@ def main():
         changed = scrape()
 
         if not changed:
-            # Check if user has manually downloaded PDFs
+            # Check if user has manually downloaded PDFs as a fallback
             summary_path, precinct_path, status_path = check_downloads()
             if summary_path:
-                print(f"\n  Found downloaded PDFs — processing...")
+                print(f"\n  Found manually downloaded PDFs — processing...")
                 changed = scrape(manual_url=summary_path,
                                  precinct_url=precinct_path,
                                  status_url=status_path)
                 if changed:
                     cleanup_downloads()
-            else:
-                show_download_instructions()
 
         # Calculate next run time
         now_utc = datetime.now(timezone.utc)

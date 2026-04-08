@@ -213,9 +213,11 @@ def discover_pdf_urls() -> tuple[str, str, str]:
     if result is not None:
         summary_url, precinct_url, status_url = result
     else:
-        # Blocked — spin up a real browser
-        print(f"  Blocked by server — falling back to headless browser...")
-        summary_url, precinct_url, status_url = _discover_via_browser()
+        # Blocked — use browser to load page AND click/download the PDFs directly
+        import os
+        downloads_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "downloads")
+        print(f"  Blocked by server — using browser to click & download PDFs...")
+        summary_url, precinct_url, status_url = download_pdfs_via_browser(downloads_dir)
 
     if not summary_url:
         print("  WARNING: Could not find Election Summary link on results page.")
@@ -229,63 +231,79 @@ def discover_pdf_urls() -> tuple[str, str, str]:
 
 # ── PDF FETCHING ─────────────────────────────────────────────────
 
-def _get_site_cookies() -> dict:
+def download_pdfs_via_browser(downloads_dir: str) -> tuple[str, str, str]:
     """
-    Use headless Chromium to load the Marathon County results page and
-    return its cookies as a dict for use with requests.
+    Open the Marathon County results page in a real headless browser, find the
+    PDF links by text, click them to trigger downloads, and save to downloads_dir.
+
+    Returns (summary_path, precinct_path, status_path). Empty string if not found.
     """
-    from playwright.sync_api import sync_playwright
-    print(f"  Opening browser to collect session cookies...")
+    import os
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("  playwright not installed — run: pip install playwright && python -m playwright install chromium")
+        return "", "", ""
+
+    os.makedirs(downloads_dir, exist_ok=True)
+    summary_path = precinct_path = status_path = ""
+
+    LINK_MAP = {
+        "election summary":              ("summary",  "election-summary.pdf"),
+        "precinct summary":              ("precinct", "precinct-summary.pdf"),
+        "precincts reported/not reported": ("status", "precinct-status.pdf"),
+        "precincts reported":            ("status",   "precinct-status.pdf"),
+        "precinct status":               ("status",   "precinct-status.pdf"),
+    }
+
+    print(f"  Opening browser → {RESULTS_PAGE_URL}")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            accept_downloads=True,
         )
         page = context.new_page()
-        try:
-            page.goto(RESULTS_PAGE_URL, wait_until="domcontentloaded", timeout=20000)
-            page.wait_for_timeout(2000)
-        except Exception:
-            pass
-        cookies = {c["name"]: c["value"] for c in context.cookies()}
+        page.goto(RESULTS_PAGE_URL, wait_until="domcontentloaded", timeout=30000)
+        page.wait_for_timeout(4000)
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        page.wait_for_timeout(1000)
+
+        for link in page.query_selector_all("a"):
+            try:
+                text = (link.inner_text() or "").strip().lower()
+                for keyword, (kind, filename) in LINK_MAP.items():
+                    if keyword in text:
+                        dest = os.path.join(downloads_dir, filename)
+                        print(f"  Clicking '{link.inner_text().strip()}' → {filename}")
+                        with context.expect_download(timeout=30000) as dl_info:
+                            link.click()
+                        dl_info.value.save_as(dest)
+                        print(f"  Saved {os.path.getsize(dest):,} bytes → {dest}")
+                        if kind == "summary":   summary_path = dest
+                        elif kind == "precinct": precinct_path = dest
+                        elif kind == "status":   status_path = dest
+                        break
+            except Exception as e:
+                print(f"  Warning: could not click link: {e}")
+                continue
+
         browser.close()
-    print(f"  Got {len(cookies)} session cookies")
-    return cookies
 
-
-def _fetch_pdf_via_browser(url: str) -> bytes:
-    """
-    Download a PDF by first collecting session cookies via headless browser,
-    then using requests (with those cookies + Referer) to fetch the PDF.
-    """
-    print(f"  Downloading via browser session: {url}")
-    cookies = _get_site_cookies()
-    session = requests.Session()
-    for name, value in cookies.items():
-        session.cookies.set(name, value)
-    headers = {
-        **HEADERS,
-        "Referer": RESULTS_PAGE_URL,
-        "Accept": "application/pdf,application/octet-stream,*/*",
-    }
-    resp = session.get(url, headers=headers, timeout=60)
-    resp.raise_for_status()
-    if resp.content[:4] != b"%PDF":
-        raise RuntimeError(f"Response doesn't look like a PDF (got {len(resp.content)} bytes)")
-    print(f"  Downloaded {len(resp.content):,} bytes")
-    return resp.content
+    return summary_path, precinct_path, status_path
 
 
 def fetch_pdf(url: str) -> bytes:
-    """Download a PDF from a URL. Falls back to headless browser if blocked."""
+    """Download a PDF from a URL or read from a local file path."""
+    import os
+    if os.path.exists(url):
+        print(f"  Reading local file: {url}")
+        with open(url, "rb") as f:
+            return f.read()
     print(f"  Fetching: {url}")
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=60)
-        resp.raise_for_status()
-        return resp.content
-    except requests.RequestException as e:
-        print(f"  Blocked ({e}) — switching to browser download...")
-        return _fetch_pdf_via_browser(url)
+    resp = requests.get(url, headers=HEADERS, timeout=60)
+    resp.raise_for_status()
+    return resp.content
 
 
 # ── CATEGORY DETECTION ───────────────────────────────────────────
