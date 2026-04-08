@@ -231,29 +231,30 @@ def discover_pdf_urls() -> tuple[str, str, str]:
 
 # ── PDF FETCHING ─────────────────────────────────────────────────
 
-def download_pdfs_via_browser(downloads_dir: str) -> tuple[str, str, str]:
+def download_pdfs_via_browser(downloads_dir: str, extra_url: str = "") -> tuple[str, str, str]:
     """
-    Open the Marathon County results page in a real headless browser, find the
-    PDF links by text, click them to trigger downloads, and save to downloads_dir.
+    Load the Marathon County results page in a real browser, find PDF links
+    via JavaScript (handles iframes/dynamic content), then download each PDF
+    using page.request.get() which carries the browser's own session/cookies.
 
-    Returns (summary_path, precinct_path, status_path). Empty string if not found.
+    If extra_url is provided (manual paste), it will also be fetched via session.
     """
     import os
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
-        print("  playwright not installed — run: pip install playwright && python -m playwright install chromium")
+        print("  playwright not installed")
         return "", "", ""
 
     os.makedirs(downloads_dir, exist_ok=True)
     summary_path = precinct_path = status_path = ""
 
-    LINK_MAP = {
-        "election summary":              ("summary",  "election-summary.pdf"),
-        "precinct summary":              ("precinct", "precinct-summary.pdf"),
-        "precincts reported/not reported": ("status", "precinct-status.pdf"),
-        "precincts reported":            ("status",   "precinct-status.pdf"),
-        "precinct status":               ("status",   "precinct-status.pdf"),
+    KEYWORDS = {
+        "election summary":                ("summary",  "election-summary.pdf"),
+        "precinct summary":                ("precinct", "precinct-summary.pdf"),
+        "precincts reported/not reported": ("status",   "precinct-status.pdf"),
+        "precincts reported":              ("status",   "precinct-status.pdf"),
+        "precinct status":                 ("status",   "precinct-status.pdf"),
     }
 
     print(f"  Opening browser: {RESULTS_PAGE_URL}")
@@ -261,32 +262,64 @@ def download_pdfs_via_browser(downloads_dir: str) -> tuple[str, str, str]:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            accept_downloads=True,
         )
         page = context.new_page()
+
+        # Load results page — establishes session/cookies
         page.goto(RESULTS_PAGE_URL, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(4000)
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        page.wait_for_timeout(1000)
 
-        for link in page.query_selector_all("a"):
-            try:
-                text = (link.inner_text() or "").strip().lower()
-                for keyword, (kind, filename) in LINK_MAP.items():
-                    if keyword in text:
-                        dest = os.path.join(downloads_dir, filename)
-                        print(f"  Clicking '{link.inner_text().strip()}' -> {filename}")
-                        with context.expect_download(timeout=30000) as dl_info:
-                            link.click()
-                        dl_info.value.save_as(dest)
-                        print(f"  Saved {os.path.getsize(dest):,} bytes -> {dest}")
-                        if kind == "summary":   summary_path = dest
-                        elif kind == "precinct": precinct_path = dest
-                        elif kind == "status":   status_path = dest
-                        break
-            except Exception as e:
-                print(f"  Warning: could not click link: {e}")
+        # Extract ALL links from page + all iframes via JavaScript
+        all_links = page.evaluate("""() => {
+            const collect = (doc) => Array.from(doc.querySelectorAll('a[href]'))
+                .map(a => ({ text: a.textContent.trim(), href: a.href }));
+            let links = collect(document);
+            for (const frame of document.querySelectorAll('iframe')) {
+                try { links = links.concat(collect(frame.contentDocument)); } catch(e) {}
+            }
+            return links;
+        }""")
+
+        print(f"  Found {len(all_links)} links on page. Scanning for PDFs...")
+
+        pdf_urls = {}  # kind -> url
+        for link in all_links:
+            text = link.get("text", "").strip().lower()
+            href = link.get("href", "")
+            if not href:
                 continue
+            for keyword, (kind, filename) in KEYWORDS.items():
+                if keyword in text and kind not in pdf_urls:
+                    print(f"  Matched '{link['text']}' -> {kind}")
+                    pdf_urls[kind] = (href, filename)
+
+        # If manual URL provided, add it as summary
+        if extra_url and "summary" not in pdf_urls:
+            pdf_urls["summary"] = (extra_url, "election-summary.pdf")
+
+        if not pdf_urls:
+            print("  No PDF links found on page.")
+            browser.close()
+            return "", "", ""
+
+        # Download each PDF using browser's own request context (same session = no 403)
+        for kind, (href, filename) in pdf_urls.items():
+            dest = os.path.join(downloads_dir, filename)
+            print(f"  Downloading {filename} via browser session...")
+            try:
+                response = page.request.get(href, timeout=60000)
+                content = response.body()
+                if content[:4] == b"%PDF":
+                    with open(dest, "wb") as f:
+                        f.write(content)
+                    print(f"  Saved {len(content):,} bytes")
+                    if kind == "summary":    summary_path = dest
+                    elif kind == "precinct": precinct_path = dest
+                    elif kind == "status":   status_path = dest
+                else:
+                    print(f"  Warning: response is not a PDF ({len(content)} bytes, status {response.status})")
+            except Exception as e:
+                print(f"  Warning: download failed for {href}: {e}")
 
         browser.close()
 
