@@ -22,6 +22,7 @@ import io
 import json
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -68,7 +69,13 @@ ELECTION_CONFIG = {
 OUTPUT_PATH = Path(__file__).parent.parent / "public" / "data" / "election.json"
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; WPR-ElectionBot/1.0; +https://wausaupilotandreview.com)"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Cache-Control": "no-cache",
 }
 
 
@@ -82,11 +89,22 @@ def discover_pdf_urls() -> tuple[str, str, str]:
     Returns (summary_url, precinct_url, status_url). Any may be empty string if not found.
     """
     print(f"  Fetching results page: {RESULTS_PAGE_URL}")
-    try:
-        resp = requests.get(RESULTS_PAGE_URL, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-    except requests.RequestException as e:
-        print(f"  WARNING: Could not fetch results page: {e}")
+    session = requests.Session()
+    # Retry up to 3 times with increasing delays
+    last_err = None
+    for attempt in range(3):
+        try:
+            if attempt > 0:
+                time.sleep(attempt * 5)
+                print(f"  Retry {attempt}/2...")
+            resp = session.get(RESULTS_PAGE_URL, headers=HEADERS, timeout=30)
+            resp.raise_for_status()
+            break
+        except requests.RequestException as e:
+            last_err = e
+            print(f"  WARNING: Attempt {attempt + 1} failed: {e}")
+    else:
+        print(f"  WARNING: Could not fetch results page after 3 attempts: {last_err}")
         return "", "", ""
 
     soup = BeautifulSoup(resp.text, "html.parser")
