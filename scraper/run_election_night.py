@@ -71,6 +71,8 @@ def scrape():
         run(f'git add public/data/election.json', cwd=REPO_ROOT)
         code3, _, cerr = run(f'git commit -m "Update election results {ts}"', cwd=REPO_ROOT)
         if code3 == 0:
+            # Pull first so we don't conflict with any GitHub Actions commits
+            run("git pull --rebase origin main", cwd=REPO_ROOT)
             code4, _, perr = run("git push origin main", cwd=REPO_ROOT)
             if code4 == 0:
                 print(f"  Pushed to GitHub. Widget will update within 2 minutes.")
