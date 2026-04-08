@@ -230,19 +230,54 @@ def discover_pdf_urls() -> tuple[str, str, str]:
 # ── PDF FETCHING ─────────────────────────────────────────────────
 
 def _fetch_pdf_via_browser(url: str) -> bytes:
-    """Download a PDF using headless Chromium — bypasses 403 blocks."""
+    """Download a PDF using headless Chromium — establishes session first."""
     from playwright.sync_api import sync_playwright
+    import tempfile, os
     print(f"  Downloading via browser: {url}")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        response = page.goto(url, wait_until="networkidle", timeout=60000)
-        if response is None or not response.ok:
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            accept_downloads=True,
+        )
+        page = context.new_page()
+
+        # Visit the main site first to establish session cookies
+        try:
+            page.goto(MARATHON_COUNTY_BASE, wait_until="domcontentloaded", timeout=15000)
+            page.wait_for_timeout(1000)
+        except Exception:
+            pass  # Best-effort — continue even if this fails
+
+        # Strategy 1: capture as browser download
+        try:
+            with page.expect_download(timeout=30000) as dl_info:
+                page.goto(url, timeout=30000)
+            download = dl_info.value
+            tmp = download.path()
+            with open(tmp, "rb") as f:
+                content = f.read()
             browser.close()
-            raise RuntimeError(f"Browser fetch failed for {url}")
-        content = response.body()
+            if content[:4] == b"%PDF":
+                print(f"  Downloaded {len(content):,} bytes via browser (download)")
+                return content
+        except Exception as e:
+            print(f"  Download strategy failed ({e}), trying direct body...")
+
+        # Strategy 2: get response body directly
+        try:
+            response = page.goto(url, wait_until="networkidle", timeout=30000)
+            if response:
+                content = response.body()
+                if content and content[:4] == b"%PDF":
+                    browser.close()
+                    print(f"  Downloaded {len(content):,} bytes via browser (body)")
+                    return content
+        except Exception as e:
+            print(f"  Body strategy failed: {e}")
+
         browser.close()
-    return content
+        raise RuntimeError(f"Could not download PDF from {url} via browser")
 
 
 def fetch_pdf(url: str) -> bytes:
