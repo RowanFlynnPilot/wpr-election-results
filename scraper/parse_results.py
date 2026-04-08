@@ -88,32 +88,67 @@ def _extract_pdf_links_from_html(html: str) -> tuple[str, str, str]:
     precinct_url = ""
     status_url = ""
 
+    # Collect all election/results-related links for debug output
+    election_links = []
+
     for a in soup.find_all("a", href=True):
         href = a["href"]
-        text = a.get_text(strip=True).lower()
+        text = a.get_text(strip=True)
+        text_lower = text.lower()
 
         if href.startswith("/"):
             href = MARATHON_COUNTY_BASE + href
         elif not href.startswith("http"):
             continue
 
-        if "election summary" in text and not summary_url:
-            summary_url = href
-            print(f"  Found Election Summary: {href}")
-        elif "precinct summary" in text and not precinct_url:
-            precinct_url = href
-            print(f"  Found Precinct Summary: {href}")
-        elif any(k in text for k in ("precincts reported", "precinct status", "reported/not reported")) and not status_url:
-            status_url = href
-            print(f"  Found Precinct Status: {href}")
+        # Log any link that looks election/PDF related
+        if any(k in text_lower for k in ("election", "result", "summary", "precinct", "reported", "canvass", "vote", "tally")) \
+                or "showpublisheddocument" in href or href.endswith(".pdf"):
+            election_links.append((text, href))
 
+        # Match Election Summary — flexible patterns
+        if not summary_url and any(k in text_lower for k in (
+            "election summary", "results summary", "summary report",
+            "spring election", "spring 2026", "april 2026", "april 7"
+        )):
+            summary_url = href
+            print(f"  Found Election Summary: {href}  [{text}]")
+
+        # Match Precinct Summary
+        if not precinct_url and any(k in text_lower for k in (
+            "precinct summary", "precinct by precinct", "ward by ward",
+            "ward-by-ward", "precinct results", "by precinct"
+        )):
+            precinct_url = href
+            print(f"  Found Precinct Summary: {href}  [{text}]")
+
+        # Match Precinct Status / Reported
+        if not status_url and any(k in text_lower for k in (
+            "precincts reported", "precinct status", "reported/not reported",
+            "not reported", "reporting status"
+        )):
+            status_url = href
+            print(f"  Found Precinct Status: {href}  [{text}]")
+
+        # Fallback: match by URL pattern (showpublisheddocument links)
         if "showpublisheddocument" in href:
-            if not summary_url and "summary" in text:
+            if not summary_url and any(k in text_lower for k in ("summary", "result", "election", "spring", "april")):
                 summary_url = href
-            elif not precinct_url and "precinct" in text and "status" not in text and "reported" not in text:
+                print(f"  Found (fallback) Summary: {href}  [{text}]")
+            elif not precinct_url and "precinct" in text_lower and "status" not in text_lower and "reported" not in text_lower:
                 precinct_url = href
-            elif not status_url and ("reported" in text or "status" in text):
+                print(f"  Found (fallback) Precinct: {href}  [{text}]")
+            elif not status_url and any(k in text_lower for k in ("reported", "status")):
                 status_url = href
+                print(f"  Found (fallback) Status: {href}  [{text}]")
+
+    # Always print all election-related links found — helps diagnose when patterns don't match
+    if election_links:
+        print(f"  All election-related links on page ({len(election_links)}):")
+        for t, h in election_links:
+            print(f"    · {t or '(no text)'}  →  {h}")
+    else:
+        print(f"  No election-related links found — results likely not posted yet.")
 
     return summary_url, precinct_url, status_url
 
