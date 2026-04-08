@@ -1,10 +1,12 @@
 # Election Night Scraper
 # Runs every 3 minutes during election night to fetch updated results.
 #
-# HOW TO USE:
-# 1. The scraper auto-discovers PDF links from the Marathon County results page —
-#    no manual URL updates needed.
-# 2. After results are final, re-comment the cron below to stop polling.
+# HOW TO USE (Marathon County blocks automated page scraping):
+# 1. When Marathon County posts results, copy the PDF URL from their page.
+# 2. Go to Actions → Scrape Election Results → Run workflow
+# 3. Paste the PDF URL into the "Summary PDF URL" field and click Run.
+# 4. Repeat as new PDFs are posted throughout the night.
+# 5. The cron also runs every 3 min — it will pick up URLs if auto-discovery works.
 
 name: Scrape Election Results
 
@@ -12,7 +14,20 @@ on:
   # Runs every 3 min from 8 PM CT Apr 7 to 7 AM CT Apr 8 (01:00–12:00 UTC on Apr 8)
   schedule:
     - cron: '*/3 1-12 8 4 *'
-  workflow_dispatch:  # Manual trigger always available
+  workflow_dispatch:
+    inputs:
+      summary_url:
+        description: 'Election Summary PDF URL (paste from Marathon County results page)'
+        required: false
+        default: ''
+      precinct_url:
+        description: 'Precinct Summary PDF URL (optional, for ward-by-ward breakdown)'
+        required: false
+        default: ''
+      status_url:
+        description: 'Precincts Reported/Not Reported PDF URL (optional)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -31,7 +46,18 @@ jobs:
         run: pip install -r scraper/requirements.txt
 
       - name: Run scraper
-        run: python scraper/parse_results.py
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.summary_url }}" ]; then
+            ARGS="$ARGS --url '${{ github.event.inputs.summary_url }}'"
+          fi
+          if [ -n "${{ github.event.inputs.precinct_url }}" ]; then
+            ARGS="$ARGS --precinct-url '${{ github.event.inputs.precinct_url }}'"
+          fi
+          if [ -n "${{ github.event.inputs.status_url }}" ]; then
+            ARGS="$ARGS --status-url '${{ github.event.inputs.status_url }}'"
+          fi
+          eval python scraper/parse_results.py $ARGS
 
       - name: Check for changes
         id: changes
