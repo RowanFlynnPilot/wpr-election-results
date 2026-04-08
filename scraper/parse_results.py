@@ -146,7 +146,7 @@ def _extract_pdf_links_from_html(html: str) -> tuple[str, str, str]:
     if election_links:
         print(f"  All election-related links on page ({len(election_links)}):")
         for t, h in election_links:
-            print(f"    · {t or '(no text)'}  →  {h}")
+            print(f"    - {t or '(no text)'}  ->  {h}")
     else:
         print(f"  No election-related links found — results likely not posted yet.")
 
@@ -256,7 +256,7 @@ def download_pdfs_via_browser(downloads_dir: str) -> tuple[str, str, str]:
         "precinct status":               ("status",   "precinct-status.pdf"),
     }
 
-    print(f"  Opening browser → {RESULTS_PAGE_URL}")
+    print(f"  Opening browser: {RESULTS_PAGE_URL}")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -275,11 +275,11 @@ def download_pdfs_via_browser(downloads_dir: str) -> tuple[str, str, str]:
                 for keyword, (kind, filename) in LINK_MAP.items():
                     if keyword in text:
                         dest = os.path.join(downloads_dir, filename)
-                        print(f"  Clicking '{link.inner_text().strip()}' → {filename}")
+                        print(f"  Clicking '{link.inner_text().strip()}' -> {filename}")
                         with context.expect_download(timeout=30000) as dl_info:
                             link.click()
                         dl_info.value.save_as(dest)
-                        print(f"  Saved {os.path.getsize(dest):,} bytes → {dest}")
+                        print(f"  Saved {os.path.getsize(dest):,} bytes -> {dest}")
                         if kind == "summary":   summary_path = dest
                         elif kind == "precinct": precinct_path = dest
                         elif kind == "status":   status_path = dest
