@@ -11,6 +11,7 @@ Keep this terminal window open. Press Ctrl+C to stop early.
 Results will appear on the widget within 2 minutes of each update.
 """
 
+import os
 import subprocess
 import sys
 import time
@@ -92,45 +93,54 @@ def scrape(manual_url=None, precinct_url=None, status_url=None):
         return False
 
 
-def ask_for_urls():
+DOWNLOADS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "downloads")
+SUMMARY_FILE  = os.path.join(DOWNLOADS_DIR, "election-summary.pdf")
+PRECINCT_FILE = os.path.join(DOWNLOADS_DIR, "precinct-summary.pdf")
+STATUS_FILE   = os.path.join(DOWNLOADS_DIR, "precinct-status.pdf")
+
+
+def check_downloads():
     """
-    Prompt the user to paste PDF URLs. Returns (summary, precinct, status) strings.
-    Each is empty string if skipped. Times out after INTERVAL_SECONDS.
+    Check the downloads folder for manually saved PDFs.
+    Returns (summary_path, precinct_path, status_path) — empty string if not present.
     """
-    import threading, queue
+    return (
+        SUMMARY_FILE  if os.path.exists(SUMMARY_FILE)  else "",
+        PRECINCT_FILE if os.path.exists(PRECINCT_FILE) else "",
+        STATUS_FILE   if os.path.exists(STATUS_FILE)   else "",
+    )
 
+
+def cleanup_downloads():
+    """Remove processed PDFs from the downloads folder."""
+    for f in [SUMMARY_FILE, PRECINCT_FILE, STATUS_FILE]:
+        if os.path.exists(f):
+            os.remove(f)
+
+
+def show_download_instructions():
     print()
-    print("  ┌──────────────────────────────────────────────────────────┐")
-    print("  │  Go to: marathoncounty.gov/services/elections-voting/results │")
-    print("  │  Right-click each PDF link → Copy link address            │")
-    print("  │  Paste below. Press Enter to skip any you don't have yet. │")
-    print("  └──────────────────────────────────────────────────────────┘")
+    print("  ╔══════════════════════════════════════════════════════════════╗")
+    print("  ║  ACTION NEEDED — download the PDFs from Marathon County:     ║")
+    print("  ║                                                              ║")
+    print("  ║  1. Open in browser:                                         ║")
+    print("  ║     marathoncounty.gov/services/elections-voting/results     ║")
+    print("  ║                                                              ║")
+    print("  ║  2. Click 'Election Summary' → save as:                      ║")
+    print(f"  ║     election-summary.pdf                                     ║")
+    print("  ║                                                              ║")
+    print("  ║  3. Click 'Precinct Summary' → save as:                      ║")
+    print(f"  ║     precinct-summary.pdf                                     ║")
+    print("  ║                                                              ║")
+    print("  ║  4. Click 'Precincts Reported/Not Reported' → save as:       ║")
+    print(f"  ║     precinct-status.pdf                                      ║")
+    print("  ║                                                              ║")
+    print(f"  ║  Save ALL files to:                                          ║")
+    print(f"  ║  {DOWNLOADS_DIR[:60]:<60}║")
+    print("  ║                                                              ║")
+    print("  ║  Runner will detect them automatically each cycle.           ║")
+    print("  ╚══════════════════════════════════════════════════════════════╝")
     print()
-
-    results = {}
-
-    def _get(label, key, q):
-        try:
-            val = input(f"  → {label} URL (Enter to skip): ").strip()
-            q.put((key, val))
-        except Exception:
-            q.put((key, ""))
-
-    for label, key in [
-        ("Election Summary PDF", "summary"),
-        ("Precinct Summary PDF", "precinct"),
-        ("Precincts Reported/Not Reported PDF", "status"),
-    ]:
-        q = queue.Queue()
-        t = threading.Thread(target=_get, args=(label, key, q), daemon=True)
-        t.start()
-        t.join(timeout=60)
-        k, v = q.get() if not q.empty() else (key, "")
-        results[k] = v
-        if not v:
-            print(f"  (skipped)")
-
-    return results.get("summary", ""), results.get("precinct", ""), results.get("status", "")
 
 
 def main():
@@ -158,15 +168,21 @@ def main():
         run_count += 1
         print(f"\n  Run #{run_count}  |  {now_ct()}")
 
-        # Try auto-discovery first; if it fails, prompt for manual URLs
+        # Try auto-discovery first
         changed = scrape()
+
         if not changed:
-            summary_url, precinct_url, status_url = ask_for_urls()
-            if summary_url:
-                print(f"\n  Trying with provided URLs...")
-                scrape(manual_url=summary_url,
-                       precinct_url=precinct_url,
-                       status_url=status_url)
+            # Check if user has manually downloaded PDFs
+            summary_path, precinct_path, status_path = check_downloads()
+            if summary_path:
+                print(f"\n  Found downloaded PDFs — processing...")
+                changed = scrape(manual_url=summary_path,
+                                 precinct_url=precinct_path,
+                                 status_url=status_path)
+                if changed:
+                    cleanup_downloads()
+            else:
+                show_download_instructions()
 
         # Calculate next run time
         now_utc = datetime.now(timezone.utc)
