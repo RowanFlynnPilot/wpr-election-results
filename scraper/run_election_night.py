@@ -42,7 +42,7 @@ def run(cmd, cwd=None):
     return result.returncode, result.stdout.strip(), result.stderr.strip()
 
 
-def scrape(manual_url=None):
+def scrape(manual_url=None, precinct_url=None, status_url=None):
     """Run the scraper and return True if election.json changed."""
     print(f"\n{'─'*55}")
     print(f"  [{now_ct()}]  Running scraper...")
@@ -51,6 +51,10 @@ def scrape(manual_url=None):
     cmd = 'python scraper\\parse_results.py'
     if manual_url:
         cmd += f' --url "{manual_url}"'
+    if precinct_url:
+        cmd += f' --precinct-url "{precinct_url}"'
+    if status_url:
+        cmd += f' --status-url "{status_url}"'
 
     code, out, err = run(cmd, cwd=REPO_ROOT)
 
@@ -88,40 +92,45 @@ def scrape(manual_url=None):
         return False
 
 
-def ask_for_url():
+def ask_for_urls():
     """
-    Prompt the user to paste a PDF URL. Returns the URL string or empty string.
-    Times out after INTERVAL_SECONDS so the loop keeps running hands-free.
+    Prompt the user to paste PDF URLs. Returns (summary, precinct, status) strings.
+    Each is empty string if skipped. Times out after INTERVAL_SECONDS.
     """
     import threading, queue
-    q = queue.Queue()
 
     print()
-    print("  ┌─────────────────────────────────────────────────────┐")
-    print("  │  Open this page in your browser:                    │")
-    print("  │  marathoncounty.gov/services/elections-voting/results│")
-    print("  │                                                     │")
-    print("  │  When a PDF is posted, right-click it → Copy link  │")
-    print("  │  then paste the URL below and press Enter.          │")
-    print("  │  (Just press Enter to skip and retry automatically) │")
-    print("  └─────────────────────────────────────────────────────┘")
+    print("  ┌──────────────────────────────────────────────────────────┐")
+    print("  │  Go to: marathoncounty.gov/services/elections-voting/results │")
+    print("  │  Right-click each PDF link → Copy link address            │")
+    print("  │  Paste below. Press Enter to skip any you don't have yet. │")
+    print("  └──────────────────────────────────────────────────────────┘")
     print()
 
-    def _input(q):
+    results = {}
+
+    def _get(label, key, q):
         try:
-            val = input("  → PDF URL (or Enter to skip): ").strip()
-            q.put(val)
+            val = input(f"  → {label} URL (Enter to skip): ").strip()
+            q.put((key, val))
         except Exception:
-            q.put("")
+            q.put((key, ""))
 
-    t = threading.Thread(target=_input, args=(q,), daemon=True)
-    t.start()
-    t.join(timeout=INTERVAL_SECONDS)
+    for label, key in [
+        ("Election Summary PDF", "summary"),
+        ("Precinct Summary PDF", "precinct"),
+        ("Precincts Reported/Not Reported PDF", "status"),
+    ]:
+        q = queue.Queue()
+        t = threading.Thread(target=_get, args=(label, key, q), daemon=True)
+        t.start()
+        t.join(timeout=60)
+        k, v = q.get() if not q.empty() else (key, "")
+        results[k] = v
+        if not v:
+            print(f"  (skipped)")
 
-    if not q.empty():
-        return q.get()
-    print("\n  (No URL entered — retrying auto-discovery next cycle)")
-    return ""
+    return results.get("summary", ""), results.get("precinct", ""), results.get("status", "")
 
 
 def main():
@@ -149,13 +158,15 @@ def main():
         run_count += 1
         print(f"\n  Run #{run_count}  |  {now_ct()}")
 
-        # Try auto-discovery first; if it fails, prompt for manual URL
+        # Try auto-discovery first; if it fails, prompt for manual URLs
         changed = scrape()
         if not changed:
-            manual_url = ask_for_url()
-            if manual_url:
-                print(f"\n  Trying with provided URL...")
-                scrape(manual_url=manual_url)
+            summary_url, precinct_url, status_url = ask_for_urls()
+            if summary_url:
+                print(f"\n  Trying with provided URLs...")
+                scrape(manual_url=summary_url,
+                       precinct_url=precinct_url,
+                       status_url=status_url)
 
         # Calculate next run time
         now_utc = datetime.now(timezone.utc)
