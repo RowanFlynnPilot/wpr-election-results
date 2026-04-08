@@ -185,7 +185,12 @@ def _discover_via_browser() -> tuple[str, str, str]:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
             page.set_extra_http_headers({"Accept-Language": "en-US,en;q=0.9"})
-            page.goto(RESULTS_PAGE_URL, wait_until="networkidle", timeout=30000)
+            page.goto(RESULTS_PAGE_URL, wait_until="domcontentloaded", timeout=30000)
+            # Extra wait for JS-rendered content (election night pages often use dynamic rendering)
+            page.wait_for_timeout(4000)
+            # Scroll to bottom to trigger any lazy-loaded links
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            page.wait_for_timeout(1000)
             html = page.content()
             browser.close()
         return _extract_pdf_links_from_html(html)
