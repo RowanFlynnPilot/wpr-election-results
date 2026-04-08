@@ -1333,7 +1333,7 @@ function raceCard(race) {
     badge = `<span class="race-badge primary">Primary · Top ${advN}</span>`;
   }
 
-  const rows = sorted.map((c, i) => {
+  let rows = sorted.map((c, i) => {
     const p = totalVotes > 0 ? (c.votes / totalVotes) * 100 : 0;
     const adv = done && i < advN;
 
