@@ -515,12 +515,10 @@ def main():
 
     if not summary_source:
         print()
-        print("ERROR: Could not find Election Summary PDF.")
-        print("Options:")
-        print("  1. Check the results page manually:", RESULTS_PAGE_URL)
-        print("  2. Set SUMMARY_PDF_URL in this script")
-        print("  3. Pass --url <pdf_url> or --pdf <path>")
-        sys.exit(1)
+        print("WARNING: No Election Summary PDF found yet — results may not be posted.")
+        print("  Check:", RESULTS_PAGE_URL)
+        print("  To provide a URL manually: pass --url <pdf_url>")
+        sys.exit(0)  # Exit cleanly — no results yet is not an error
 
     # Parse summary PDF
     print("\n[2/3] Parsing Election Summary PDF...")
