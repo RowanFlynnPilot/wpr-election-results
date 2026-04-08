@@ -81,50 +81,22 @@ HEADERS = {
 
 # ── AUTO-DISCOVERY ───────────────────────────────────────────────
 
-def discover_pdf_urls() -> tuple[str, str, str]:
-    """
-    Fetch the Marathon County results page and extract the Election Summary,
-    Precinct Summary, and Precincts Reported/Not Reported PDF links.
-
-    Returns (summary_url, precinct_url, status_url). Any may be empty string if not found.
-    """
-    print(f"  Fetching results page: {RESULTS_PAGE_URL}")
-    session = requests.Session()
-    # Retry up to 3 times with increasing delays
-    last_err = None
-    for attempt in range(3):
-        try:
-            if attempt > 0:
-                time.sleep(attempt * 5)
-                print(f"  Retry {attempt}/2...")
-            resp = session.get(RESULTS_PAGE_URL, headers=HEADERS, timeout=30)
-            resp.raise_for_status()
-            break
-        except requests.RequestException as e:
-            last_err = e
-            print(f"  WARNING: Attempt {attempt + 1} failed: {e}")
-    else:
-        print(f"  WARNING: Could not fetch results page after 3 attempts: {last_err}")
-        return "", "", ""
-
-    soup = BeautifulSoup(resp.text, "html.parser")
-
+def _extract_pdf_links_from_html(html: str) -> tuple[str, str, str]:
+    """Parse PDF links out of a results page HTML string."""
+    soup = BeautifulSoup(html, "html.parser")
     summary_url = ""
     precinct_url = ""
     status_url = ""
 
-    # Find all links on the page
     for a in soup.find_all("a", href=True):
         href = a["href"]
         text = a.get_text(strip=True).lower()
 
-        # Resolve relative URLs
         if href.startswith("/"):
             href = MARATHON_COUNTY_BASE + href
         elif not href.startswith("http"):
             continue
 
-        # Match by link text
         if "election summary" in text and not summary_url:
             summary_url = href
             print(f"  Found Election Summary: {href}")
@@ -135,7 +107,6 @@ def discover_pdf_urls() -> tuple[str, str, str]:
             status_url = href
             print(f"  Found Precinct Status: {href}")
 
-        # Also match by URL pattern as fallback (showpublisheddocument)
         if "showpublisheddocument" in href:
             if not summary_url and "summary" in text:
                 summary_url = href
@@ -143,6 +114,68 @@ def discover_pdf_urls() -> tuple[str, str, str]:
                 precinct_url = href
             elif not status_url and ("reported" in text or "status" in text):
                 status_url = href
+
+    return summary_url, precinct_url, status_url
+
+
+def _discover_via_requests() -> tuple[str, str, str] | None:
+    """Try fetching the results page with requests. Returns None on 403/failure."""
+    session = requests.Session()
+    for attempt in range(2):
+        try:
+            if attempt > 0:
+                time.sleep(3)
+            resp = session.get(RESULTS_PAGE_URL, headers=HEADERS, timeout=20)
+            resp.raise_for_status()
+            return _extract_pdf_links_from_html(resp.text)
+        except requests.RequestException:
+            pass
+    return None
+
+
+def _discover_via_browser() -> tuple[str, str, str]:
+    """
+    Use a real headless Chromium browser (Playwright) to load the results page
+    and extract PDF links. Bypasses anti-bot / Cloudflare protection.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("  WARNING: playwright not installed. Run: pip install playwright && playwright install chromium")
+        return "", "", ""
+
+    print(f"  Using headless browser to fetch results page...")
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.set_extra_http_headers({"Accept-Language": "en-US,en;q=0.9"})
+            page.goto(RESULTS_PAGE_URL, wait_until="networkidle", timeout=30000)
+            html = page.content()
+            browser.close()
+        return _extract_pdf_links_from_html(html)
+    except Exception as e:
+        print(f"  WARNING: Headless browser failed: {e}")
+        return "", "", ""
+
+
+def discover_pdf_urls() -> tuple[str, str, str]:
+    """
+    Discover PDF links on the Marathon County results page.
+    Tries a fast requests fetch first; falls back to headless Chromium if blocked.
+
+    Returns (summary_url, precinct_url, status_url). Any may be empty string if not found.
+    """
+    print(f"  Fetching results page: {RESULTS_PAGE_URL}")
+
+    # Fast path: plain HTTP request
+    result = _discover_via_requests()
+    if result is not None:
+        summary_url, precinct_url, status_url = result
+    else:
+        # Blocked — spin up a real browser
+        print(f"  Blocked by server — falling back to headless browser...")
+        summary_url, precinct_url, status_url = _discover_via_browser()
 
     if not summary_url:
         print("  WARNING: Could not find Election Summary link on results page.")
