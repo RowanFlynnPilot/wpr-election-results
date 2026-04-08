@@ -5,16 +5,16 @@
     "displayDate": "April 7, 2026",
     "county": "Marathon County",
     "state": "Wisconsin",
-    "status": "live",
-    "lastUpdated": "2026-04-07T21:07:00",
-    "precinctsReported": 87,
+    "status": "final",
+    "lastUpdated": "2026-04-08T08:10:00",
+    "precinctsReported": 88,
     "precinctsTotal": 88
   },
   "statistics": {
     "registeredVoters": 82315,
-    "ballotsCast": 33182,
+    "ballotsCast": 33191,
     "blanks": 5,
-    "turnoutPct": 40.31
+    "turnoutPct": 40.32
   },
   "races": [
     {
@@ -27,16 +27,16 @@
       "candidates": [
         {
           "name": "Chris Taylor",
-          "votes": 16676
+          "votes": 16679
         },
         {
           "name": "Maria S. Lazar",
-          "votes": 15971
+          "votes": 15977
         }
       ],
       "writeIns": 16,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -403,10 +403,10 @@
         {
           "ward": "BIRNAMWOOD V WD 2",
           "candidates": {
-            "Chris Taylor": 0,
-            "Maria S. Lazar": 0
+            "Chris Taylor": 3,
+            "Maria S. Lazar": 6
           },
-          "ballotsCast": 0,
+          "ballotsCast": 9,
           "registered": 11
         },
         {
@@ -844,16 +844,16 @@
       "candidates": [
         {
           "name": "Michael D. Hughes",
-          "votes": 18713
+          "votes": 18720
         },
         {
           "name": "Douglas Bauman",
-          "votes": 10178
+          "votes": 10180
         }
       ],
       "writeIns": 79,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1260,11 +1260,11 @@
         {
           "ward": "BIRNAMWOOD V WD 2",
           "candidates": {
-            "Michael D. Hughes": 0,
-            "Douglas Bauman": 0,
+            "Michael D. Hughes": 7,
+            "Douglas Bauman": 2,
             "County Supervisor District": 13
           },
-          "ballotsCast": 0,
+          "ballotsCast": 9,
           "registered": 11
         },
         {
@@ -1758,7 +1758,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1799,7 +1799,7 @@
       ],
       "writeIns": 16,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1838,7 +1838,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1877,7 +1877,7 @@
       ],
       "writeIns": 20,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1916,7 +1916,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1955,7 +1955,7 @@
       ],
       "writeIns": 19,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -1994,7 +1994,7 @@
       ],
       "writeIns": 11,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2037,7 +2037,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2078,7 +2078,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2144,7 +2144,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2183,7 +2183,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2231,7 +2231,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2263,16 +2263,16 @@
       "candidates": [
         {
           "name": "Mike Ritter",
-          "votes": 490
+          "votes": 497
         },
         {
           "name": "Beverly Krejci",
-          "votes": 436
+          "votes": 438
         }
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2325,10 +2325,10 @@
         {
           "ward": "BIRNAMWOOD V WD 2",
           "candidates": {
-            "Mike Ritter": 0,
-            "Beverly Krejci": 0
+            "Mike Ritter": 7,
+            "Beverly Krejci": 2
           },
-          "ballotsCast": 0,
+          "ballotsCast": 9,
           "registered": 11
         }
       ]
@@ -2348,7 +2348,7 @@
       ],
       "writeIns": 7,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2418,7 +2418,7 @@
       ],
       "writeIns": 109,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2451,7 +2451,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2491,7 +2491,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2520,7 +2520,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2557,7 +2557,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2587,7 +2587,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2617,7 +2617,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2662,7 +2662,7 @@
       ],
       "writeIns": 48,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2691,7 +2691,7 @@
       ],
       "writeIns": 7,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2758,7 +2758,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2826,7 +2826,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2865,7 +2865,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2911,7 +2911,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -2948,7 +2948,7 @@
       ],
       "writeIns": 19,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3010,7 +3010,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3088,7 +3088,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3149,7 +3149,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3194,7 +3194,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3232,7 +3232,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3294,7 +3294,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3339,7 +3339,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3369,7 +3369,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3398,7 +3398,7 @@
       ],
       "writeIns": 3,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3455,7 +3455,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3487,7 +3487,7 @@
       ],
       "writeIns": 25,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3524,7 +3524,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3571,7 +3571,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3612,7 +3612,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3643,7 +3643,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3672,7 +3672,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3701,7 +3701,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3730,7 +3730,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3775,7 +3775,7 @@
       ],
       "writeIns": 124,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3824,7 +3824,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3874,7 +3874,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3916,7 +3916,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3955,7 +3955,7 @@
       ],
       "writeIns": 17,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -3998,7 +3998,7 @@
       ],
       "writeIns": 17,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4045,7 +4045,7 @@
       ],
       "writeIns": 49,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4083,7 +4083,7 @@
       ],
       "writeIns": 13,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4130,7 +4130,7 @@
       ],
       "writeIns": 28,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4163,7 +4163,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4192,7 +4192,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4222,7 +4222,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4255,7 +4255,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4285,7 +4285,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4314,7 +4314,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4347,7 +4347,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4381,7 +4381,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4415,7 +4415,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4458,7 +4458,7 @@
       ],
       "writeIns": 3,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4497,7 +4497,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4538,7 +4538,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4581,7 +4581,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4624,7 +4624,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4667,7 +4667,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4706,7 +4706,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4743,7 +4743,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4796,7 +4796,7 @@
       ],
       "writeIns": 17,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4837,7 +4837,7 @@
       ],
       "writeIns": 3,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4889,7 +4889,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -4975,7 +4975,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5038,7 +5038,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5155,7 +5155,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5196,7 +5196,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5301,7 +5301,7 @@
       ],
       "writeIns": 22,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5498,7 +5498,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5599,7 +5599,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5730,7 +5730,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5815,7 +5815,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -5859,7 +5859,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6001,7 +6001,7 @@
       ],
       "writeIns": 19,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6122,7 +6122,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6169,7 +6169,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6234,7 +6234,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6365,7 +6365,7 @@
       ],
       "writeIns": 112,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6797,12 +6797,12 @@
       "candidates": [
         {
           "name": "Richard M. Olson, Jr.",
-          "votes": 648
+          "votes": 656
         }
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6857,9 +6857,9 @@
         {
           "ward": "BIRNAMWOOD V WD 2",
           "candidates": {
-            "Richard M. Olson, Jr.": 0
+            "Richard M. Olson, Jr.": 8
           },
-          "ballotsCast": 0,
+          "ballotsCast": 9,
           "registered": 11
         },
         {
@@ -6882,12 +6882,12 @@
       "candidates": [
         {
           "name": "Trevor Szutkowski",
-          "votes": 656
+          "votes": 664
         }
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -6942,7 +6942,7 @@
         {
           "ward": "BIRNAMWOOD V WD 2",
           "candidates": {
-            "Trevor Szutkowski": 0
+            "Trevor Szutkowski": 8
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6967,16 +6967,16 @@
       "candidates": [
         {
           "name": "Laura Magee",
-          "votes": 389
+          "votes": 395
         },
         {
           "name": "Bradley Wormsbacher",
-          "votes": 326
+          "votes": 329
         }
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -7037,8 +7037,8 @@
         {
           "ward": "BIRNAMWOOD V WD 2",
           "candidates": {
-            "Bradley Wormsbacher": 0,
-            "Laura Magee": 0
+            "Bradley Wormsbacher": 3,
+            "Laura Magee": 6
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7073,7 +7073,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -7107,7 +7107,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -7141,7 +7141,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -7391,7 +7391,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 87,
+        "reported": 88,
         "total": 88
       },
       "wardData": [
@@ -7623,6 +7623,11 @@
       "status": "reported"
     },
     {
+      "id": "birnamwood-v-wd-2",
+      "name": "BIRNAMWOOD V WD 2",
+      "status": "reported"
+    },
+    {
       "id": "dorchester-v-wd",
       "name": "DORCHESTER V WD",
       "status": "reported"
@@ -7851,11 +7856,6 @@
       "id": "wausau-c-wd-25",
       "name": "WAUSAU C WD 25",
       "status": "reported"
-    },
-    {
-      "id": "birnamwood-v-wd",
-      "name": "BIRNAMWOOD V WD",
-      "status": "notReported"
     }
   ]
 }
