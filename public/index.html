@@ -1207,7 +1207,7 @@ function generateCategoryHeadline(category, races) {
       const p = Math.round((leader.votes / tv) * 100);
       const done = r.precincts.reported === r.precincts.total && r.precincts.total > 0;
       const verb = done ? "wins" : "leads";
-      return `${leader.name} ${verb} ${r.name.replace("Justice of the ", "").replace("Circuit Court ", "")} with ${p}%`;
+      return `${leader.name} ${verb} in the ${r.name} race with ${p}%`;
     }).filter(Boolean);
     return lines.join("; ");
   }
