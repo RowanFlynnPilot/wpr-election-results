@@ -6,15 +6,15 @@
     "county": "Marathon County",
     "state": "Wisconsin",
     "status": "live",
-    "lastUpdated": "2026-04-07T20:44:00",
-    "precinctsReported": 73,
+    "lastUpdated": "2026-04-07T21:07:00",
+    "precinctsReported": 87,
     "precinctsTotal": 88
   },
   "statistics": {
     "registeredVoters": 82315,
-    "ballotsCast": 31094,
+    "ballotsCast": 33182,
     "blanks": 5,
-    "turnoutPct": 37.77
+    "turnoutPct": 40.31
   },
   "races": [
     {
@@ -27,16 +27,16 @@
       "candidates": [
         {
           "name": "Chris Taylor",
-          "votes": 15681
+          "votes": 16676
         },
         {
           "name": "Maria S. Lazar",
-          "votes": 14904
+          "votes": 15971
         }
       ],
       "writeIns": 16,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -97,10 +97,10 @@
         {
           "ward": "CLEVELAND T WDS 1 & 2",
           "candidates": {
-            "Chris Taylor": 0,
-            "Maria S. Lazar": 0
+            "Chris Taylor": 159,
+            "Maria S. Lazar": 237
           },
-          "ballotsCast": 0,
+          "ballotsCast": 401,
           "registered": 992
         },
         {
@@ -358,10 +358,10 @@
         {
           "ward": "TEXAS T WDS 1 & 2",
           "candidates": {
-            "Chris Taylor": 0,
-            "Maria S. Lazar": 0
+            "Chris Taylor": 206,
+            "Maria S. Lazar": 257
           },
-          "ballotsCast": 0,
+          "ballotsCast": 470,
           "registered": 1143
         },
         {
@@ -637,10 +637,10 @@
         {
           "ward": "WAUSAU C WD 4",
           "candidates": {
-            "Chris Taylor": 77,
-            "Maria S. Lazar": 22
+            "Chris Taylor": 228,
+            "Maria S. Lazar": 139
           },
-          "ballotsCast": 100,
+          "ballotsCast": 371,
           "registered": 932
         },
         {
@@ -682,28 +682,28 @@
         {
           "ward": "WAUSAU C WD 9",
           "candidates": {
-            "Chris Taylor": 121,
-            "Maria S. Lazar": 38
+            "Chris Taylor": 296,
+            "Maria S. Lazar": 210
           },
-          "ballotsCast": 166,
+          "ballotsCast": 517,
           "registered": 1046
         },
         {
           "ward": "WAUSAU C WD 10",
           "candidates": {
-            "Chris Taylor": 58,
-            "Maria S. Lazar": 28
+            "Chris Taylor": 208,
+            "Maria S. Lazar": 165
           },
-          "ballotsCast": 87,
+          "ballotsCast": 377,
           "registered": 945
         },
         {
           "ward": "WAUSAU C WD 11",
           "candidates": {
-            "Chris Taylor": 113,
-            "Maria S. Lazar": 36
+            "Chris Taylor": 266,
+            "Maria S. Lazar": 181
           },
-          "ballotsCast": 149,
+          "ballotsCast": 451,
           "registered": 1122
         },
         {
@@ -817,19 +817,19 @@
         {
           "ward": "WAUSAU C WD 24",
           "candidates": {
-            "Chris Taylor": 0,
+            "Chris Taylor": 1,
             "Maria S. Lazar": 0
           },
-          "ballotsCast": 0,
+          "ballotsCast": 1,
           "registered": 2
         },
         {
           "ward": "WAUSAU C WD 25",
           "candidates": {
             "Chris Taylor": 0,
-            "Maria S. Lazar": 0
+            "Maria S. Lazar": 2
           },
-          "ballotsCast": 0,
+          "ballotsCast": 2,
           "registered": 2
         }
       ]
@@ -844,16 +844,16 @@
       "candidates": [
         {
           "name": "Michael D. Hughes",
-          "votes": 17490
+          "votes": 18713
         },
         {
           "name": "Douglas Bauman",
-          "votes": 9579
+          "votes": 10178
         }
       ],
-      "writeIns": 75,
+      "writeIns": 79,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -920,11 +920,11 @@
         {
           "ward": "CLEVELAND T WDS 1 & 2",
           "candidates": {
-            "Michael D. Hughes": 0,
-            "Douglas Bauman": 0,
+            "Michael D. Hughes": 211,
+            "Douglas Bauman": 137,
             "County Supervisor District": 25
           },
-          "ballotsCast": 0,
+          "ballotsCast": 401,
           "registered": 992
         },
         {
@@ -1210,11 +1210,11 @@
         {
           "ward": "TEXAS T WDS 1 & 2",
           "candidates": {
-            "Michael D. Hughes": 0,
-            "Douglas Bauman": 0,
+            "Michael D. Hughes": 241,
+            "Douglas Bauman": 163,
             "County Supervisor District": 12
           },
-          "ballotsCast": 0,
+          "ballotsCast": 470,
           "registered": 1143
         },
         {
@@ -1520,11 +1520,11 @@
         {
           "ward": "WAUSAU C WD 4",
           "candidates": {
-            "Michael D. Hughes": 62,
-            "Douglas Bauman": 25,
+            "Michael D. Hughes": 241,
+            "Douglas Bauman": 86,
             "County Supervisor District": 11
           },
-          "ballotsCast": 100,
+          "ballotsCast": 371,
           "registered": 932
         },
         {
@@ -1570,31 +1570,31 @@
         {
           "ward": "WAUSAU C WD 9",
           "candidates": {
-            "Michael D. Hughes": 100,
-            "Douglas Bauman": 52,
+            "Michael D. Hughes": 328,
+            "Douglas Bauman": 132,
             "County Supervisor District": 11
           },
-          "ballotsCast": 166,
+          "ballotsCast": 517,
           "registered": 1046
         },
         {
           "ward": "WAUSAU C WD 10",
           "candidates": {
-            "Michael D. Hughes": 53,
-            "Douglas Bauman": 26,
+            "Michael D. Hughes": 233,
+            "Douglas Bauman": 98,
             "County Supervisor District": 9
           },
-          "ballotsCast": 87,
+          "ballotsCast": 377,
           "registered": 945
         },
         {
           "ward": "WAUSAU C WD 11",
           "candidates": {
-            "Michael D. Hughes": 98,
-            "Douglas Bauman": 42,
+            "Michael D. Hughes": 281,
+            "Douglas Bauman": 126,
             "County Supervisor District": 9
           },
-          "ballotsCast": 149,
+          "ballotsCast": 451,
           "registered": 1122
         },
         {
@@ -1720,21 +1720,21 @@
         {
           "ward": "WAUSAU C WD 24",
           "candidates": {
-            "Michael D. Hughes": 0,
+            "Michael D. Hughes": 1,
             "Douglas Bauman": 0,
             "County Supervisor District": 9
           },
-          "ballotsCast": 0,
+          "ballotsCast": 1,
           "registered": 2
         },
         {
           "ward": "WAUSAU C WD 25",
           "candidates": {
             "Michael D. Hughes": 0,
-            "Douglas Bauman": 0,
+            "Douglas Bauman": 2,
             "County Supervisor District": 9
           },
-          "ballotsCast": 0,
+          "ballotsCast": 2,
           "registered": 2
         }
       ]
@@ -1758,7 +1758,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -1799,7 +1799,7 @@
       ],
       "writeIns": 16,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -1838,7 +1838,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -1877,7 +1877,7 @@
       ],
       "writeIns": 20,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -1916,7 +1916,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -1955,7 +1955,7 @@
       ],
       "writeIns": 19,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -1994,7 +1994,7 @@
       ],
       "writeIns": 11,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2037,7 +2037,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2073,12 +2073,12 @@
       "candidates": [
         {
           "name": "Chantelle Foote",
-          "votes": 179
+          "votes": 596
         }
       ],
-      "writeIns": 1,
+      "writeIns": 5,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2094,37 +2094,37 @@
         {
           "ward": "WAUSAU C WD 10",
           "candidates": {
-            "Chantelle Foote": 61,
+            "Chantelle Foote": 267,
             "Alderperson WAUSAU C District": 9
           },
-          "ballotsCast": 87,
+          "ballotsCast": 377,
           "registered": 945
         },
         {
           "ward": "WAUSAU C WD 11",
           "candidates": {
-            "Chantelle Foote": 97,
+            "Chantelle Foote": 305,
             "Alderperson WAUSAU C District": 9
           },
-          "ballotsCast": 149,
+          "ballotsCast": 451,
           "registered": 1122
         },
         {
           "ward": "WAUSAU C WD 24",
           "candidates": {
-            "Chantelle Foote": 0,
+            "Chantelle Foote": 1,
             "Alderperson WAUSAU C District": 9
           },
-          "ballotsCast": 0,
+          "ballotsCast": 1,
           "registered": 2
         },
         {
           "ward": "WAUSAU C WD 25",
           "candidates": {
-            "Chantelle Foote": 0,
+            "Chantelle Foote": 2,
             "Alderperson WAUSAU C District": 9
           },
-          "ballotsCast": 0,
+          "ballotsCast": 2,
           "registered": 2
         }
       ]
@@ -2144,7 +2144,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2178,31 +2178,31 @@
       "candidates": [
         {
           "name": "Randy DeBroux",
-          "votes": 180
+          "votes": 629
         }
       ],
-      "writeIns": 4,
+      "writeIns": 14,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
         {
           "ward": "WAUSAU C WD 4",
           "candidates": {
-            "Randy DeBroux": 63,
+            "Randy DeBroux": 257,
             "Alderperson WAUSAU C District": 11
           },
-          "ballotsCast": 100,
+          "ballotsCast": 371,
           "registered": 932
         },
         {
           "ward": "WAUSAU C WD 9",
           "candidates": {
-            "Randy DeBroux": 117,
+            "Randy DeBroux": 372,
             "Alderperson WAUSAU C District": 11
           },
-          "ballotsCast": 166,
+          "ballotsCast": 517,
           "registered": 1046
         },
         {
@@ -2226,21 +2226,21 @@
       "candidates": [
         {
           "name": "Matthew Bootz",
-          "votes": 468
+          "votes": 842
         }
       ],
-      "writeIns": 0,
+      "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
         {
           "ward": "TEXAS T WDS 1 & 2",
           "candidates": {
-            "Matthew Bootz": 0
+            "Matthew Bootz": 374
           },
-          "ballotsCast": 0,
+          "ballotsCast": 470,
           "registered": 1143
         },
         {
@@ -2272,7 +2272,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2348,7 +2348,7 @@
       ],
       "writeIns": 7,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2418,7 +2418,7 @@
       ],
       "writeIns": 109,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2451,7 +2451,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2491,7 +2491,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2520,7 +2520,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2557,7 +2557,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2587,7 +2587,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2617,7 +2617,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2662,7 +2662,7 @@
       ],
       "writeIns": 48,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2691,7 +2691,7 @@
       ],
       "writeIns": 7,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2749,16 +2749,16 @@
       "candidates": [
         {
           "name": "Timothy M. Sondelski",
-          "votes": 404
+          "votes": 530
         },
         {
           "name": "Susan Stankowski",
-          "votes": 395
+          "votes": 510
         }
       ],
-      "writeIns": 0,
+      "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2774,11 +2774,11 @@
         {
           "ward": "CLEVELAND T WDS 1 & 2",
           "candidates": {
-            "Timothy M. Sondelski": 0,
-            "Susan Stankowski": 0,
+            "Timothy M. Sondelski": 126,
+            "Susan Stankowski": 115,
             "County Supervisor District": 29
           },
-          "ballotsCast": 0,
+          "ballotsCast": 401,
           "registered": 992
         },
         {
@@ -2826,7 +2826,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2865,7 +2865,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2911,7 +2911,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2943,12 +2943,12 @@
       "candidates": [
         {
           "name": "Chris Dickinson",
-          "votes": 541
+          "votes": 658
         }
       ],
-      "writeIns": 15,
+      "writeIns": 19,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -2964,9 +2964,9 @@
         {
           "ward": "CLEVELAND T WDS 1 & 2",
           "candidates": {
-            "Chris Dickinson": 0
+            "Chris Dickinson": 117
           },
-          "ballotsCast": 0,
+          "ballotsCast": 401,
           "registered": 992
         },
         {
@@ -3010,7 +3010,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3088,7 +3088,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3149,7 +3149,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3194,7 +3194,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3232,7 +3232,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3294,7 +3294,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3339,7 +3339,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3369,7 +3369,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3398,7 +3398,7 @@
       ],
       "writeIns": 3,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3455,7 +3455,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3487,7 +3487,7 @@
       ],
       "writeIns": 25,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3524,7 +3524,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3571,7 +3571,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3612,7 +3612,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3643,7 +3643,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3672,7 +3672,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3701,7 +3701,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3730,7 +3730,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3775,7 +3775,7 @@
       ],
       "writeIns": 124,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3824,7 +3824,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3874,7 +3874,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3916,7 +3916,7 @@
       ],
       "writeIns": 5,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3955,7 +3955,7 @@
       ],
       "writeIns": 17,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -3998,7 +3998,7 @@
       ],
       "writeIns": 17,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4045,7 +4045,7 @@
       ],
       "writeIns": 49,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4083,7 +4083,7 @@
       ],
       "writeIns": 13,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4130,7 +4130,7 @@
       ],
       "writeIns": 28,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4163,7 +4163,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4192,7 +4192,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4222,7 +4222,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4255,7 +4255,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4285,7 +4285,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4314,7 +4314,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4347,7 +4347,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4381,7 +4381,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4415,7 +4415,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4458,7 +4458,7 @@
       ],
       "writeIns": 3,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4497,7 +4497,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4538,7 +4538,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4581,7 +4581,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4624,7 +4624,7 @@
       ],
       "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4667,7 +4667,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4706,7 +4706,7 @@
       ],
       "writeIns": 14,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4738,45 +4738,45 @@
       "candidates": [
         {
           "name": "Vicki Tierney",
-          "votes": 167
+          "votes": 587
         }
       ],
-      "writeIns": 1,
+      "writeIns": 4,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
         {
           "ward": "WAUSAU C WD 10",
           "candidates": {
-            "Vicki Tierney": 62
+            "Vicki Tierney": 268
           },
-          "ballotsCast": 87,
+          "ballotsCast": 377,
           "registered": 945
         },
         {
           "ward": "WAUSAU C WD 11",
           "candidates": {
-            "Vicki Tierney": 105
+            "Vicki Tierney": 317
           },
-          "ballotsCast": 149,
+          "ballotsCast": 451,
           "registered": 1122
         },
         {
           "ward": "WAUSAU C WD 24",
           "candidates": {
-            "Vicki Tierney": 0
+            "Vicki Tierney": 1
           },
-          "ballotsCast": 0,
+          "ballotsCast": 1,
           "registered": 2
         },
         {
           "ward": "WAUSAU C WD 25",
           "candidates": {
-            "Vicki Tierney": 0
+            "Vicki Tierney": 1
           },
-          "ballotsCast": 0,
+          "ballotsCast": 2,
           "registered": 2
         }
       ]
@@ -4796,7 +4796,7 @@
       ],
       "writeIns": 17,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4828,35 +4828,35 @@
       "candidates": [
         {
           "name": "Bruce Trueblood",
-          "votes": 123
+          "votes": 471
         },
         {
           "name": "Timothy P. Howe",
-          "votes": 118
+          "votes": 316
         }
       ],
-      "writeIns": 1,
+      "writeIns": 3,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
         {
           "ward": "WAUSAU C WD 4",
           "candidates": {
-            "Timothy P. Howe": 47,
-            "Bruce Trueblood": 41
+            "Timothy P. Howe": 135,
+            "Bruce Trueblood": 194
           },
-          "ballotsCast": 100,
+          "ballotsCast": 371,
           "registered": 932
         },
         {
           "ward": "WAUSAU C WD 9",
           "candidates": {
-            "Timothy P. Howe": 71,
-            "Bruce Trueblood": 82
+            "Timothy P. Howe": 181,
+            "Bruce Trueblood": 277
           },
-          "ballotsCast": 166,
+          "ballotsCast": 517,
           "registered": 1046
         },
         {
@@ -4889,7 +4889,7 @@
       ],
       "writeIns": 2,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -4975,7 +4975,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5038,7 +5038,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5155,7 +5155,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5196,7 +5196,7 @@
       ],
       "writeIns": 12,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5301,7 +5301,7 @@
       ],
       "writeIns": 22,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5493,12 +5493,12 @@
       "candidates": [
         {
           "name": "Alison Reinders",
-          "votes": 637
+          "votes": 644
         }
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5513,7 +5513,7 @@
         {
           "ward": "CLEVELAND T WDS 1 & 2",
           "candidates": {
-            "Alison Reinders": 0
+            "Alison Reinders": 7
           },
           "ballotsCast": 0,
           "registered": 0
@@ -5599,7 +5599,7 @@
       ],
       "writeIns": 8,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5730,7 +5730,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5815,7 +5815,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -5859,7 +5859,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6001,7 +6001,7 @@
       ],
       "writeIns": 19,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6122,7 +6122,7 @@
       ],
       "writeIns": 6,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6169,7 +6169,7 @@
       ],
       "writeIns": 9,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6221,29 +6221,29 @@
       "candidates": [
         {
           "name": "Eliot Waddell",
-          "votes": 512
+          "votes": 742
         },
         {
           "name": "Chris Dickinson",
-          "votes": 479
+          "votes": 713
         },
         {
           "name": "Rick Rehm",
-          "votes": 343
+          "votes": 527
         }
       ],
-      "writeIns": 6,
+      "writeIns": 8,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
         {
           "ward": "CLEVELAND T WDS 1 & 2",
           "candidates": {
-            "Rick Rehm": 0,
-            "Eliot Waddell": 0,
-            "Chris Dickinson": 0
+            "Rick Rehm": 184,
+            "Eliot Waddell": 230,
+            "Chris Dickinson": 234
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6340,32 +6340,32 @@
       "candidates": [
         {
           "name": "Yauo Y. Yang",
-          "votes": 7212
+          "votes": 8231
         },
         {
           "name": "Lance Trollop",
-          "votes": 6842
+          "votes": 7709
         },
         {
           "name": "Cory Sillars",
-          "votes": 5431
+          "votes": 6203
         },
         {
           "name": "Charles Burger",
-          "votes": 5072
+          "votes": 5792
         },
         {
           "name": "John Huntington",
-          "votes": 4666
+          "votes": 5365
         },
         {
           "name": "Kathryn Ruland",
-          "votes": 4598
+          "votes": 5166
         }
       ],
-      "writeIns": 98,
+      "writeIns": 112,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6411,14 +6411,14 @@
         {
           "ward": "TEXAS T WDS 1 & 2",
           "candidates": {
-            "Kathryn Ruland": 0,
-            "Charles Burger": 0,
-            "John Huntington": 0,
-            "Cory Sillars": 0,
-            "Yauo Y. Yang": 0,
-            "Lance Trollop": 0
+            "Kathryn Ruland": 160,
+            "Charles Burger": 214,
+            "John Huntington": 234,
+            "Cory Sillars": 267,
+            "Yauo Y. Yang": 249,
+            "Lance Trollop": 254
           },
-          "ballotsCast": 0,
+          "ballotsCast": 470,
           "registered": 1143
         },
         {
@@ -6502,12 +6502,12 @@
         {
           "ward": "WAUSAU C WD 4",
           "candidates": {
-            "Kathryn Ruland": 57,
-            "Charles Burger": 41,
-            "John Huntington": 31,
-            "Cory Sillars": 33,
-            "Yauo Y. Yang": 76,
-            "Lance Trollop": 70
+            "Kathryn Ruland": 150,
+            "Charles Burger": 155,
+            "John Huntington": 141,
+            "Cory Sillars": 140,
+            "Yauo Y. Yang": 259,
+            "Lance Trollop": 197
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6567,12 +6567,12 @@
         {
           "ward": "WAUSAU C WD 9",
           "candidates": {
-            "Kathryn Ruland": 91,
-            "Charles Burger": 74,
-            "John Huntington": 65,
-            "Cory Sillars": 65,
-            "Yauo Y. Yang": 99,
-            "Lance Trollop": 104
+            "Kathryn Ruland": 199,
+            "Charles Burger": 218,
+            "John Huntington": 191,
+            "Cory Sillars": 217,
+            "Yauo Y. Yang": 313,
+            "Lance Trollop": 301
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6580,12 +6580,12 @@
         {
           "ward": "WAUSAU C WD 10",
           "candidates": {
-            "Kathryn Ruland": 39,
-            "Charles Burger": 31,
-            "John Huntington": 38,
-            "Cory Sillars": 38,
-            "Yauo Y. Yang": 51,
-            "Lance Trollop": 59
+            "Kathryn Ruland": 151,
+            "Charles Burger": 136,
+            "John Huntington": 143,
+            "Cory Sillars": 149,
+            "Yauo Y. Yang": 233,
+            "Lance Trollop": 194
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6593,12 +6593,12 @@
         {
           "ward": "WAUSAU C WD 11",
           "candidates": {
-            "Kathryn Ruland": 69,
-            "Charles Burger": 62,
-            "John Huntington": 49,
-            "Cory Sillars": 56,
-            "Yauo Y. Yang": 95,
-            "Lance Trollop": 106
+            "Kathryn Ruland": 163,
+            "Charles Burger": 203,
+            "John Huntington": 172,
+            "Cory Sillars": 189,
+            "Yauo Y. Yang": 283,
+            "Lance Trollop": 257
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6762,12 +6762,12 @@
         {
           "ward": "WAUSAU C WD 24",
           "candidates": {
-            "Kathryn Ruland": 0,
+            "Kathryn Ruland": 1,
             "Charles Burger": 0,
-            "John Huntington": 0,
+            "John Huntington": 1,
             "Cory Sillars": 0,
-            "Yauo Y. Yang": 0,
-            "Lance Trollop": 0
+            "Yauo Y. Yang": 1,
+            "Lance Trollop": 1
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6776,11 +6776,11 @@
           "ward": "WAUSAU C WD 25",
           "candidates": {
             "Kathryn Ruland": 0,
-            "Charles Burger": 0,
+            "Charles Burger": 2,
             "John Huntington": 0,
-            "Cory Sillars": 0,
-            "Yauo Y. Yang": 0,
-            "Lance Trollop": 0
+            "Cory Sillars": 2,
+            "Yauo Y. Yang": 2,
+            "Lance Trollop": 2
           },
           "ballotsCast": 0,
           "registered": 0
@@ -6802,7 +6802,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6887,7 +6887,7 @@
       ],
       "writeIns": 1,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -6976,7 +6976,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -7073,7 +7073,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -7107,7 +7107,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -7132,16 +7132,16 @@
       "candidates": [
         {
           "name": "Yes",
-          "votes": 3750
+          "votes": 4352
         },
         {
           "name": "No",
-          "votes": 3690
+          "votes": 4263
         }
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -7175,8 +7175,8 @@
         {
           "ward": "WAUSAU C WD 4",
           "candidates": {
-            "Yes": 51,
-            "No": 44
+            "Yes": 179,
+            "No": 176
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7220,8 +7220,8 @@
         {
           "ward": "WAUSAU C WD 9",
           "candidates": {
-            "Yes": 95,
-            "No": 63
+            "Yes": 270,
+            "No": 233
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7229,8 +7229,8 @@
         {
           "ward": "WAUSAU C WD 10",
           "candidates": {
-            "Yes": 47,
-            "No": 34
+            "Yes": 206,
+            "No": 151
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7238,8 +7238,8 @@
         {
           "ward": "WAUSAU C WD 11",
           "candidates": {
-            "Yes": 94,
-            "No": 52
+            "Yes": 234,
+            "No": 203
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7356,7 +7356,7 @@
           "ward": "WAUSAU C WD 24",
           "candidates": {
             "Yes": 0,
-            "No": 0
+            "No": 1
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7365,7 +7365,7 @@
           "ward": "WAUSAU C WD 25",
           "candidates": {
             "Yes": 0,
-            "No": 0
+            "No": 2
           },
           "ballotsCast": 0,
           "registered": 0
@@ -7391,7 +7391,7 @@
       ],
       "writeIns": 0,
       "precincts": {
-        "reported": 73,
+        "reported": 87,
         "total": 88
       },
       "wardData": [
@@ -7423,6 +7423,11 @@
       "status": "reported"
     },
     {
+      "id": "berlin-t-wds-1-2",
+      "name": "BERLIN T WDS 1 & 2",
+      "status": "reported"
+    },
+    {
       "id": "bern-t-wd-1",
       "name": "BERN T WD 1",
       "status": "reported"
@@ -7440,6 +7445,11 @@
     {
       "id": "cassel-t-wd-1",
       "name": "CASSEL T WD 1",
+      "status": "reported"
+    },
+    {
+      "id": "cleveland-t-wds-1-2",
+      "name": "CLEVELAND T WDS 1 & 2",
       "status": "reported"
     },
     {
@@ -7470,6 +7480,11 @@
     {
       "id": "frankfort-t-wd-1",
       "name": "FRANKFORT T WD 1",
+      "status": "reported"
+    },
+    {
+      "id": "franzen-t-wd-1",
+      "name": "FRANZEN T WD 1",
       "status": "reported"
     },
     {
@@ -7583,6 +7598,16 @@
       "status": "reported"
     },
     {
+      "id": "texas-t-wds-1-2",
+      "name": "TEXAS T WDS 1 & 2",
+      "status": "reported"
+    },
+    {
+      "id": "wausau-t-wds-1-3",
+      "name": "WAUSAU T WDS 1-3",
+      "status": "reported"
+    },
+    {
       "id": "weston-t-wd-1",
       "name": "WESTON T WD 1",
       "status": "reported"
@@ -7598,6 +7623,11 @@
       "status": "reported"
     },
     {
+      "id": "dorchester-v-wd",
+      "name": "DORCHESTER V WD",
+      "status": "reported"
+    },
+    {
       "id": "edgar-v-wds-1-3",
       "name": "EDGAR V WDS 1-3",
       "status": "reported"
@@ -7610,6 +7640,11 @@
     {
       "id": "fenwood-v-wd-1",
       "name": "FENWOOD V WD 1",
+      "status": "reported"
+    },
+    {
+      "id": "hatley-v-wd-1",
+      "name": "HATLEY V WD 1",
       "status": "reported"
     },
     {
@@ -7708,6 +7743,11 @@
       "status": "reported"
     },
     {
+      "id": "wausau-c-wd-4",
+      "name": "WAUSAU C WD 4",
+      "status": "reported"
+    },
+    {
       "id": "wausau-c-wd-5",
       "name": "WAUSAU C WD 5",
       "status": "reported"
@@ -7725,6 +7765,21 @@
     {
       "id": "wausau-c-wd-8",
       "name": "WAUSAU C WD 8",
+      "status": "reported"
+    },
+    {
+      "id": "wausau-c-wd-9",
+      "name": "WAUSAU C WD 9",
+      "status": "reported"
+    },
+    {
+      "id": "wausau-c-wd-10",
+      "name": "WAUSAU C WD 10",
+      "status": "reported"
+    },
+    {
+      "id": "wausau-c-wd-11",
+      "name": "WAUSAU C WD 11",
       "status": "reported"
     },
     {
@@ -7783,48 +7838,23 @@
       "status": "reported"
     },
     {
-      "id": "berlin-t-wds-1-2",
-      "name": "BERLIN T WDS 1 & 2",
-      "status": "partial"
+      "id": "wausau-c-wd",
+      "name": "WAUSAU C WD",
+      "status": "reported"
     },
     {
-      "id": "franzen-t-wd-1",
-      "name": "FRANZEN T WD 1",
-      "status": "partial"
+      "id": "wausau-c-wd-24",
+      "name": "WAUSAU C WD 24",
+      "status": "reported"
     },
     {
-      "id": "wausau-t-wds-1-3",
-      "name": "WAUSAU T WDS 1-3",
-      "status": "partial"
-    },
-    {
-      "id": "hatley-v-wd-1",
-      "name": "HATLEY V WD 1",
-      "status": "partial"
-    },
-    {
-      "id": "cleveland-t-wds-1-",
-      "name": "CLEVELAND T WDS 1 &",
-      "status": "notReported"
-    },
-    {
-      "id": "texas-t-wds-1-",
-      "name": "TEXAS T WDS 1 &",
-      "status": "notReported"
+      "id": "wausau-c-wd-25",
+      "name": "WAUSAU C WD 25",
+      "status": "reported"
     },
     {
       "id": "birnamwood-v-wd",
       "name": "BIRNAMWOOD V WD",
-      "status": "notReported"
-    },
-    {
-      "id": "dorchester-v-wd",
-      "name": "DORCHESTER V WD",
-      "status": "notReported"
-    },
-    {
-      "id": "wausau-c-wd",
-      "name": "WAUSAU C WD",
       "status": "notReported"
     }
   ]
