@@ -229,12 +229,32 @@ def discover_pdf_urls() -> tuple[str, str, str]:
 
 # ── PDF FETCHING ─────────────────────────────────────────────────
 
+def _fetch_pdf_via_browser(url: str) -> bytes:
+    """Download a PDF using headless Chromium — bypasses 403 blocks."""
+    from playwright.sync_api import sync_playwright
+    print(f"  Downloading via browser: {url}")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        response = page.goto(url, wait_until="networkidle", timeout=60000)
+        if response is None or not response.ok:
+            browser.close()
+            raise RuntimeError(f"Browser fetch failed for {url}")
+        content = response.body()
+        browser.close()
+    return content
+
+
 def fetch_pdf(url: str) -> bytes:
-    """Download a PDF from a URL."""
+    """Download a PDF from a URL. Falls back to headless browser if blocked."""
     print(f"  Fetching: {url}")
-    resp = requests.get(url, headers=HEADERS, timeout=60)
-    resp.raise_for_status()
-    return resp.content
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=60)
+        resp.raise_for_status()
+        return resp.content
+    except requests.RequestException as e:
+        print(f"  Blocked ({e}) — switching to browser download...")
+        return _fetch_pdf_via_browser(url)
 
 
 # ── CATEGORY DETECTION ───────────────────────────────────────────
