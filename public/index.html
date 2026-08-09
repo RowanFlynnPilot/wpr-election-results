@@ -211,6 +211,7 @@
   .waiting-note { margin-top: 18px; font-size: 12.5px; }
   @media (max-width: 480px) { .waiting-list { grid-template-columns: 1fr; } }
   .errbox { margin-top: 18px; padding: 16px; border: 1px solid var(--rep); border-radius: 10px; background: var(--rep-soft); font-size: 14px; }
+  .errbox a { color: inherit; font-weight: 700; }
   footer { margin-top: 26px; font-size: 12px; color: var(--muted); }
   .foot-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
   .foot-source { line-height: 1.5; }
@@ -225,6 +226,16 @@
   @media (max-width: 480px) {
     .cand { grid-template-columns: 1fr 92px; }
     .cand-bar { grid-column: 1 / -1; }
+  }
+
+  /* ── Print ──────────────────────────────── */
+  @media print {
+    body { background: #fff; }
+    .tabs { position: static; background: #fff; }
+    .status-live .dot { animation: none; }
+    .waiting-note { display: none; }
+    .race, .turnout, .spine, .pstatus { break-inside: avoid; border-color: #bbb; }
+    .ward-scroll { max-height: none; overflow: visible; border-color: #bbb; }
   }
 </style>
 </head>
@@ -276,6 +287,10 @@
     <p class="waiting-note">Updates automatically on this page — no need to refresh.</p>
   </div>
   <div class="errbox" id="errbox" role="status" hidden>Results are temporarily unavailable. This page retries automatically.</div>
+  <noscript>
+    <div class="errbox">This live results page needs JavaScript. For the raw reports, visit the
+      <a href="https://www.marathoncounty.gov/services/elections-voting/results">Marathon County election results page</a>.</div>
+  </noscript>
 
   <footer>
     <div class="rule-double" aria-hidden="true"></div>
