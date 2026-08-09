@@ -94,9 +94,11 @@ def scoreboard() -> None:
     results = REPO_ROOT / RESULTS_REL
     if not results.exists():
         return
-    with open(results) as f:
+    with open(results, encoding="utf-8") as f:
         data = json.load(f)
     e = data["election"]
+    rule = "  " + "-" * 62
+    print(rule)
     print(f"  precincts {e['precinctsReported']}/{e['precinctsTotal']}"
           f"  |  ballots {data['statistics']['ballotsCast']:,}"
           f"  |  status {e['status'].upper()}")
@@ -104,7 +106,16 @@ def scoreboard() -> None:
                if r["category"] in ("Statewide", "U.S. Congress") and r["candidates"]]
     for r in marquee[:6]:
         lead = r["candidates"][0]
-        print(f"    [{r['party']}] {r['name']}: {lead['name']} leads ({lead['votes']:,})")
+        prec = ""
+        if r.get("precincts"):
+            prec = f"{r['precincts']['reported']}/{r['precincts']['total']}"
+        label = f"{r['party']} {r['name']}"
+        line = (f"  {label:<33.33} {prec:>6}  "
+                f"{lead['name']} {lead['votes']:,} ({lead['pct']:.1f}%)")
+        if len(r["candidates"]) > 1:
+            line += f" +{lead['votes'] - r['candidates'][1]['votes']:,}"
+        print(line)
+    print(rule)
 
 
 def ingest(source, label: str, config: dict, seen: set) -> None:
