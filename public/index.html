@@ -82,6 +82,9 @@
     overflow: hidden; margin-top: 2px;
   }
   .spine-track .fill { height: 100%; background: var(--teal); border-radius: 3px; transition: width 0.8s ease; }
+  @keyframes spine-flash { from { background: var(--teal-soft); } to { background: var(--card); } }
+  .spine.flash { animation: spine-flash 1.6s ease-out; }
+  @media (prefers-reduced-motion: reduce) { .spine.flash { animation: none; } }
 
   /* ── Turnout module ─────────────────────── */
   .turnout { margin-top: 14px; padding: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
@@ -275,7 +278,36 @@
     { id: "OTH", label: "Other parties", match: function (r) { return ["DEM", "REP", "REF"].indexOf(r.party) === -1; } }
   ];
 
-  var state = { data: null, tab: "DEM", lastGenerated: null };
+  var state = { data: null, tab: "DEM", lastGenerated: null, justUpdated: false };
+
+  // Bars are rebuilt on every render; remembering the last width lets a
+  // rebuilt bar animate from its old value instead of snapping.
+  var lastWidths = {};
+  var pendingFills = [];
+  var firstRender = true;
+
+  function setFill(fill, key, pct) {
+    var target = Math.max(0, Math.min(100, pct));
+    var prev = lastWidths[key];
+    if (!firstRender && prev !== undefined && prev !== target) {
+      fill.style.width = prev + "%";
+      pendingFills.push({ el: fill, w: target });
+    } else {
+      fill.style.width = target + "%";
+    }
+    lastWidths[key] = target;
+  }
+
+  function flushFills() {
+    if (!pendingFills.length) return;
+    var fills = pendingFills;
+    pendingFills = [];
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fills.forEach(function (f) { f.el.style.width = f.w + "%"; });
+      });
+    });
+  }
 
   function $(id) { return document.getElementById(id); }
   function el(tag, cls, text) {
@@ -300,6 +332,7 @@
         $("errbox").hidden = true;
         var gen = data.election && data.election.generatedAt;
         if (gen !== state.lastGenerated || !state.data) {
+          state.justUpdated = !!state.data; // flash only on real updates, not first paint
           state.data = data;
           state.lastGenerated = gen;
           render();
@@ -331,11 +364,20 @@
     $("spine-ballots").textContent = fmt(d.statistics.ballotsCast);
     $("spine-updated").textContent = fmtTime(e.lastUpdated);
     $("spine-fill").style.width = (e.precinctsTotal ? (100 * e.precinctsReported / e.precinctsTotal) : 0) + "%";
+    if (state.justUpdated) {
+      state.justUpdated = false;
+      var spine = $("spine");
+      spine.classList.remove("flash");
+      void spine.offsetWidth; // restart the animation
+      spine.classList.add("flash");
+    }
 
     renderTurnout(d);
     renderTabs(d);
     renderRaces(d);
     renderPrecinctStatus(d);
+    flushFills();
+    firstRender = false;
     postHeight();
   }
 
@@ -389,7 +431,7 @@
       row.appendChild(el("div", "t-name", p.name));
       var bar = el("div", "t-bar");
       var fill = el("div", "fill");
-      fill.style.width = (100 * p.votes / max) + "%";
+      setFill(fill, "turnout|" + p.name, 100 * p.votes / max);
       fill.style.background = partyColor(codeFor[p.name]).bar;
       bar.appendChild(fill);
       row.appendChild(bar);
@@ -472,7 +514,7 @@
       row.appendChild(name);
       var bar = el("div", "cand-bar");
       var fill = el("div", "fill");
-      fill.style.width = Math.max(0, Math.min(100, c.pct)) + "%";
+      setFill(fill, r.id + "|" + c.name, c.pct);
       fill.style.background = leader ? colors.bar : colors.soft;
       if (!leader) fill.style.outline = "1px solid " + colors.bar;
       bar.appendChild(fill);
