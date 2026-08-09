@@ -224,6 +224,58 @@ def test_ward_pages():
     print("  ward detail merge: passed")
 
 
+def test_link_discovery():
+    """Discovery must survive attribute-order changes and decoy links."""
+    import fetch
+    html = """
+    <html><body>
+    <a href="/services/elections-voting">Elections &amp; Voting</a>
+    <h2>Available Reports</h2>
+    <a class="doc" href="/home/showpublisheddocument/18979/639213411072400000">Election Summary</a>
+    <a href="https://www.marathoncounty.gov/home/showpublisheddocument/18983/639213411078830000" target="_blank"><span>Precinct Summary</span></a>
+    <a target="_blank" href="/home/showpublisheddocument/18981/639213411076500000">
+      Precincts Reported/Not Reported
+    </a>
+    <h3>Historical Reports</h3>
+    <a href="/home/showpublisheddocument/13529/638591837723970000">2024 Partisan Primary</a>
+    <a href="/home/showpublisheddocument/13531/638591837949400000">By Ward Detail</a>
+    </body></html>
+    """
+    links = fetch.discover_links(html, "https://www.marathoncounty.gov/services/elections-voting/results")
+    check("discovery slots", sorted(links.keys()),
+          ["electionSummary", "precinctStatus", "precinctSummary"])
+    check("discovery absolute url", links["electionSummary"],
+          "https://www.marathoncounty.gov/home/showpublisheddocument/18979/639213411072400000")
+    check("discovery nested-tag anchor", links["precinctSummary"],
+          "https://www.marathoncounty.gov/home/showpublisheddocument/18983/639213411078830000")
+    try:
+        fetch.discover_links("<a href='/x'>Nothing relevant</a>", "https://example.com")
+        raise AssertionError("FAIL: discovery accepted a page with no report links")
+    except fetch.FetchError:
+        pass
+    print("  link discovery: passed incl. decoys, nesting, relative URLs")
+
+
+def test_bytes_ingest(tmp_output=Path("/tmp/wpr_test_results.json")):
+    """process_pdf must accept raw bytes (the automated fetch path)."""
+    if tmp_output.exists():
+        tmp_output.unlink()
+    original = parse.OUTPUT_PATH
+    parse.OUTPUT_PATH = tmp_output
+    try:
+        pdf_bytes = build_pdf(FIXTURE_TEXT.read_text().splitlines())
+        kind = parse.process_pdf(pdf_bytes, CONFIG_2024)
+        check("bytes ingest kind", kind, "summary")
+        import json
+        data = json.loads(tmp_output.read_text())
+        check("bytes ingest races", len(data["races"]), 62)
+    finally:
+        parse.OUTPUT_PATH = original
+        if tmp_output.exists():
+            tmp_output.unlink()
+    print("  bytes ingest (auto-fetch path): passed")
+
+
 def test_real(paths: list[str]):
     """Validate against real downloaded 2024 PDFs, entirely in memory.
     Pass the summary PDF, or the summary AND ward PDFs together (any order)."""
@@ -266,4 +318,6 @@ if __name__ == "__main__":
         test_summary_name_first()
         test_summary_name_after()
         test_ward_pages()
+        test_link_discovery()
+        test_bytes_ingest()
         print("\nAll parser tests passed.")

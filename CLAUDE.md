@@ -4,19 +4,31 @@ Live election results for Wausau Pilot & Review, covering Marathon County,
 Wisconsin. Successor to the April 2026 spring-election widget, rebuilt for the
 August 11, 2026 Partisan Primary with party-aware parsing and ward drill-down.
 
-## Architecture — one correct path
+## Architecture — one pipeline, two producers
 
 ```
-County posts PDFs → Rowan downloads them (browser) → runner.py watches the
-downloads folder → parse.py → public/data/results.json → git push →
-GitHub Pages → widget (public/index.html) polls every 60s → WordPress iframe
+                 ┌─ AUTO: fetch.py polls the county results page (90s),
+                 │        re-discovers the 3 report links, downloads changes
+runner.py ───────┤                                          → bytes ──┐
+                 └─ MANUAL: browser downloads into the watched folder ┤
+                                                                      ▼
+                    hash-dedupe → parse.py → results.json → git push →
+                    GitHub Pages → widget polls 60s → WordPress iframe
 ```
 
-There is intentionally **no automated fetch**. Marathon County's site
-(Granicus/CivicPlus behind Cloudflare) 403s non-browser requests. The April
-tool stacked three ingestion fallbacks; the only one that worked on election
-night was manually saved PDFs, so that is now the only path. A human with a
-browser is the fetch layer, and everything downstream is instant.
+**The April lesson, stated precisely:** Marathon County's site (Granicus
+behind Cloudflare) blocks *datacenter* IPs — GitHub Actions got 403 all
+night — but serves *residential* traffic; the fetch worked once it ran
+locally via scheduled PowerShell. Therefore the fetcher lives inside the
+locally-run runner and MUST NEVER move into GitHub Actions or any cloud
+runner. The fetcher re-discovers the three "Available Reports" links from
+the results page every cycle because the county repoints those document
+URLs between (and during) elections.
+
+The manual path is not a bolted-on fallback: both producers feed the
+identical ingest pipeline, and the human-with-a-browser producer is the
+one that cannot be blocked. If auto-fetch ever fails, the runner says so
+and manual saves continue working with zero mode-switching.
 
 ## Key design decisions
 
@@ -48,14 +60,16 @@ browser is the fetch layer, and everything downstream is instant.
 
 ## Election-night runbook
 
-1. `python scraper/runner.py` (it preflights git auth with a dry-run push and
-   refuses to start if pushing would fail — fix auth Monday, not Tuesday).
-2. After polls close (~8 p.m.), open the county results page it prints,
-   download the three PDFs (Election Summary, Precinct Summary, Precincts
-   Reported/Not Reported) to the watched folder. Repeat whenever the county
-   updates them — every 15–30 min, typically.
-3. The runner parses on arrival, pushes only when numbers change, and prints a
-   scoreboard. Duplicate downloads (`file (1).pdf` etc.) are deduped by hash.
+1. Before the night: `python scraper/runner.py --fetch-once` — a connectivity
+   self-test that discovers the three report links and downloads each. Until
+   the county repoints the links to primary documents, "would be skipped
+   (PDF is not for '2026 Partisan Primary')" is the CORRECT output.
+2. Election night: `python scraper/runner.py`. That's the whole job. It
+   preflights git auth (dry-run push), then auto-fetches every 90 seconds,
+   parses anything new, pushes only when numbers change, prints a scoreboard.
+3. If the console reports "county fetch failed", download the three PDFs in
+   a browser to the watched folder — same pipeline, no mode switch. Duplicate
+   downloads (`file (1).pdf` etc.) are deduped by hash.
 4. Order matters once: the first Election Summary must land before ward/status
    PDFs mean anything. The runner says so if they arrive early.
 
@@ -83,7 +97,8 @@ message names the exact line that didn't fit — bring it back to Claude.
 ## Stack notes
 
 - Windows / PowerShell 5.1; runner output is ASCII-only on purpose.
-- Python deps: `pdfplumber` (runtime), `reportlab` (tests only).
+- Python deps: `pdfplumber`, `requests` (runtime), `reportlab` (tests only).
+- The fetcher runs ONLY on the local machine. Never GitHub Actions — see above.
 - Deploys via GitHub Pages workflow on pushes touching `public/**`.
 - Widget fonts: Fraunces / Public Sans / JetBrains Mono (WPR design system:
   teal #3A867C, cream #F6F2E9).

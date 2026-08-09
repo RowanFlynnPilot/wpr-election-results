@@ -1,23 +1,28 @@
 """
 WPR Election Night Runner
 =========================
-Watches your downloads folder for Marathon County result PDFs, parses each new
-one the moment it lands, and pushes updated results to GitHub. The widget on
-the site refreshes itself within about a minute of each push.
+One pipeline, two producers:
 
-Your only job on election night:
-  1. Keep this running in a terminal.
-  2. When the county posts/updates results, download the three report PDFs
-     from their results page (links printed below) into your downloads folder.
-  3. That's it. Filenames don't matter -- reports are identified by content.
+  1. AUTOMATED (primary): every fetchSeconds, re-discover the three report
+     links on the county results page and download any that changed. Runs on
+     this machine because the county blocks datacenter IPs (GitHub Actions
+     gets 403; residential traffic gets through -- proven April 2026).
+  2. MANUAL (always available): any PDF saved into the watched folder is
+     picked up within pollSeconds. If the county ever blocks the fetcher,
+     download the PDFs in your browser and nothing else changes.
+
+Both producers feed the same hash-dedupe -> parse -> validate -> push flow.
 
 Run:
-    python scraper/runner.py
+    python scraper/runner.py                # election night
+    python scraper/runner.py --fetch-once   # connectivity self-test, then exit
 
 Press Ctrl+C to stop early.
 """
 
+import argparse
 import hashlib
+import io
 import json
 import subprocess
 import sys
@@ -27,6 +32,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import parse
+from fetch import SLOTS, CountyFetcher, FetchError
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RESULTS_REL = "public/data/results.json"
@@ -37,7 +43,7 @@ def run(cmd: str) -> tuple[int, str, str]:
     return r.returncode, r.stdout.strip(), r.stderr.strip()
 
 
-def sha256(path: Path) -> str:
+def sha256_file(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 16), b""):
@@ -64,11 +70,11 @@ def preflight(config: dict) -> Path:
     return watch_dir
 
 
-def push_results(kind: str) -> None:
+def push_results(kind: str, label: str) -> None:
     code, out, _ = run(f"git diff --stat {RESULTS_REL}")
     _, untracked, _ = run(f"git ls-files --others --exclude-standard {RESULTS_REL}")
     if not out.strip() and not untracked.strip():
-        print(f"  [{now_local()}] parsed [{kind}] -- no change in results, nothing to push")
+        print(f"  [{now_local()}] parsed [{kind}] from {label} -- no change, nothing to push")
         return
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     run(f"git add {RESULTS_REL}")
@@ -79,7 +85,7 @@ def push_results(kind: str) -> None:
     run("git pull --rebase origin main")
     code, _, err = run("git push origin main")
     if code == 0:
-        print(f"  [{now_local()}] pushed [{kind}] -- widget updates within ~1 minute")
+        print(f"  [{now_local()}] pushed [{kind}] from {label} -- widget updates within ~1 minute")
     else:
         print(f"  ERROR: push failed: {err}")
 
@@ -101,55 +107,124 @@ def scoreboard() -> None:
         print(f"    [{r['party']}] {r['name']}: {lead['name']} leads ({lead['votes']:,})")
 
 
+def ingest(source, label: str, config: dict, seen: set) -> None:
+    """Shared pipeline entry for both producers."""
+    if isinstance(source, (bytes, bytearray)):
+        digest = hashlib.sha256(source).hexdigest()
+    else:
+        try:
+            digest = sha256_file(source)
+        except OSError:
+            return  # still being written by the browser; next pass gets it
+    if digest in seen:
+        return
+    seen.add(digest)
+    try:
+        kind = parse.process_pdf(source, config)
+    except ValueError as e:
+        print(f"  [{now_local()}] skipped {label}: {e}")
+        return
+    except Exception as e:
+        print(f"  [{now_local()}] ERROR parsing {label}: {e}")
+        return
+    push_results(kind, label)
+    scoreboard()
+
+
+def fetch_once(config: dict) -> None:
+    """Connectivity self-test: discover links, download each slot, classify."""
+    print(f"\n  Fetch self-test against {config['resultsPage']}\n")
+    fetcher = CountyFetcher(config["resultsPage"])
+    try:
+        links = fetcher.discover()
+    except FetchError as e:
+        print(f"  DISCOVERY FAILED: {e}")
+        print("  If this is a 403, the county is blocking this connection --")
+        print("  manual browser downloads into the watched folder still work.")
+        sys.exit(1)
+    for slot, url in links.items():
+        try:
+            r = fetcher._get(url, referer=config["resultsPage"])
+            data = r.content
+            ok_pdf = data.startswith(b"%PDF")
+            line = (f"  {SLOTS[slot]}: HTTP {r.status_code}, {len(data)//1024} KB, "
+                    f"{'PDF' if ok_pdf else 'NOT A PDF'}")
+            if ok_pdf:
+                import pdfplumber
+                with pdfplumber.open(io.BytesIO(data)) as pdf:
+                    first = pdf.pages[0].extract_text() or ""
+                try:
+                    kind = parse.classify(first, config)
+                    line += f" -> classified [{kind}]"
+                except ValueError as e:
+                    line += f" -> would be skipped ({e})"
+            print(line)
+        except FetchError as e:
+            print(f"  {SLOTS[slot]}: FAILED ({e})")
+    print("\n  Self-test complete. 'Would be skipped' lines are correct until the")
+    print("  county repoints these links to the new election's documents.")
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--fetch-once", action="store_true",
+                    help="Test county connectivity and link discovery, then exit")
+    args = ap.parse_args()
+
     config = parse.load_config()
+    if args.fetch_once:
+        fetch_once(config)
+        return
+
     stop_at = datetime.fromisoformat(config["stopAtUtc"].replace("Z", "+00:00"))
     poll = int(config.get("pollSeconds", 5))
+    fetch_every = int(config.get("fetchSeconds", 90))
     watch_dir = preflight(config)
+    fetcher = CountyFetcher(config["resultsPage"])
 
     print()
     print("=" * 62)
     print(f"  WPR ELECTION NIGHT RUNNER  --  {config['name']}")
-    print(f"  Watching: {watch_dir}")
+    print(f"  Auto-fetch: {config['resultsPage']}")
+    print(f"              every {fetch_every}s (link discovery each cycle)")
+    print(f"  Watching:   {watch_dir}  (manual saves work any time)")
     print(f"  Runs until {stop_at.astimezone().strftime('%I:%M %p %b %d')} local, Ctrl+C to stop")
     print("=" * 62)
-    print()
-    print("  When the county posts results, download all three PDFs from:")
-    print(f"    {config['reportPages']['results']}")
-    print("  (Election Summary, Precinct Summary, Precincts Reported/Not Reported)")
-    print("  Save them anywhere in the watched folder. Filenames don't matter.")
     print()
 
     seen: set[str] = set()
     last_heartbeat = 0.0
+    next_fetch = 0.0
+    last_fetch_error = None
 
     while True:
         if datetime.now(timezone.utc) >= stop_at:
             print(f"\n  [{now_local()}] Reached stop time. Results are final on the widget. Good night!")
             break
 
-        pdfs = sorted(watch_dir.glob("*.pdf"), key=lambda p: p.stat().st_mtime)
-        for pdf in pdfs:
-            try:
-                digest = sha256(pdf)
-            except OSError:
-                continue  # still being written by the browser; next pass gets it
-            if digest in seen:
-                continue
-            seen.add(digest)
-            try:
-                kind = parse.process_pdf(pdf, config)
-            except ValueError as e:
-                print(f"  [{now_local()}] skipped {pdf.name}: {e}")
-                continue
-            except Exception as e:
-                print(f"  [{now_local()}] ERROR parsing {pdf.name}: {e}")
-                continue
-            push_results(kind)
-            scoreboard()
+        # Producer 1: watched folder (manual saves)
+        for pdf in sorted(watch_dir.glob("*.pdf"), key=lambda p: p.stat().st_mtime):
+            ingest(pdf, pdf.name, config, seen)
 
-        if time.time() - last_heartbeat > 120:
-            print(f"  [{now_local()}] watching for new PDFs...")
+        # Producer 2: automated county fetch
+        if time.time() >= next_fetch:
+            next_fetch = time.time() + fetch_every
+            try:
+                for slot, url, data in fetcher.fetch_changed():
+                    print(f"  [{now_local()}] fetched new {SLOTS[slot]} ({len(data)//1024} KB)")
+                    ingest(data, f"auto:{SLOTS[slot]}", config, seen)
+                if last_fetch_error is not None:
+                    print(f"  [{now_local()}] county fetch recovered")
+                    last_fetch_error = None
+            except FetchError as e:
+                msg = str(e)
+                if msg != last_fetch_error:
+                    print(f"  [{now_local()}] county fetch failed: {msg}")
+                    print("            (will keep retrying -- manual downloads to the watched folder still work)")
+                    last_fetch_error = msg
+
+        if time.time() - last_heartbeat > 300:
+            print(f"  [{now_local()}] running -- auto-fetch active, watching folder for manual saves")
             last_heartbeat = time.time()
         time.sleep(poll)
 

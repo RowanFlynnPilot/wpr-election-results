@@ -29,6 +29,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pdfplumber
+
+import io
 import logging
 logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
@@ -416,9 +418,11 @@ def load_existing() -> dict | None:
     return None
 
 
-def process_pdf(pdf_path: str | Path, config: dict) -> str:
-    """Parse one PDF and merge it into results.json. Returns the report kind."""
-    with pdfplumber.open(pdf_path) as pdf:
+def process_pdf(source: str | Path | bytes, config: dict) -> str:
+    """Parse one PDF (a file path or raw bytes) and merge it into results.json.
+    Returns the report kind."""
+    opener = io.BytesIO(source) if isinstance(source, (bytes, bytearray)) else source
+    with pdfplumber.open(opener) as pdf:
         pages = [p.extract_text() or "" for p in pdf.pages]
     if not pages or not pages[0].strip():
         raise ValueError("PDF has no extractable text")

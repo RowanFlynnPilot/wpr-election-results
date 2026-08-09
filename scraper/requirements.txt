@@ -1,1 +1,2 @@
 pdfplumber>=0.11.0
+curl_cffi>=0.7.0
