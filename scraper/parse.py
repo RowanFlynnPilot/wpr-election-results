@@ -29,6 +29,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pdfplumber
+import logging
+logging.getLogger("pdfminer").setLevel(logging.ERROR)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = REPO_ROOT / "election.config.json"
