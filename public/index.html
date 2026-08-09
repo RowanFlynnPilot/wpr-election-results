@@ -134,6 +134,25 @@
   .tab[aria-selected="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
   .tab .n { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.65; margin-left: 4px; }
 
+  /* ── Search ─────────────────────────────── */
+  .searchbox { position: relative; margin: 10px 0 2px; }
+  .searchbox input {
+    width: 100%; padding: 10px 40px 10px 15px; border-radius: 999px;
+    border: 1px solid var(--hairline); background: var(--card);
+    font: 400 14px 'Public Sans', sans-serif; color: var(--ink);
+  }
+  .searchbox input::placeholder { color: var(--muted); }
+  .searchbox input:focus-visible { outline: 2px solid var(--teal-ink); outline-offset: 1px; }
+  .search-clear {
+    position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
+    appearance: none; border: 0; background: var(--track); color: var(--muted);
+    width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+    font-size: 13px; line-height: 1; touch-action: manipulation;
+  }
+  .search-clear:hover { color: var(--ink); }
+  .search-note { font-size: 12.5px; color: var(--muted); margin: 8px 2px 0; }
+  .chip-party { color: var(--ink); font-weight: 700; }
+
   /* ── Race sections & cards ──────────────── */
   .cat-label {
     font-family: 'Fraunces', serif; font-weight: 650; font-size: 13.5px;
@@ -279,6 +298,11 @@
   </section>
 
   <div class="tabs" id="tabs" role="tablist" aria-label="Result sections" hidden></div>
+  <div class="searchbox" id="searchbox" hidden>
+    <input id="search" type="search" placeholder="Search races or candidates" aria-label="Search races or candidates" autocomplete="off">
+    <button class="search-clear" id="search-clear" hidden aria-label="Clear search">✕</button>
+  </div>
+  <div class="search-note" id="search-note" role="status" hidden></div>
   <main id="races" role="tabpanel"></main>
 
   <section class="pstatus" id="pstatus" hidden>
@@ -337,7 +361,7 @@
     { id: "OTH", label: "Other parties", match: function (r) { return ["DEM", "REP", "REF"].indexOf(r.party) === -1; } }
   ];
 
-  var state = { data: null, tab: "DEM", lastGenerated: null, justUpdated: false };
+  var state = { data: null, tab: "DEM", lastGenerated: null, justUpdated: false, query: "" };
 
   // Bars are rebuilt on every render; remembering the last width lets a
   // rebuilt bar animate from its old value instead of snapping.
@@ -429,6 +453,7 @@
     $("turnout").hidden = !hasResults;
     $("partypref").hidden = !hasResults;
     $("tabs").hidden = !hasResults;
+    $("searchbox").hidden = !hasResults;
     if (!hasResults) { renderWaiting(e); $("races").textContent = ""; $("pstatus").hidden = true; return; }
 
     // Reporting spine
@@ -564,22 +589,47 @@
       b.tabIndex = state.tab === t.id ? 0 : -1;
       b.appendChild(document.createTextNode(t.label));
       b.appendChild(el("span", "n", String(count)));
-      b.addEventListener("click", function () { state.tab = t.id; render(); });
+      b.addEventListener("click", function () {
+        state.tab = t.id;
+        if (state.query) { state.query = ""; $("search").value = ""; $("search-clear").hidden = true; }
+        render();
+      });
       bar.appendChild(b);
     });
     $("races").setAttribute("aria-labelledby", "tab-" + state.tab);
   }
 
+  function raceMatches(r, q) {
+    if ((r.name || "").toLowerCase().indexOf(q) !== -1) return true;
+    if ((r.rawName || "").toLowerCase().indexOf(q) !== -1) return true;
+    if ((r.partyLabel || "").toLowerCase().indexOf(q) !== -1) return true;
+    if ((r.category || "").toLowerCase().indexOf(q) !== -1) return true;
+    return r.candidates.some(function (c) { return c.name.toLowerCase().indexOf(q) !== -1; });
+  }
+
   function renderRaces(d) {
     var main = $("races");
     main.textContent = "";
-    var tab = TABS.filter(function (t) { return t.id === state.tab; })[0];
-    var races = d.races.filter(tab.match);
+    var q = state.query.trim().toLowerCase();
+    var races, showParty = false;
+    var note = $("search-note");
+    if (q) {
+      races = d.races.filter(function (r) { return raceMatches(r, q); });
+      showParty = true;
+      note.hidden = false;
+      note.textContent = races.length
+        ? races.length + (races.length === 1 ? " race matches" : " races match") + " — showing all parties"
+        : "No races match “" + state.query.trim() + "”";
+    } else {
+      var tab = TABS.filter(function (t) { return t.id === state.tab; })[0];
+      races = d.races.filter(tab.match);
+      note.hidden = true;
+    }
     CATEGORY_ORDER.forEach(function (cat) {
       var inCat = races.filter(function (r) { return r.category === cat; });
       if (!inCat.length) return;
       main.appendChild(el("div", "cat-label", cat));
-      inCat.forEach(function (r) { main.appendChild(raceCard(r)); });
+      inCat.forEach(function (r) { main.appendChild(raceCard(r, showParty)); });
     });
     // Anything with an unexpected category still renders
     var known = {};
@@ -587,16 +637,23 @@
     var stray = races.filter(function (r) { return !known[r.category]; });
     if (stray.length) {
       main.appendChild(el("div", "cat-label", "Other"));
-      stray.forEach(function (r) { main.appendChild(raceCard(r)); });
+      stray.forEach(function (r) { main.appendChild(raceCard(r, showParty)); });
     }
   }
 
-  function raceCard(r) {
+  function raceCard(r, showParty) {
     var colors = partyColor(r.party);
     var card = el("article", "race");
+    card.id = "race-" + r.id;
     var head = el("div", "race-head");
     head.appendChild(el("h3", "race-title", r.name));
     var meta = el("div", "race-meta");
+    if (showParty) {
+      var pchip = el("span", "chip chip-party",
+        r.partyLabel || (r.party === "REF" ? "Referendum" : r.party));
+      pchip.style.background = colors.soft;
+      meta.appendChild(pchip);
+    }
     var done = r.precincts && r.precincts.total > 0 && r.precincts.reported >= r.precincts.total;
     if (r.candidates.length >= 2 && r.candidates[0].votes > 0 && r.seats === 1) {
       var gap = r.candidates[0].pct - r.candidates[1].pct;
@@ -880,6 +937,19 @@
       window.parent.postMessage({ type: "wpr-embed-height", height: h }, "*");
     } catch (err) { /* not embedded */ }
   }
+
+  $("search").addEventListener("input", function () {
+    state.query = this.value;
+    $("search-clear").hidden = !this.value;
+    if (state.data) { renderRaces(state.data); postHeight(); }
+  });
+  $("search-clear").addEventListener("click", function () {
+    state.query = "";
+    $("search").value = "";
+    this.hidden = true;
+    if (state.data) { renderRaces(state.data); postHeight(); }
+    $("search").focus();
+  });
 
   $("tabs").addEventListener("keydown", function (ev) {
     if (["ArrowLeft", "ArrowRight", "Home", "End"].indexOf(ev.key) === -1) return;
