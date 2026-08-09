@@ -160,9 +160,24 @@
   .pstatus .names { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 
   /* ── States & footer ────────────────────── */
-  .waiting { margin-top: 18px; padding: 34px 20px; text-align: center; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
-  .waiting h2 { font-family: 'Fraunces', serif; font-weight: 650; font-size: 21px; margin-bottom: 6px; }
-  .waiting p { color: var(--muted); font-size: 14px; }
+  .waiting { margin-top: 18px; padding: 36px 24px 30px; text-align: center; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
+  .waiting-kicker {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal-ink);
+  }
+  .waiting h2 { font-family: 'Fraunces', serif; font-weight: 650; font-size: 24px; margin: 8px 0; }
+  .waiting p { color: var(--muted); font-size: 14px; max-width: 48ch; margin: 0 auto; }
+  .waiting-list {
+    list-style: none; margin: 18px auto 0; max-width: 460px; text-align: left;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 9px 20px; font-size: 13px;
+  }
+  .waiting-list li { position: relative; padding-left: 16px; }
+  .waiting-list li::before {
+    content: ""; position: absolute; left: 0; top: 6px;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+  }
+  .waiting-note { margin-top: 18px; font-size: 12.5px; }
+  @media (max-width: 480px) { .waiting-list { grid-template-columns: 1fr; } }
   .errbox { margin-top: 18px; padding: 16px; border: 1px solid var(--rep); border-radius: 10px; background: var(--rep-soft); font-size: 14px; }
   footer { margin-top: 26px; font-size: 12px; color: var(--muted); }
   .foot-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px 16px; }
@@ -211,8 +226,16 @@
   </section>
 
   <div class="waiting" id="waiting" hidden>
-    <h2>Waiting for first results</h2>
-    <p id="waiting-text">Results appear here as the Marathon County Clerk posts them after polls close at 8 p.m.</p>
+    <div class="waiting-kicker" id="waiting-kicker"></div>
+    <h2 id="waiting-head">Live results will appear here</h2>
+    <p id="waiting-text"></p>
+    <ul class="waiting-list">
+      <li>Democratic and Republican primaries, race by race</li>
+      <li>Ballots cast by party, countywide turnout</li>
+      <li>Precinct-by-precinct reporting status</li>
+      <li>Ward-level detail for every race</li>
+    </ul>
+    <p class="waiting-note">Updates automatically on this page — no need to refresh.</p>
   </div>
   <div class="errbox" id="errbox" hidden>Results are temporarily unavailable. This page retries automatically.</div>
 
@@ -274,6 +297,8 @@
           state.data = data;
           state.lastGenerated = gen;
           render();
+        } else if (!state.data.races || !state.data.races.length) {
+          renderWaiting(state.data.election); // pre-election copy flips at 8 p.m. without a data change
         }
       })
       .catch(function () { $("errbox").hidden = false; })
@@ -290,7 +315,7 @@
     $("spine").hidden = !hasResults;
     $("turnout").hidden = !hasResults;
     $("tabs").hidden = !hasResults;
-    if (!hasResults) { $("races").textContent = ""; $("pstatus").hidden = true; return; }
+    if (!hasResults) { renderWaiting(e); $("races").textContent = ""; $("pstatus").hidden = true; return; }
 
     // Reporting spine
     var pill = $("status-pill");
@@ -306,6 +331,42 @@
     renderRaces(d);
     renderPrecinctStatus(d);
     postHeight();
+  }
+
+  function pollsClosed(electionDate) {
+    // Wisconsin polls close at 8 p.m.; compare in county time, DST-safe.
+    if (!electionDate) return false;
+    try {
+      var now = new Date();
+      var day = now.toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+      var hour = parseInt(now.toLocaleTimeString("en-US", {
+        timeZone: "America/Chicago", hour: "2-digit", hourCycle: "h23"
+      }), 10);
+      return day > electionDate || (day === electionDate && hour >= 20);
+    } catch (err) { return false; }
+  }
+
+  function renderWaiting(e) {
+    var kicker, head, text;
+    if (pollsClosed(e.date)) {
+      kicker = "Polls closed at 8 p.m.";
+      head = "Counting is under way";
+      text = "The Marathon County Clerk typically posts the first numbers within " +
+        "the hour after polls close, then updates through the night as more precincts report.";
+    } else {
+      var dayName = "";
+      if (e.date) {
+        var d0 = new Date(e.date + "T12:00:00");
+        if (!isNaN(d0)) dayName = d0.toLocaleDateString("en-US", { weekday: "long" }) + ", ";
+      }
+      kicker = "Election Day · " + dayName + (e.displayDate || "");
+      head = "Live results will appear here";
+      text = "Polls across Marathon County are open until 8 p.m. on election day. " +
+        "Once they close, results from the County Clerk post here as they come in.";
+    }
+    $("waiting-kicker").textContent = kicker;
+    $("waiting-head").textContent = head;
+    $("waiting-text").textContent = text;
   }
 
   function renderTurnout(d) {
