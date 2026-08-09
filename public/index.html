@@ -239,7 +239,7 @@
       <span class="status-pill" id="status-pill"><span class="dot" aria-hidden="true"></span><span id="status-text">LIVE</span></span>
       <span class="spine-stat">Precincts <b class="mono" id="spine-precincts">–</b></span>
       <span class="spine-stat">Ballots cast <b class="mono" id="spine-ballots">–</b></span>
-      <span class="spine-stat">Updated <b class="mono" id="spine-updated">–</b></span>
+      <span class="spine-stat">Updated <b class="mono" id="spine-updated">–</b> <span id="spine-age"></span></span>
       <div class="spine-track"><div class="fill" id="spine-fill" style="width:0%"></div></div>
     </div>
   </header>
@@ -356,6 +356,21 @@
     return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
   }
 
+  function renderAge() {
+    var out = "";
+    var e = state.data && state.data.election;
+    if (e && e.lastUpdated && state.data.races && state.data.races.length) {
+      var then = new Date(e.lastUpdated);
+      if (!isNaN(then)) {
+        var mins = Math.floor((Date.now() - then.getTime()) / 60000);
+        if (mins >= 0 && mins < 1) out = "· just now";
+        else if (mins >= 1 && mins < 60) out = "· " + mins + " min ago";
+        else if (mins >= 60 && mins < 720) out = "· " + Math.floor(mins / 60) + " hr " + (mins % 60) + " min ago";
+      }
+    }
+    $("spine-age").textContent = out;
+  }
+
   function fetchResults() {
     fetch("data/results.json?ts=" + Date.now(), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
@@ -395,6 +410,7 @@
     $("spine-precincts").textContent = e.precinctsReported + " of " + e.precinctsTotal;
     $("spine-ballots").textContent = fmt(d.statistics.ballotsCast);
     $("spine-updated").textContent = fmtTime(e.lastUpdated);
+    renderAge();
     $("spine-fill").style.width = (e.precinctsTotal ? (100 * e.precinctsReported / e.precinctsTotal) : 0) + "%";
     if (state.justUpdated) {
       state.justUpdated = false;
@@ -681,6 +697,7 @@
   window.addEventListener("resize", postHeight);
   fetchResults();
   setInterval(fetchResults, REFRESH_MS);
+  setInterval(renderAge, 30000);
 })();
 </script>
 </body>
