@@ -57,6 +57,15 @@ and manual saves continue working with zero mode-switching.
   data-only. The widget shows a leader ✓ only when that race's own precincts
   are complete, and labels everything unofficial. It posts its height to the
   parent frame (`{type:"wpr-embed-height"}`) for iframe auto-sizing.
+- **Two static assets, no pipeline.** `public/wpr-badge.jpg` (typewriter
+  badge: masthead, footer, favicon, og:image) and
+  `public/data/marathon-munis.json` (61 Marathon County municipal boundaries,
+  Census TIGERweb county subdivisions, simplified, committed once). The ward
+  drill-down lazy-loads the boundaries and draws a leader-by-municipality SVG
+  map: ward names are matched by their `City/Town/Village of X` prefix,
+  unmatched municipalities shade gray, and failures fall back silently to the
+  table. Map candidate colors deliberately avoid DEM blue / REP red — primary
+  races are intraparty contests and party hues there would mislead.
 
 ## Election-night runbook
 

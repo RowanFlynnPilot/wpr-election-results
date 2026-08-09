@@ -185,6 +185,16 @@
     position: sticky; left: 0; background: var(--card);
   }
   .ward-table th:first-child { z-index: 2; }
+
+  /* ── Ward map ───────────────────────────── */
+  .ward-map { margin-top: 8px; }
+  .ward-map svg { display: block; width: 100%; height: auto; }
+  .ward-map path { stroke: var(--card); stroke-width: 0.8; cursor: pointer; }
+  .ward-map path:hover { stroke: var(--ink); stroke-width: 1.4; }
+  .map-legend { display: flex; flex-wrap: wrap; gap: 5px 14px; margin: 8px 0 2px; font-size: 11.5px; color: var(--muted); }
+  .map-legend .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; border: 1px solid var(--hairline); }
+  .map-detail { font-size: 12.5px; margin-top: 5px; min-height: 18px; }
+  .map-detail b { font-weight: 700; }
   .ward-table td { font-family: 'JetBrains Mono', monospace; }
 
   /* ── Precinct status ────────────────────── */
@@ -639,9 +649,156 @@
     return card;
   }
 
+  /* ── Municipality map (ward drill-down) ── */
+  // Candidate fills avoid DEM/REP hues on purpose: a primary is an
+  // intraparty contest and party colors here would mislead.
+  var MAP_COLORS = ["#3A867C", "#7B5A8A", "#B07A2A", "#5F6B70", "#8A5A46", "#4E7A9B"];
+  var geoPromise = null;
+
+  function ensureGeo() {
+    if (!geoPromise) {
+      geoPromise = fetch("data/marathon-munis.json")
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+    }
+    return geoPromise;
+  }
+
+  function muniKeyFromWard(name) {
+    var m = /^(city|town|village) of (.+?)(?:,? wards? [\d].*)?$/i.exec(name.trim());
+    if (!m) return null;
+    return (m[2] + " " + m[1]).toLowerCase();
+  }
+
+  function tigerToPdf(n) {
+    // "Wausau city" -> "City of Wausau"
+    var i = n.lastIndexOf(" ");
+    var type = n.slice(i + 1);
+    return type.charAt(0).toUpperCase() + type.slice(1) + " of " + n.slice(0, i);
+  }
+
+  function eachRing(geom, fn) {
+    if (geom.type === "Polygon") geom.coordinates.forEach(fn);
+    else if (geom.type === "MultiPolygon") {
+      geom.coordinates.forEach(function (poly) { poly.forEach(fn); });
+    }
+  }
+
+  function geoProjection(geo) {
+    if (geo.__proj) return geo.__proj;
+    var minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity;
+    geo.features.forEach(function (f) {
+      eachRing(f.geometry, function (ring) {
+        ring.forEach(function (p) {
+          if (p[0] < minLon) minLon = p[0]; if (p[0] > maxLon) maxLon = p[0];
+          if (p[1] < minLat) minLat = p[1]; if (p[1] > maxLat) maxLat = p[1];
+        });
+      });
+    });
+    var k = Math.cos((minLat + maxLat) / 2 * Math.PI / 180);
+    var W = 700, spanX = (maxLon - minLon) * k, spanY = maxLat - minLat;
+    var H = Math.round(W * spanY / spanX);
+    geo.__proj = {
+      W: W, H: H,
+      pt: function (p) {
+        return ((p[0] - minLon) * k / spanX * W).toFixed(1) + " " +
+               ((maxLat - p[1]) / spanY * H).toFixed(1);
+      }
+    };
+    return geo.__proj;
+  }
+
+  function buildWardMap(box, r, geo) {
+    var names = r.candidates.map(function (c) { return c.name; });
+    var colorOrder = names.slice().sort(); // alphabetical: stable across updates
+    function colorFor(name) { return MAP_COLORS[colorOrder.indexOf(name) % MAP_COLORS.length]; }
+
+    var agg = {};
+    r.wards.forEach(function (w) {
+      var key = muniKeyFromWard(w.ward);
+      if (!key) return;
+      var a = agg[key] || (agg[key] = { votes: {}, writeIns: 0, total: 0,
+        label: w.ward.replace(/,? wards? [\d].*$/i, "") });
+      names.forEach(function (n) {
+        var v = (w.candidates && w.candidates[n]) || 0;
+        a.votes[n] = (a.votes[n] || 0) + v;
+        a.total += v;
+      });
+      a.writeIns += w.writeIns || 0;
+    });
+
+    var proj = geoProjection(geo);
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 " + proj.W + " " + proj.H);
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Map of the leading candidate by municipality for " +
+      r.name + ". Full numbers are in the table below.");
+    var detail = el("div", "map-detail mono", "");
+    var anyWaiting = false, anyOutside = false;
+
+    geo.features.forEach(function (f) {
+      var d = [];
+      eachRing(f.geometry, function (ring) {
+        ring.forEach(function (p, i) { d.push((i ? "L" : "M") + proj.pt(p)); });
+        d.push("Z");
+      });
+      var path = document.createElementNS(NS, "path");
+      path.setAttribute("d", d.join(""));
+      var a = agg[f.properties.n.toLowerCase()];
+      var fill, tip;
+      if (!a) {
+        // this municipality's wards aren't in the race's report: not in the district
+        anyOutside = true;
+        fill = "var(--cream)";
+        tip = tigerToPdf(f.properties.n) + " — not part of this race";
+        path.style.cursor = "default";
+      } else if (a.total === 0) {
+        anyWaiting = true;
+        fill = "var(--track)";
+        tip = a.label + " — no votes yet";
+      } else {
+        var best = null, tie = false;
+        names.forEach(function (n) {
+          if (best === null || a.votes[n] > a.votes[best]) { best = n; tie = false; }
+          else if (a.votes[n] === a.votes[best]) { tie = true; }
+        });
+        fill = tie ? "var(--other)" : colorFor(best);
+        tip = a.label + ": " + names.map(function (n) {
+          return n + " " + fmt(a.votes[n]);
+        }).join(" · ") + (a.writeIns ? " · Write-ins " + fmt(a.writeIns) : "");
+      }
+      path.style.fill = fill;
+      var title = document.createElementNS(NS, "title");
+      title.textContent = tip;
+      path.appendChild(title);
+      path.addEventListener("click", function () { detail.textContent = tip; postHeight(); });
+      svg.appendChild(path);
+    });
+
+    var legend = el("div", "map-legend");
+    function legendItem(color, label) {
+      var item = el("span", "");
+      var sw = el("span", "sw");
+      sw.style.background = color;
+      item.appendChild(sw);
+      item.appendChild(document.createTextNode(label));
+      legend.appendChild(item);
+    }
+    names.forEach(function (n) { legendItem(colorFor(n), n + " leads"); });
+    if (anyWaiting) legendItem("var(--track)", "No votes yet");
+    if (anyOutside) legendItem("var(--cream)", "Not part of this race");
+
+    box.textContent = "";
+    box.appendChild(svg);
+    box.appendChild(legend);
+    box.appendChild(detail);
+  }
+
   function wardTable(r) {
     var det = el("details", "wards");
     det.appendChild(el("summary", "", "By ward (" + r.wards.length + ")"));
+    var mapBox = el("div", "ward-map");
+    det.appendChild(mapBox);
     var scroll = el("div", "ward-scroll");
     var table = el("table", "ward-table");
     var caption = el("caption", "sr-only", "Ward-by-ward results: " + r.name);
@@ -676,7 +833,14 @@
     table.appendChild(tbody);
     scroll.appendChild(table);
     det.appendChild(scroll);
-    det.addEventListener("toggle", postHeight);
+    det.addEventListener("toggle", function () {
+      if (det.open && !mapBox.childNodes.length) {
+        ensureGeo()
+          .then(function (geo) { buildWardMap(mapBox, r, geo); postHeight(); })
+          .catch(function () { /* map data unavailable; the table still has everything */ });
+      }
+      postHeight();
+    });
     return det;
   }
 
