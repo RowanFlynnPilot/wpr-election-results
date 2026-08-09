@@ -154,6 +154,7 @@
   }
   .chip-precincts { font-family: 'JetBrains Mono', monospace; background: var(--track); color: var(--muted); font-weight: 600; }
   .chip-precincts.done { background: var(--teal-soft); color: var(--teal-ink); }
+  .chip-margin { font-family: 'JetBrains Mono', monospace; background: var(--cream); border: 1px solid var(--hairline); color: var(--ink); font-weight: 600; }
   .seats-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .cands { margin-top: 10px; }
   .cand { display: grid; grid-template-columns: minmax(120px, 200px) 1fr 118px; gap: 10px; align-items: center; padding: 4px 0; }
@@ -570,6 +571,10 @@
     head.appendChild(el("h3", "race-title", r.name));
     var meta = el("div", "race-meta");
     var done = r.precincts && r.precincts.total > 0 && r.precincts.reported >= r.precincts.total;
+    if (r.candidates.length >= 2 && r.candidates[0].votes > 0 && r.seats === 1) {
+      var gap = r.candidates[0].pct - r.candidates[1].pct;
+      if (gap < 5) meta.appendChild(el("span", "chip chip-margin", "margin " + gap.toFixed(1) + "%"));
+    }
     var chip = el("span", "chip chip-precincts" + (done ? " done" : ""),
       r.precincts ? (r.precincts.reported + "/" + r.precincts.total + " precincts") : "");
     meta.appendChild(chip);
