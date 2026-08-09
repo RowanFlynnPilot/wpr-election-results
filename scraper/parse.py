@@ -49,13 +49,16 @@ PARTY_CODES = {
     "NPA": "Nonpartisan",
 }
 
-MARKER_RE = re.compile(r"^TOTAL(\s+VOTE\s+%)?$")
 VOTE_FOR_RE = re.compile(r"^Vote For\s+(\d+)$", re.IGNORECASE)
 WRITEIN_RE = re.compile(r"^Write-In Totals\s+([\d,]+)(?:\s+[\d.]+%)?$")
 TOTAL_RE = re.compile(r"^Total Votes Cast\s+([\d,]+)(?:\s+[\d.]+%)?$")
 OVER_RE = re.compile(r"^Overvotes\s+([\d,]+)$")
 UNDER_RE = re.compile(r"^Undervotes\s+([\d,]+)$")
 PRECINCTS_RE = re.compile(r"^Precincts Reporting\s+(\d+)\s+of\s+(\d+)")
+COLHEAD_RE = re.compile(r"^(?:TOTAL|VOTE\s*%|TOTAL\s+VOTE\s+%)$")
+STAT_LINE_RE = re.compile(
+    r"^(?:Statistics\b|Precincts Complete\b|Ballots Cast\b|Voter Turnout\b|"
+    r"Registered Voters\b|Times Counted\b)")
 CANDIDATE_RE = re.compile(r"^(?P<name>.+?)\s+(?P<votes>[\d,]+)(?:\s+(?P<pct>\d+\.\d+)%)?$")
 TIMESTAMP_RE = re.compile(r"(\d{2}/\d{2}/\d{4})\s+(\d{1,2}:\d{2})\s*([AP]M)")
 
@@ -138,116 +141,150 @@ def clean_lines(text: str, config: dict) -> tuple[list[str], str | None]:
 
 def _keyword_match(line: str):
     for kind, rx in (("writein", WRITEIN_RE), ("total", TOTAL_RE), ("over", OVER_RE),
-                     ("under", UNDER_RE), ("precincts", PRECINCTS_RE), ("votefor", VOTE_FOR_RE),
-                     ("marker", MARKER_RE)):
+                     ("under", UNDER_RE), ("precincts", PRECINCTS_RE), ("votefor", VOTE_FOR_RE)):
         m = rx.match(line)
         if m:
             return kind, m
     return None, None
 
 
+def is_name_like(line: str) -> bool:
+    """A line that starts a race name even if it superficially matches the
+    candidate pattern (e.g. 'DEM State Senator District 12'). Grounded in the
+    real reports: partisan race names carry a party prefix, referenda start
+    with 'Question', and 'Party Preference Section' is its own pseudo-race."""
+    m = re.match(r"^([A-Z]{3})\s+\S", line)
+    if m and m.group(1) in PARTY_CODES:
+        return True
+    low = line.lower()
+    return low.startswith("question") or low.startswith("party preference")
+
+
 def parse_race_blocks(lines: list[str], source: str) -> list[dict]:
     """
-    Split cleaned lines into race blocks and parse each.
+    Parse race blocks from a cleaned line stream. Grounded in the real 2024
+    PDFs (summary and 447-page ward detail, inspected 2026-08-08):
 
-    Different PDF text extractors emit the race name either before or after the
-    'Vote For N' line. The mode is detected per block from evidence: if the line
-    immediately after 'Vote For' is a structural/candidate line, the name must
-    precede it, and vice versa.
+      - 'Vote For N' begins a race's structure
+      - the body is the run of result lines that follows: candidate lines,
+        Write-In Totals, and (summary report only) Total Votes Cast,
+        Overvotes, Undervotes, Precincts Reporting. The ward report is
+        condensed -- candidates plus at most a Write-In line, and the Party
+        Preference block has no result keywords at all.
+      - the body ends at the first name-like or statistics line
+      - 'TOTAL' / 'VOTE %' column headers are layout noise wherever they fall
+      - the race name sits either immediately before 'Vote For' or
+        immediately after it; placement is constant within one PDF
     """
-    # Segment on TOTAL / TOTAL VOTE % markers
-    segments, current = [], []
-    for line in lines:
-        if MARKER_RE.match(line):
-            if current:
-                segments.append(current)
-            current = []
-        else:
-            current.append(line)
-    if current:
-        segments.append(current)
-
-    # Race segments only (preamble/statistics segments have no 'Vote For')
-    race_segs = []
-    for seg in segments:
-        vf_idx = next((i for i, l in enumerate(seg) if VOTE_FOR_RE.match(l)), None)
-        if vf_idx is not None:
-            race_segs.append((seg, vf_idx))
-    if not race_segs:
+    lines = [l for l in lines if not COLHEAD_RE.match(l)]
+    vf_idxs = [i for i, l in enumerate(lines) if VOTE_FOR_RE.match(l)]
+    if not vf_idxs:
         return []
 
-    # Mode detection: PDF text extractors emit the race name either before the
-    # 'Vote For N' line or immediately after it. Every block in one PDF follows
-    # the same convention, so detect it once from evidence and refuse mixed
-    # signals rather than guessing per block.
-    before_count = sum(1 for _, i in race_segs if i > 0)
-    if before_count == len(race_segs):
-        mode = "name-first"
-    elif before_count == 0:
-        mode = "name-after"
-    else:
-        raise ValueError(
-            f"{source}: inconsistent race-name placement "
-            f"({before_count} of {len(race_segs)} blocks name-first) -- format change, refusing to guess"
-        )
+    def body_end(start_i: int, limit: int) -> int:
+        """First index at/after start_i that is not a body line."""
+        j = start_i
+        while j < limit:
+            line = lines[j]
+            if is_name_like(line) or STAT_LINE_RE.match(line):
+                break
+            kind, _ = _keyword_match(line)
+            if kind == "votefor":
+                break
+            if kind is None and not CANDIDATE_RE.match(line):
+                break
+            j += 1
+        return j
+
+    # Name placement is determined by block 0: only in name-first mode does a
+    # name line sit between the preceding statistics/keyword line and the
+    # first 'Vote For'. Every other block is then checked for consistency.
+    first_pre = []
+    j = vf_idxs[0] - 1
+    while j >= 0:
+        line = lines[j]
+        if STAT_LINE_RE.match(line) or _keyword_match(line)[0] is not None:
+            break
+        first_pre.append(line)
+        j -= 1
+    first_pre.reverse()
+    mode = "name-first" if first_pre else "name-after"
 
     races = []
-    for seg, vf_idx in race_segs:
-        seats = int(VOTE_FOR_RE.match(seg[vf_idx]).group(1))
+    pending_name = first_pre  # name-first: block k's name lines, collected ahead
+    for k, vi in enumerate(vf_idxs):
+        limit = vf_idxs[k + 1] if k + 1 < len(vf_idxs) else len(lines)
+        seats = int(VOTE_FOR_RE.match(lines[vi]).group(1))
         if mode == "name-first":
-            name_lines = seg[:vf_idx]
-            body = seg[vf_idx + 1:]
+            raw_name = " ".join(pending_name).strip()
+            be = body_end(vi + 1, limit)
+            body = lines[vi + 1:be]
+            pending_name = [l for l in lines[be:limit] if not STAT_LINE_RE.match(l)]
+            if k + 1 < len(vf_idxs) and not pending_name:
+                raise ValueError(
+                    f"{source}: no name found between blocks {k} and {k + 1} "
+                    f"(after '{raw_name}') -- inconsistent format, refusing to guess")
         else:
-            if len(seg) < 2:
-                raise ValueError(f"{source}: race block too short to contain a name: {seg}")
-            name_lines = [seg[1]]
-            body = seg[2:]
-        raw_name = " ".join(name_lines).strip()
+            if vi + 1 >= limit:
+                raise ValueError(f"{source}: race block too short to contain a name after '{lines[vi]}'")
+            raw_name = lines[vi + 1]
+            be = body_end(vi + 2, limit)
+            body = lines[vi + 2:be]
+            leftover = [l for l in lines[be:limit] if not STAT_LINE_RE.match(l)]
+            if leftover:
+                raise ValueError(
+                    f"{source}: unexpected lines after race '{raw_name}' body: "
+                    f"{leftover[:3]} -- inconsistent format, refusing to guess")
         if not raw_name or _keyword_match(raw_name)[0] is not None:
-            raise ValueError(f"{source}: could not extract race name from block: {seg[:4]}")
+            raise ValueError(f"{source}: could not extract race name near '{lines[vi]}'")
 
         race = {
             "rawName": raw_name,
             "seats": seats,
             "candidates": [],
             "writeIns": 0,
-            "totalVotes": 0,
+            "totalVotes": None,
             "overvotes": 0,
             "undervotes": 0,
             "precincts": None,
         }
+        seen_total = False
         for line in body:
             kind, m = _keyword_match(line)
             if kind == "writein":
                 race["writeIns"] = parse_int(m.group(1))
             elif kind == "total":
                 race["totalVotes"] = parse_int(m.group(1))
+                seen_total = True
             elif kind == "over":
                 race["overvotes"] = parse_int(m.group(1))
             elif kind == "under":
                 race["undervotes"] = parse_int(m.group(1))
             elif kind == "precincts":
                 race["precincts"] = {"reported": int(m.group(1)), "total": int(m.group(2))}
-                break
-            elif kind in ("votefor", "marker"):
+            elif kind is not None:
                 raise ValueError(f"{source}: unexpected '{line}' inside race '{raw_name}'")
             else:
                 cm = CANDIDATE_RE.match(line)
                 if not cm:
                     raise ValueError(f"{source}: unparseable line in race '{raw_name}': '{line}'")
+                if seen_total:
+                    raise ValueError(
+                        f"{source}: candidate-like line after 'Total Votes Cast' in "
+                        f"'{raw_name}': '{line}' -- format change, refusing to guess")
                 race["candidates"].append({
                     "name": cm.group("name").strip(),
                     "votes": parse_int(cm.group("votes")),
                     "pct": float(cm.group("pct")) if cm.group("pct") else 0.0,
                 })
 
-        # Strict validation: candidates + write-ins must equal the reported total
-        cand_sum = sum(c["votes"] for c in race["candidates"]) + race["writeIns"]
-        if cand_sum != race["totalVotes"]:
-            raise ValueError(
-                f"{source}: vote sum mismatch in '{raw_name}': "
-                f"candidates+writeIns={cand_sum} but Total Votes Cast={race['totalVotes']}"
-            )
+        # Where the report states a total, the parts must sum to it exactly
+        if seen_total:
+            cand_sum = sum(c["votes"] for c in race["candidates"]) + race["writeIns"]
+            if cand_sum != race["totalVotes"]:
+                raise ValueError(
+                    f"{source}: vote sum mismatch in '{raw_name}': "
+                    f"candidates+writeIns={cand_sum} but Total Votes Cast={race['totalVotes']}")
         races.append(race)
     return races
 
@@ -282,6 +319,10 @@ def parse_summary(text: str, config: dict) -> dict:
     party_preference = None
     races = []
     for b in blocks:
+        if b["precincts"] is None or b["totalVotes"] is None:
+            raise ValueError(
+                f"summary: race '{b['rawName']}' is missing 'Precincts Reporting' or "
+                f"'Total Votes Cast' -- wrong report type or format change")
         if b["rawName"].lower().startswith("party preference"):
             party_preference = b["candidates"]
             continue
@@ -299,7 +340,7 @@ def parse_summary(text: str, config: dict) -> dict:
             "totalVotes": b["totalVotes"],
             "overvotes": b["overvotes"],
             "undervotes": b["undervotes"],
-            "precincts": b["precincts"] or {"reported": precincts_reported, "total": precincts_total},
+            "precincts": b["precincts"],
             "wards": [],
         })
 
@@ -331,30 +372,54 @@ def parse_summary(text: str, config: dict) -> dict:
 
 
 def parse_ward_pages(pages: list[str], config: dict, races: list[dict]) -> None:
-    """Merge ward-level results from the Precinct Summary PDF into races (in place)."""
+    """Merge ward-level results from the By Ward Detail PDF into races (in place).
+
+    Wards are NOT one-per-page: on a partisan ballot each ward carries dozens
+    of races and spans multiple pages. All pages are therefore joined into one
+    stream and split into ward sections anchored on each ward's Statistics
+    block -- the line immediately preceding a stats run is the ward name.
+    Repeated ward-name page headers inside a section are dropped, which also
+    heals race blocks split across page boundaries."""
     lookup = {r["rawName"].lower(): r for r in races}
     for r in races:
         r["wards"] = []
 
-    matched_any = False
+    all_lines: list[str] = []
     for page_text in pages:
-        lines, _ = clean_lines(page_text, config)
-        if not lines or MARKER_RE.match(lines[0]) or VOTE_FOR_RE.match(lines[0]):
-            continue
-        ward_name = lines[0]
-        page_full = "\n".join(lines)
-        bm = re.search(r"Ballots Cast\s*[-–]\s*Total\s+([\d,]+)", page_full)
+        cleaned, _ = clean_lines(page_text, config)
+        all_lines.extend(cleaned)
+
+    stat_starts = [i for i, l in enumerate(all_lines)
+                   if STAT_LINE_RE.match(l) and (i == 0 or not STAT_LINE_RE.match(all_lines[i - 1]))]
+    if not stat_starts:
+        raise ValueError("ward PDF has no ward statistics blocks -- wrong report type or format change")
+
+    sections = []
+    for idx, s in enumerate(stat_starts):
+        if s == 0:
+            raise ValueError("ward PDF: statistics block with no preceding ward name line")
+        name_line = all_lines[s - 1]
+        if _keyword_match(name_line)[0] is not None or VOTE_FOR_RE.match(name_line):
+            raise ValueError(f"ward PDF: expected a ward name before statistics, got '{name_line}'")
+        end_i = stat_starts[idx + 1] - 1 if idx + 1 < len(stat_starts) else len(all_lines)
+        sections.append((name_line, all_lines[s:end_i]))
+
+    matched_any = False
+    unmatched: dict[str, int] = {}
+    for ward_name, seg in sections:
+        seg = [l for l in seg if l != ward_name]  # drop repeated page headers
+        page_full = "\n".join(seg)
+        bm = re.search(r"Ballots Cast\s*[-\u2013]\s*Total\s+([\d,]+)", page_full)
         ballots_cast = parse_int(bm.group(1)) if bm else 0
 
-        try:
-            blocks = parse_race_blocks(lines[1:], f"ward '{ward_name}'")
-        except ValueError as e:
-            raise ValueError(f"ward page parse failed: {e}") from e
-
+        blocks = parse_race_blocks(seg, f"ward '{ward_name}'")
         for b in blocks:
+            if b["rawName"].lower().startswith("party preference"):
+                continue  # ward-level party preference is not a summary race
             race = lookup.get(b["rawName"].lower())
             if race is None:
-                continue  # races not on this ward's ballot, or ward-only contests
+                unmatched[b["rawName"]] = unmatched.get(b["rawName"], 0) + 1
+                continue
             race["wards"].append({
                 "ward": ward_name,
                 "ballotsCast": ballots_cast,
@@ -368,6 +433,11 @@ def parse_ward_pages(pages: list[str], config: dict, races: list[dict]) -> None:
             "ward PDF parsed but no race names matched the summary -- "
             "drop the Election Summary PDF first, then this one"
         )
+    if unmatched:
+        names = ", ".join(sorted(unmatched)[:5])
+        raise ValueError(
+            f"ward PDF contains race names absent from the summary ({names}) -- "
+            f"likely a name-extraction error, refusing to publish partial ward data")
 
 
 def parse_status(text: str, config: dict) -> list[dict]:

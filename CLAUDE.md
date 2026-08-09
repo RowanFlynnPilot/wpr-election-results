@@ -73,6 +73,19 @@ and manual saves continue working with zero mode-switching.
 4. Order matters once: the first Election Summary must land before ward/status
    PDFs mean anything. The runner says so if they arrive early.
 
+## The ward report's true format (verified against the real 2024 PDF)
+
+The By Ward Detail report is 447 pages, ~13 per ward, ward name repeated as
+a page header. Its race blocks are CONDENSED: name / Vote For N / TOTAL
+VOTE % / candidate lines / at most a Write-In Totals line. No Total Votes
+Cast, no Overvotes/Undervotes, no Precincts Reporting -- and the per-ward
+Party Preference block has no result keywords at all. Block boundaries are
+therefore "the first name-like line" (party prefix, 'Question', statistics),
+which is also what makes 'DEM State Senator District 12' safely a name and
+never a candidate. A spring (nonpartisan) election may print unprefixed
+race names that look candidate-like ('...District 7'); if a future ward
+parse raises on that, this is why -- bring the real PDF to the harness.
+
 ## Validation before election night
 
 The parser is tested against the county's real 2024 Partisan Primary summary

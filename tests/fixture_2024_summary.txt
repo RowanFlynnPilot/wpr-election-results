@@ -13,9 +13,9 @@ Ballots Cast - Nonpartisan 313
 Ballots Cast - CrossOver 138
 Ballots Cast - Blank 9
 Voter Turnout - Total 37.30%
-TOTAL VOTE %
 Party Preference Section
 Vote For 1
+TOTAL VOTE %
 Democratic 10,960 41.96%
 Republican 15,093 57.79%
 Constitution 16 0.06%
@@ -25,18 +25,18 @@ Total Votes Cast 26,119 100.00%
 Overvotes 9
 Undervotes 3,214
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 DEM United States Senator
 Vote For 1
+TOTAL VOTE %
 Tammy Baldwin 11,264 99.88%
 Write-In Totals 14 0.12%
 Total Votes Cast 11,278 100.00%
 Overvotes 0
 Undervotes 547
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 DEM Representative in Congress
 Vote For 1
+TOTAL VOTE %
 Kyle Kilbourn 5,692 55.06%
 Elsa Rae Duranceau 4,638 44.86%
 Write-In Totals 8 0.08%
@@ -48,45 +48,45 @@ Election Summary - 08/13/2024 10:07 PM Page 1 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 DEM State Senator District 12
 Vote For 1
+TOTAL VOTE %
 Andi Rich 535 100.00%
 Write-In Totals 0 0.00%
 Total Votes Cast 535 100.00%
 Overvotes 0
 Undervotes 148
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 DEM Representative to the Assembly District 35
 Vote For 1
+TOTAL VOTE %
 Elizabeth McCrank 526 100.00%
 Write-In Totals 0 0.00%
 Total Votes Cast 526 100.00%
 Overvotes 0
 Undervotes 157
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 DEM Representative to the Assembly District 69
 Vote For 1
+TOTAL VOTE %
 Roger Halls 323 100.00%
 Write-In Totals 0 0.00%
 Total Votes Cast 323 100.00%
 Overvotes 0
 Undervotes 93
 Precincts Reporting 14 of 14
-TOTAL VOTE %
 DEM Representative to the Assembly District 85
 Vote For 1
+TOTAL VOTE %
 Yee Leng Xiong 4,869 99.77%
 Write-In Totals 11 0.23%
 Total Votes Cast 4,880 100.00%
 Overvotes 0
 Undervotes 764
 Precincts Reporting 29 of 29
-TOTAL VOTE %
 DEM Representative to the Assembly District 86
 Vote For 1
+TOTAL VOTE %
 John H. Small 1,347 99.78%
 Write-In Totals 3 0.22%
 Total Votes Cast 1,350 100.00%
@@ -97,42 +97,42 @@ Election Summary - 08/13/2024 10:07 PM Page 2 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 DEM Representative to the Assembly District 87
 Vote For 1
+TOTAL VOTE %
 William Switalla 2,908 99.83%
 Write-In Totals 5 0.17%
 Total Votes Cast 2,913 100.00%
 Overvotes 1
 Undervotes 549
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 DEM District Atttorney
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 218 100.00%
 Total Votes Cast 218 100.00%
 Overvotes 0
 Undervotes 11,607
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 DEM County Clerk
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 263 100.00%
 Total Votes Cast 263 100.00%
 Overvotes 0
 Undervotes 11,562
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 DEM County Treasurer
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 213 100.00%
 Total Votes Cast 213 100.00%
 Overvotes 0
 Undervotes 11,612
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 DEM Register of Deeds
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 208 100.00%
 Total Votes Cast 208 100.00%
 Overvotes 0
@@ -142,9 +142,9 @@ Election Summary - 08/13/2024 10:07 PM Page 3 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 REP United States Senator
 Vote For 1
+TOTAL VOTE %
 Eric Hovde 14,178 86.42%
 Charles E. Barman 1,189 7.25%
 Rejani Raveendran 1,024 6.24%
@@ -153,27 +153,27 @@ Total Votes Cast 16,406 100.00%
 Overvotes 8
 Undervotes 722
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 REP Representative in Congress
 Vote For 1
+TOTAL VOTE %
 Tom Tiffany 15,084 99.20%
 Write-In Totals 121 0.80%
 Total Votes Cast 15,205 100.00%
 Overvotes 1
 Undervotes 1,930
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 REP State Senator District 12
 Vote For 1
+TOTAL VOTE %
 Mary Felzkowski 1,147 99.91%
 Write-In Totals 1 0.09%
 Total Votes Cast 1,148 100.00%
 Overvotes 0
 Undervotes 212
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 REP Representative to the Assembly District 35
 Vote For 1
+TOTAL VOTE %
 Calvin Callahan 1,046 86.16%
 Todd Mayr 168 13.84%
 Write-In Totals 0 0.00%
@@ -185,9 +185,9 @@ Election Summary - 08/13/2024 10:07 PM Page 4 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 REP Representative to the Assembly District 69
 Vote For 1
+TOTAL VOTE %
 Karen Hurd 460 38.14%
 Lori j. Voss 745 61.77%
 Write-In Totals 1 0.08%
@@ -195,18 +195,18 @@ Total Votes Cast 1,206 100.00%
 Overvotes 0
 Undervotes 55
 Precincts Reporting 14 of 14
-TOTAL VOTE %
 REP Representative to the Assembly District 85
 Vote For 1
+TOTAL VOTE %
 Patrick Snyder 4,845 99.43%
 Write-In Totals 28 0.57%
 Total Votes Cast 4,873 100.00%
 Overvotes 0
 Undervotes 495
 Precincts Reporting 29 of 29
-TOTAL VOTE %
 REP Representative to the Assembly District 86
 Vote For 1
+TOTAL VOTE %
 Donna M. Rozar 917 25.64%
 John Spiros 1,517 42.41%
 Trine Spindler 1,139 31.84%
@@ -215,9 +215,9 @@ Total Votes Cast 3,577 100.00%
 Overvotes 2
 Undervotes 117
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 REP Representative to the Assembly District 87
 Vote For 1
+TOTAL VOTE %
 Brent Jacobson 4,093 77.93%
 Cory Sillars 1,152 21.93%
 Write-In Totals 7 0.13%
@@ -229,18 +229,18 @@ Election Summary - 08/13/2024 10:07 PM Page 5 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 REP District Attorney
 Vote For 1
+TOTAL VOTE %
 Kyle R. Mayo 13,634 99.61%
 Write-In Totals 53 0.39%
 Total Votes Cast 13,687 100.00%
 Overvotes 0
 Undervotes 3,449
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 REP County Clerk
 Vote For 1
+TOTAL VOTE %
 Kim Trueblood 12,721 80.36%
 Toshia Ranallo 3,091 19.52%
 Write-In Totals 19 0.12%
@@ -248,9 +248,9 @@ Total Votes Cast 15,831 100.00%
 Overvotes 1
 Undervotes 1,304
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 REP County Treasurer
 Vote For 1
+TOTAL VOTE %
 Connie Beyersdorff 10,072 65.68%
 Jen Seliger 5,247 34.22%
 Write-In Totals 16 0.10%
@@ -258,9 +258,9 @@ Total Votes Cast 15,335 100.00%
 Overvotes 4
 Undervotes 1,797
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 REP Register of Deeds
 Vote For 1
+TOTAL VOTE %
 Jennifer Lemmer 14,200 99.71%
 Write-In Totals 42 0.29%
 Total Votes Cast 14,242 100.00%
@@ -271,41 +271,41 @@ Election Summary - 08/13/2024 10:07 PM Page 6 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 CON United States Senator
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 3 100.00%
 Total Votes Cast 3 100.00%
 Overvotes 0
 Undervotes 15
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 CON Representative in Congress
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
 Undervotes 16
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 CON State Senator District 12
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 1
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 CON Representative to the Assembly District 35
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 1
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 CON Representative to the Assembly District 69
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
@@ -315,41 +315,41 @@ Election Summary - 08/13/2024 10:07 PM Page 7 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 CON Representative to the Assembly District 85
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
 Undervotes 4
 Precincts Reporting 29 of 29
-TOTAL VOTE %
 CON Representative to the Assembly District 86
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
 Undervotes 1
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 CON Representative to the Assembly District 87
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 8
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 CON District Attorney
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
 Undervotes 16
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 CON County Clerk
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
@@ -359,41 +359,41 @@ Election Summary - 08/13/2024 10:07 PM Page 8 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 CON County Treasurer
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
 Undervotes 16
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 CON Register of Deeds
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 2 100.00%
 Total Votes Cast 2 100.00%
 Overvotes 0
 Undervotes 16
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 LIB United States Senator
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 3 100.00%
 Total Votes Cast 3 100.00%
 Overvotes 0
 Undervotes 29
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 LIB Representative in Congress
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 32
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 LIB State Senator District 12
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
@@ -403,41 +403,41 @@ Election Summary - 08/13/2024 10:07 PM Page 9 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 LIB Representative to the Assembly District 35
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 0
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 LIB Representative to the Assembly District 69
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 4
 Precincts Reporting 14 of 14
-TOTAL VOTE %
 LIB Representative to the Assembly District 85
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 20
 Precincts Reporting 29 of 29
-TOTAL VOTE %
 LIB Representative to the Assembly District 86
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 2
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 LIB Representative to the Assembly District 87
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
@@ -447,41 +447,41 @@ Election Summary - 08/13/2024 10:07 PM Page 10 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 LIB District Attorney
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 32
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 LIB County Clerk
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 32
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 LIB County Treasurer
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 32
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 LIB Register of Deeds
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 32
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 WGN United States Senator
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
@@ -491,41 +491,41 @@ Election Summary - 08/13/2024 10:07 PM Page 11 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 WGN Representative in Congress
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
 Undervotes 17
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 WGN State Senator District 12
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 1
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 WGN Representative to the Assembly District 35
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 1
 Precincts Reporting 7 of 7
-TOTAL VOTE %
 WGN Representative to the Assembly District 69
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
 Undervotes 1
 Precincts Reporting 14 of 14
-TOTAL VOTE %
 WGN Representative to the Assembly District 85
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
@@ -535,41 +535,41 @@ Election Summary - 08/13/2024 10:07 PM Page 12 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 WGN Representative to the Assembly District 86
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 5
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 WGN Representative to the Assembly District 87
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 0
 Total Votes Cast 0
 Overvotes 0
 Undervotes 2
 Precincts Reporting 19 of 19
-TOTAL VOTE %
 WGN District Attorney
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
 Undervotes 17
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 WGN County Clerk
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
 Undervotes 17
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 WGN County Treasurer
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
@@ -579,26 +579,26 @@ Election Summary - 08/13/2024 10:07 PM Page 13 of 14
 Summary Results Report UNOFFICIAL RESULTS
 2024 Partisan Primary
 August 13, 2024 Marathon County
-TOTAL VOTE %
 WGN Register of Deeds
 Vote For 1
+TOTAL VOTE %
 Write-In Totals 1 100.00%
 Total Votes Cast 1 100.00%
 Overvotes 0
 Undervotes 17
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 Question 1: Delegation of appropriation power
 Vote For 1
+TOTAL VOTE %
 Yes 14,155 52.23%
 No 12,944 47.77%
 Total Votes Cast 27,099 100.00%
 Overvotes 14
 Undervotes 2,229
 Precincts Reporting 88 of 88
-TOTAL VOTE %
 Question 2: Allocation of federal moneys
 Vote For 1
+TOTAL VOTE %
 Yes 14,296 52.59%
 No 12,886 47.41%
 Total Votes Cast 27,182 100.00%

@@ -152,10 +152,11 @@ def test_summary_name_after():
     lines = FIXTURE_TEXT.read_text().splitlines()
     reordered, i = [], 0
     while i < len(lines):
-        if lines[i] == "TOTAL VOTE %" and i + 2 < len(lines):
+        if (i + 2 < len(lines) and re.match(r"^Vote For \d+$", lines[i + 1])
+                and lines[i + 2] == "TOTAL VOTE %"):
             reordered.append("TOTAL")
-            reordered.append(lines[i + 2])   # Vote For N
-            reordered.append(lines[i + 1])   # race name
+            reordered.append(lines[i + 1])   # Vote For N
+            reordered.append(lines[i])       # race name
             i += 3
         else:
             reordered.append(lines[i])
@@ -170,43 +171,94 @@ def test_summary_name_after():
     print("  summary (name-after ordering): passed incl. 'District 12' name case")
 
 
+def test_summary_marker_before_name():
+    """Third observed ordering (web extractors): TOTAL VOTE % / Name / Vote For."""
+    lines = FIXTURE_TEXT.read_text().splitlines()
+    reordered, i = [], 0
+    while i < len(lines):
+        if (i + 2 < len(lines) and re.match(r"^Vote For \d+$", lines[i + 1])
+                and lines[i + 2] == "TOTAL VOTE %"):
+            reordered.append(lines[i + 2])   # marker first
+            reordered.append(lines[i])       # race name
+            reordered.append(lines[i + 1])   # Vote For N
+            i += 3
+        else:
+            reordered.append(lines[i])
+            i += 1
+    pages = extract_text(build_pdf(reordered))
+    data = parse.parse_summary("\n".join(pages), CONFIG_2024)
+    check("marker-first race count", len(data["races"]), 62)
+    r = race(data, "DEM", "United States Senator")
+    check("marker-first Baldwin", r["candidates"][0]["votes"], 11264)
+    print("  summary (marker-before-name ordering): passed")
+
+
 def test_ward_pages():
-    """Synthetic two-ward Precinct Summary in the same block format."""
+    """Ward detail in its true condensed shape (verified against the real
+    2024 PDF): no Total/Over/Under/Precincts lines, a keyword-less Party
+    Preference block, ward name repeated as a page header, a race block
+    split across a page break, and a district race name that looks like a
+    candidate line."""
     ward_pdf_lines = [
-        "Precinct Summary - By Ward Detail UNOFFICIAL RESULTS",
+        "Summary Results Report UNOFFICIAL RESULTS",
         "2024 Partisan Primary",
         "August 13, 2024 Marathon County",
-        "City of Wausau Ward 1",
-        "Ballots Cast - Total 412",
+        "BERGEN T WD 1",
+        "Statistics TOTAL",
+        "Registered Voters - Total 521",
+        "Ballots Cast - Total 219",
+        "Ballots Cast - Democratic 78",
+        "Ballots Cast - Republican 137",
+        "Voter Turnout - Total 42.03%",
+        "Party Preference Section",
+        "Vote For 1",
         "TOTAL VOTE %",
+        "Democratic 73 38.42%",
+        "Republican 115 60.53%",
         "REP United States Senator",
         "Vote For 1",
-        "Eric Hovde 201 85.17%",
-        "Charles E. Barman 20 8.47%",
-        "Rejani Raveendran 15 6.36%",
-        "Write-In Totals 0 0.00%",
-        "Total Votes Cast 236 100.00%",
-        "Overvotes 0",
-        "Undervotes 12",
-        "Precincts Reporting 1 of 1",
-        "Election Summary - 08/13/2024 10:07 PM Page 1 of 2",
-        "Precinct Summary - By Ward Detail UNOFFICIAL RESULTS",
+        "TOTAL VOTE %",
+        "Eric Hovde 107 82.31%",
+        "Charles E. Barman 12 9.23%",
+        # page break mid-block: headers + repeated ward name, then the rest
+        "Precinct Summary - 08/13/2024 10:08PM Page 1 of 3",
+        "Summary Results Report UNOFFICIAL RESULTS",
         "2024 Partisan Primary",
         "August 13, 2024 Marathon County",
-        "Town of Rib Mountain Wards 1-2",
+        "BERGEN T WD 1",
+        "Rejani Raveendran 11 8.46%",
+        "Write-In Totals 0 0.00%",
+        "REP State Senator District 12",
+        "Vote For 1",
+        "TOTAL VOTE %",
+        "Mary Felzkowski 88 100.00%",
+        "Write-In Totals 0",
+        "CON District Attorney",
+        "Vote For 1",
+        "TOTAL VOTE %",
+        "Write-In Totals 0",
+        "Precinct Summary - 08/13/2024 10:08PM Page 2 of 3",
+        "Summary Results Report UNOFFICIAL RESULTS",
+        "2024 Partisan Primary",
+        "August 13, 2024 Marathon County",
+        "WAUSAU C WD 1",
+        "Statistics TOTAL",
+        "Registered Voters - Total 902",
         "Ballots Cast - Total 388",
+        "Voter Turnout - Total 43.01%",
+        "Party Preference Section",
+        "Vote For 1",
         "TOTAL VOTE %",
+        "Democratic 240 63.16%",
+        "Republican 140 36.84%",
         "REP United States Senator",
         "Vote For 1",
-        "Eric Hovde 240 87.59%",
-        "Charles E. Barman 19 6.93%",
-        "Rejani Raveendran 15 5.47%",
+        "TOTAL VOTE %",
+        "Eric Hovde 110 87.30%",
+        "Charles E. Barman 9 7.14%",
+        "Rejani Raveendran 7 5.56%",
         "Write-In Totals 0 0.00%",
-        "Total Votes Cast 274 100.00%",
-        "Overvotes 0",
-        "Undervotes 9",
-        "Precincts Reporting 1 of 1",
-        "Election Summary - 08/13/2024 10:07 PM Page 2 of 2",
+        "Precinct Summary - 08/13/2024 10:08PM Page 3 of 3",
     ]
     pages = extract_text(build_pdf(ward_pdf_lines))
     check("classify ward", parse.classify(pages[0], CONFIG_2024), "ward")
@@ -218,10 +270,16 @@ def test_ward_pages():
     parse.parse_ward_pages(pages, CONFIG_2024, data["races"])
     r = race(data, "REP", "United States Senator")
     check("ward count", len(r["wards"]), 2)
-    check("ward 1 name", r["wards"][0]["ward"], "City of Wausau Ward 1")
-    check("ward 1 Hovde", r["wards"][0]["candidates"]["Eric Hovde"], 201)
+    check("ward 1 name", r["wards"][0]["ward"], "BERGEN T WD 1")
+    check("split-block Hovde", r["wards"][0]["candidates"]["Eric Hovde"], 107)
+    check("split-block Raveendran", r["wards"][0]["candidates"]["Rejani Raveendran"], 11)
+    check("ward 1 ballots", r["wards"][0]["ballotsCast"], 219)
     check("ward 2 ballots", r["wards"][1]["ballotsCast"], 388)
-    print("  ward detail merge: passed")
+    d12 = race(data, "REP", "State Senator District 12")
+    check("district-name-as-candidate trap", d12["wards"][0]["candidates"]["Mary Felzkowski"], 88)
+    con = race(data, "CON", "District Attorney")
+    check("zero-vote ward block", (con["wards"][0]["candidates"], con["wards"][0]["writeIns"]), ({}, 0))
+    print("  ward detail merge: passed (condensed format, split block, district trap)")
 
 
 def test_link_discovery():
@@ -302,9 +360,23 @@ def test_real(paths: list[str]):
         if kind == "ward":
             parse.parse_ward_pages(pages, CONFIG_2024, data["races"])
             with_wards = sum(1 for r in data["races"] if r["wards"])
-            n_wards = len(data["races"][0]["wards"]) if with_wards else 0
-            print(f"  ward detail: merged into {with_wards} races "
-                  f"(~{n_wards} wards on the first race)")
+            print(f"  ward detail: merged into {with_wards} of {len(data['races'])} races")
+            mismatches = []
+            for r in data["races"]:
+                if not r["wards"]:
+                    continue
+                ward_sum = sum(sum(w["candidates"].values()) + w["writeIns"] for w in r["wards"])
+                if ward_sum != r["totalVotes"]:
+                    mismatches.append(f"{r['rawName']}: wards={ward_sum} vs summary={r['totalVotes']}")
+            if mismatches:
+                print("  CROSS-CHECK FAILED for " + str(len(mismatches)) + " races:")
+                for m in mismatches[:8]:
+                    print("    " + m)
+                sys.exit(1)
+            rep_sen = race(data, "REP", "United States Senator")
+            print(f"  cross-check: every race's ward votes sum exactly to its summary total")
+            print(f"  (REP U.S. Senator: {len(rep_sen['wards'])} wards, "
+                  f"{sum(sum(w['candidates'].values()) + w['writeIns'] for w in rep_sen['wards']):,} votes)")
     print("  real-PDF validation complete -- eyeball the numbers above against the PDFs")
 
 
@@ -317,6 +389,7 @@ if __name__ == "__main__":
     else:
         test_summary_name_first()
         test_summary_name_after()
+        test_summary_marker_before_name()
         test_ward_pages()
         test_link_discovery()
         test_bytes_ingest()

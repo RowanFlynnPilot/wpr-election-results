@@ -7,7 +7,7 @@
     "state": "Wisconsin",
     "status": "final",
     "lastUpdated": "2024-08-13T22:07:00",
-    "generatedAt": "2026-08-08T23:45:37.566239+00:00",
+    "generatedAt": "2026-08-09T02:35:26.508091+00:00",
     "precinctsReported": 88,
     "precinctsTotal": 88
   },
@@ -367,18 +367,7 @@
         "reported": 88,
         "total": 88
       },
-      "wards": [
-        {
-          "ward": "City of Wausau Ward 1",
-          "ballotsCast": 412,
-          "candidates": {
-            "Eric Hovde": 201,
-            "Charles E. Barman": 20,
-            "Rejani Raveendran": 15
-          },
-          "writeIns": 0
-        }
-      ]
+      "wards": []
     },
     {
       "id": "rep-representative-in-congress",
