@@ -45,10 +45,18 @@
 
   /* ── Header ─────────────────────────────── */
   .masthead {
-    display: inline-block; font-family: 'Fraunces', serif; font-weight: 650;
+    display: inline-flex; align-items: center; gap: 13px;
+    font-family: 'Fraunces', serif; font-weight: 650;
     font-size: clamp(21px, 4.5vw, 26px); line-height: 1.1; letter-spacing: 0.005em;
     color: var(--ink); text-decoration: none;
   }
+  .badge {
+    display: inline-block; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid var(--hairline);
+    background: var(--card) url("wpr-badge.jpg") center / cover no-repeat;
+  }
+  .mast-logo { width: 54px; height: 54px; }
+  @media (max-width: 480px) { .mast-logo { width: 46px; height: 46px; } }
   .masthead:hover, .masthead:focus-visible { color: var(--teal-ink); }
   .amp { color: var(--teal-ink); font-weight: 500; font-style: italic; }
   .rule-double {
@@ -196,9 +204,10 @@
   @media (max-width: 480px) { .waiting-list { grid-template-columns: 1fr; } }
   .errbox { margin-top: 18px; padding: 16px; border: 1px solid var(--rep); border-radius: 10px; background: var(--rep-soft); font-size: 14px; }
   footer { margin-top: 26px; font-size: 12px; color: var(--muted); }
-  .foot-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px 16px; }
+  .foot-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
   .foot-source { line-height: 1.5; }
-  .foot-brand { text-decoration: none; text-align: right; }
+  .foot-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; text-align: right; }
+  .foot-logo { width: 44px; height: 44px; }
   .foot-brand:hover .foot-wordmark, .foot-brand:focus-visible .foot-wordmark { color: var(--teal-ink); }
   .foot-wordmark {
     display: block; font-family: 'Fraunces', serif; font-weight: 650;
@@ -214,7 +223,7 @@
 <body>
 <div class="wrap">
   <header>
-    <a class="masthead" href="https://wausaupilotandreview.com" target="_blank" rel="noopener">Wausau Pilot <span class="amp">&amp;</span> Review</a>
+    <a class="masthead" href="https://wausaupilotandreview.com" target="_blank" rel="noopener"><span class="badge mast-logo" aria-hidden="true"></span><span>Wausau Pilot <span class="amp">&amp;</span> Review</span></a>
     <div class="rule-double" aria-hidden="true"></div>
     <div class="eyebrow">Election Results · Unofficial</div>
     <h1 id="election-name">Election Results</h1>
@@ -260,8 +269,11 @@
     <div class="foot-grid">
       <div class="foot-source">Source: Marathon County Clerk<br>All results unofficial until canvassed</div>
       <a class="foot-brand" href="https://wausaupilotandreview.com" target="_blank" rel="noopener">
-        <span class="foot-wordmark">Wausau Pilot <span class="amp">&amp;</span> Review</span>
-        <span class="foot-url mono">wausaupilotandreview.com</span>
+        <span>
+          <span class="foot-wordmark">Wausau Pilot <span class="amp">&amp;</span> Review</span>
+          <span class="foot-url mono">wausaupilotandreview.com</span>
+        </span>
+        <span class="badge foot-logo" aria-hidden="true"></span>
       </a>
     </div>
   </footer>
