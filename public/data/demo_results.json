@@ -1,0 +1,3695 @@
+{
+ "election": {
+  "name": "2024 Partisan Primary",
+  "date": "2024-08-13",
+  "displayDate": "August 13, 2024",
+  "county": "Marathon County",
+  "state": "Wisconsin",
+  "status": "live",
+  "lastUpdated": "2024-08-13T22:07:00",
+  "generatedAt": "2024-08-13T22:07:30",
+  "precinctsReported": 79,
+  "precinctsTotal": 88
+ },
+ "statistics": {
+  "ballotsCast": 29342,
+  "ballotsByParty": {
+   "Democratic": 11825,
+   "Republican": 17136,
+   "Constitution": 18,
+   "Libertarian": 32,
+   "Wisconsin Green": 18,
+   "Nonpartisan": 313,
+   "CrossOver": 138
+  },
+  "blank": 9,
+  "turnoutPct": 37.3
+ },
+ "partyPreference": [
+  {
+   "name": "Democratic",
+   "votes": 10960,
+   "pct": 41.96
+  },
+  {
+   "name": "Republican",
+   "votes": 15093,
+   "pct": 57.79
+  },
+  {
+   "name": "Constitution",
+   "votes": 16,
+   "pct": 0.06
+  },
+  {
+   "name": "Libertarian",
+   "votes": 32,
+   "pct": 0.12
+  },
+  {
+   "name": "Wisconsin Green",
+   "votes": 18,
+   "pct": 0.07
+  }
+ ],
+ "races": [
+  {
+   "id": "dem-united-states-senator",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "United States Senator",
+   "rawName": "DEM United States Senator",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Tammy Baldwin",
+     "votes": 11264,
+     "pct": 99.88
+    }
+   ],
+   "writeIns": 14,
+   "totalVotes": 11278,
+   "overvotes": 0,
+   "undervotes": 547,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": [
+    {
+     "ward": "City of Abbotsford",
+     "candidates": {
+      "Tammy Baldwin": 185
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "City of Colby",
+     "candidates": {
+      "Tammy Baldwin": 87
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "City of Marshfield",
+     "candidates": {
+      "Tammy Baldwin": 542
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Mosinee Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 185
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "City of Schofield Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 200
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Wausau Ward 6",
+     "candidates": {
+      "Tammy Baldwin": 237
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Bergen Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 301
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Berlin",
+     "candidates": {
+      "Tammy Baldwin": 333
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Bern",
+     "candidates": {
+      "Tammy Baldwin": 312
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Bevent Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 31
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Brighton Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 173
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Cassel Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 108
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Cleveland Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 376
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Day",
+     "candidates": {
+      "Tammy Baldwin": 306
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Easton",
+     "candidates": {
+      "Tammy Baldwin": 73
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Eau Pleine Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 211
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Elderon",
+     "candidates": {
+      "Tammy Baldwin": 200
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Emmet Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 556
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Frankfort",
+     "candidates": {
+      "Tammy Baldwin": 92
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Franzen Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 285
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Green Valley Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 384
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Guenther Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 96
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Halsey",
+     "candidates": {
+      "Tammy Baldwin": 59
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Hamburg",
+     "candidates": {
+      "Tammy Baldwin": 137
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Harrison",
+     "candidates": {
+      "Tammy Baldwin": 54
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Hewitt",
+     "candidates": {
+      "Tammy Baldwin": 163
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Holton",
+     "candidates": {
+      "Tammy Baldwin": 165
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Hull",
+     "candidates": {
+      "Tammy Baldwin": 272
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Johnson",
+     "candidates": {
+      "Tammy Baldwin": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Knowlton Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Marathon",
+     "candidates": {
+      "Tammy Baldwin": 333
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of McMillan",
+     "candidates": {
+      "Tammy Baldwin": 51
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Mosinee Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 164
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Norrie Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 211
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Plover Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 160
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Reid Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Rib Falls Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 190
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Rietbrock",
+     "candidates": {
+      "Tammy Baldwin": 207
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Ringle",
+     "candidates": {
+      "Tammy Baldwin": 246
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Spencer Wards 1-2",
+     "candidates": {
+      "Tammy Baldwin": 162
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Stettin Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 183
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Texas",
+     "candidates": {
+      "Tammy Baldwin": 335
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Wausau",
+     "candidates": {
+      "Tammy Baldwin": 163
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Weston",
+     "candidates": {
+      "Tammy Baldwin": 44
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Wien Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 545
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Athens",
+     "candidates": {
+      "Tammy Baldwin": 130
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Birnamwood",
+     "candidates": {
+      "Tammy Baldwin": 388
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Dorchester",
+     "candidates": {
+      "Tammy Baldwin": 171
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Edgar Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 203
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Elderon",
+     "candidates": {
+      "Tammy Baldwin": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Fenwood",
+     "candidates": {
+      "Tammy Baldwin": 328
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Hatley",
+     "candidates": {
+      "Tammy Baldwin": 267
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Kronenwetter Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 229
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Maine",
+     "candidates": {
+      "Tammy Baldwin": 247
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Marathon City Wards 1-4",
+     "candidates": {
+      "Tammy Baldwin": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rib Mountain Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rothschild Wards 1-3",
+     "candidates": {
+      "Tammy Baldwin": 140
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Spencer",
+     "candidates": {
+      "Tammy Baldwin": 263
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Stratford",
+     "candidates": {
+      "Tammy Baldwin": 195
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Unity",
+     "candidates": {
+      "Tammy Baldwin": 208
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Weston",
+     "candidates": {
+      "Tammy Baldwin": 95
+     },
+     "writeIns": 2
+    }
+   ]
+  },
+  {
+   "id": "dem-representative-in-congress",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Representative in Congress",
+   "rawName": "DEM Representative in Congress",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Kyle Kilbourn",
+     "votes": 5692,
+     "pct": 55.06
+    },
+    {
+     "name": "Elsa Rae Duranceau",
+     "votes": 4638,
+     "pct": 44.86
+    }
+   ],
+   "writeIns": 8,
+   "totalVotes": 10338,
+   "overvotes": 1,
+   "undervotes": 1486,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": [
+    {
+     "ward": "City of Abbotsford",
+     "candidates": {
+      "Kyle Kilbourn": 126,
+      "Elsa Rae Duranceau": 114
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Colby",
+     "candidates": {
+      "Kyle Kilbourn": 150,
+      "Elsa Rae Duranceau": 103
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "City of Marshfield Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 318,
+      "Elsa Rae Duranceau": 160
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "City of Mosinee",
+     "candidates": {
+      "Kyle Kilbourn": 146,
+      "Elsa Rae Duranceau": 34
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Schofield",
+     "candidates": {
+      "Kyle Kilbourn": 132,
+      "Elsa Rae Duranceau": 76
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "City of Wausau Ward 6",
+     "candidates": {
+      "Kyle Kilbourn": 136,
+      "Elsa Rae Duranceau": 31
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Bergen",
+     "candidates": {
+      "Kyle Kilbourn": 55,
+      "Elsa Rae Duranceau": 44
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Berlin Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 54,
+      "Elsa Rae Duranceau": 89
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Bern",
+     "candidates": {
+      "Kyle Kilbourn": 168,
+      "Elsa Rae Duranceau": 18
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Bevent",
+     "candidates": {
+      "Kyle Kilbourn": 220,
+      "Elsa Rae Duranceau": 144
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Brighton Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 328,
+      "Elsa Rae Duranceau": 35
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Cassel Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 148,
+      "Elsa Rae Duranceau": 238
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Cleveland",
+     "candidates": {
+      "Kyle Kilbourn": 131,
+      "Elsa Rae Duranceau": 39
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Day Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 62,
+      "Elsa Rae Duranceau": 169
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Easton Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 143,
+      "Elsa Rae Duranceau": 19
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Eau Pleine",
+     "candidates": {
+      "Kyle Kilbourn": 130,
+      "Elsa Rae Duranceau": 83
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Elderon",
+     "candidates": {
+      "Kyle Kilbourn": 196,
+      "Elsa Rae Duranceau": 62
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Emmet Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 102,
+      "Elsa Rae Duranceau": 196
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Frankfort Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 285,
+      "Elsa Rae Duranceau": 50
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Franzen",
+     "candidates": {
+      "Kyle Kilbourn": 254,
+      "Elsa Rae Duranceau": 59
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Green Valley Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 135,
+      "Elsa Rae Duranceau": 115
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Guenther Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 192,
+      "Elsa Rae Duranceau": 122
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Halsey Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 32,
+      "Elsa Rae Duranceau": 29
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Hamburg",
+     "candidates": {
+      "Kyle Kilbourn": 96,
+      "Elsa Rae Duranceau": 32
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Harrison Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 75,
+      "Elsa Rae Duranceau": 83
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Hewitt",
+     "candidates": {
+      "Kyle Kilbourn": 143,
+      "Elsa Rae Duranceau": 59
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Holton",
+     "candidates": {
+      "Kyle Kilbourn": 74,
+      "Elsa Rae Duranceau": 12
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Hull",
+     "candidates": {
+      "Kyle Kilbourn": 174,
+      "Elsa Rae Duranceau": 163
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Johnson Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 0,
+      "Elsa Rae Duranceau": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Knowlton",
+     "candidates": {
+      "Kyle Kilbourn": 0,
+      "Elsa Rae Duranceau": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Marathon Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 160,
+      "Elsa Rae Duranceau": 204
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of McMillan",
+     "candidates": {
+      "Kyle Kilbourn": 201,
+      "Elsa Rae Duranceau": 102
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Mosinee Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 126,
+      "Elsa Rae Duranceau": 166
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Norrie Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 61,
+      "Elsa Rae Duranceau": 133
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Plover",
+     "candidates": {
+      "Kyle Kilbourn": 31,
+      "Elsa Rae Duranceau": 46
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Reid",
+     "candidates": {
+      "Kyle Kilbourn": 0,
+      "Elsa Rae Duranceau": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Rib Falls",
+     "candidates": {
+      "Kyle Kilbourn": 154,
+      "Elsa Rae Duranceau": 114
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Rietbrock",
+     "candidates": {
+      "Kyle Kilbourn": 35,
+      "Elsa Rae Duranceau": 155
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Ringle Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 232,
+      "Elsa Rae Duranceau": 101
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Spencer Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 97,
+      "Elsa Rae Duranceau": 35
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Stettin Wards 1-4",
+     "candidates": {
+      "Kyle Kilbourn": 44,
+      "Elsa Rae Duranceau": 31
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Texas Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 105,
+      "Elsa Rae Duranceau": 175
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Wausau Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 148,
+      "Elsa Rae Duranceau": 96
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Weston Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 54,
+      "Elsa Rae Duranceau": 109
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Wien",
+     "candidates": {
+      "Kyle Kilbourn": 130,
+      "Elsa Rae Duranceau": 185
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Athens",
+     "candidates": {
+      "Kyle Kilbourn": 322,
+      "Elsa Rae Duranceau": 249
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Birnamwood Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 76,
+      "Elsa Rae Duranceau": 58
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Dorchester Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 168,
+      "Elsa Rae Duranceau": 160
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Edgar",
+     "candidates": {
+      "Kyle Kilbourn": 98,
+      "Elsa Rae Duranceau": 34
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Elderon",
+     "candidates": {
+      "Kyle Kilbourn": 0,
+      "Elsa Rae Duranceau": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Fenwood",
+     "candidates": {
+      "Kyle Kilbourn": 194,
+      "Elsa Rae Duranceau": 89
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Hatley",
+     "candidates": {
+      "Kyle Kilbourn": 86,
+      "Elsa Rae Duranceau": 124
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Kronenwetter Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 148,
+      "Elsa Rae Duranceau": 60
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Maine Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 120,
+      "Elsa Rae Duranceau": 56
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Marathon City",
+     "candidates": {
+      "Kyle Kilbourn": 0,
+      "Elsa Rae Duranceau": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rib Mountain",
+     "candidates": {
+      "Kyle Kilbourn": 0,
+      "Elsa Rae Duranceau": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rothschild",
+     "candidates": {
+      "Kyle Kilbourn": 15,
+      "Elsa Rae Duranceau": 60
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Spencer",
+     "candidates": {
+      "Kyle Kilbourn": 189,
+      "Elsa Rae Duranceau": 49
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Stratford Wards 1-2",
+     "candidates": {
+      "Kyle Kilbourn": 198,
+      "Elsa Rae Duranceau": 50
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Unity Wards 1-3",
+     "candidates": {
+      "Kyle Kilbourn": 219,
+      "Elsa Rae Duranceau": 92
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Weston",
+     "candidates": {
+      "Kyle Kilbourn": 135,
+      "Elsa Rae Duranceau": 157
+     },
+     "writeIns": 2
+    }
+   ]
+  },
+  {
+   "id": "dem-state-senator-district-12",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "State Senator District 12",
+   "rawName": "DEM State Senator District 12",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Andi Rich",
+     "votes": 535,
+     "pct": 100.0
+    }
+   ],
+   "writeIns": 0,
+   "totalVotes": 535,
+   "overvotes": 0,
+   "undervotes": 148,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": [
+    {
+     "ward": "City of Wausau Ward 1",
+     "candidates": {
+      "Andi Rich": 488
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Bevent",
+     "candidates": {
+      "Andi Rich": 188
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Easton Wards 1-3",
+     "candidates": {
+      "Andi Rich": 99
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Elderon Wards 1-2",
+     "candidates": {
+      "Andi Rich": 106
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Franzen",
+     "candidates": {
+      "Andi Rich": 263
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Harrison",
+     "candidates": {
+      "Andi Rich": 615
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Hewitt",
+     "candidates": {
+      "Andi Rich": 445
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Norrie",
+     "candidates": {
+      "Andi Rich": 171
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Plover Wards 1-3",
+     "candidates": {
+      "Andi Rich": 92
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Reid",
+     "candidates": {
+      "Andi Rich": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Ringle",
+     "candidates": {
+      "Andi Rich": 418
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Wausau",
+     "candidates": {
+      "Andi Rich": 245
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Weston",
+     "candidates": {
+      "Andi Rich": 440
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Birnamwood Wards 1-4",
+     "candidates": {
+      "Andi Rich": 143
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Elderon Wards 1-4",
+     "candidates": {
+      "Andi Rich": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Hatley Wards 1-2",
+     "candidates": {
+      "Andi Rich": 114
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Kronenwetter",
+     "candidates": {
+      "Andi Rich": 211
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Weston",
+     "candidates": {
+      "Andi Rich": 166
+     },
+     "writeIns": 2
+    }
+   ]
+  },
+  {
+   "id": "dem-representative-to-the-assembly-district-35",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Representative to the Assembly District 35",
+   "rawName": "DEM Representative to the Assembly District 35",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Elizabeth McCrank",
+     "votes": 526,
+     "pct": 100.0
+    }
+   ],
+   "writeIns": 0,
+   "totalVotes": 526,
+   "overvotes": 0,
+   "undervotes": 157,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-representative-to-the-assembly-district-69",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Representative to the Assembly District 69",
+   "rawName": "DEM Representative to the Assembly District 69",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Roger Halls",
+     "votes": 323,
+     "pct": 100.0
+    }
+   ],
+   "writeIns": 0,
+   "totalVotes": 323,
+   "overvotes": 0,
+   "undervotes": 93,
+   "precincts": {
+    "reported": 14,
+    "total": 14
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-representative-to-the-assembly-district-85",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Representative to the Assembly District 85",
+   "rawName": "DEM Representative to the Assembly District 85",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Yee Leng Xiong",
+     "votes": 4869,
+     "pct": 99.77
+    }
+   ],
+   "writeIns": 11,
+   "totalVotes": 4880,
+   "overvotes": 0,
+   "undervotes": 764,
+   "precincts": {
+    "reported": 29,
+    "total": 29
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-representative-to-the-assembly-district-86",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Representative to the Assembly District 86",
+   "rawName": "DEM Representative to the Assembly District 86",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "John H. Small",
+     "votes": 1347,
+     "pct": 99.78
+    }
+   ],
+   "writeIns": 3,
+   "totalVotes": 1350,
+   "overvotes": 0,
+   "undervotes": 269,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-representative-to-the-assembly-district-87",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Representative to the Assembly District 87",
+   "rawName": "DEM Representative to the Assembly District 87",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "William Switalla",
+     "votes": 2908,
+     "pct": 99.83
+    }
+   ],
+   "writeIns": 5,
+   "totalVotes": 2913,
+   "overvotes": 1,
+   "undervotes": 549,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-district-atttorney",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "District Atttorney",
+   "rawName": "DEM District Atttorney",
+   "category": "Local",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 218,
+   "totalVotes": 218,
+   "overvotes": 0,
+   "undervotes": 11607,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-county-clerk",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "County Clerk",
+   "rawName": "DEM County Clerk",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 263,
+   "totalVotes": 263,
+   "overvotes": 0,
+   "undervotes": 11562,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-county-treasurer",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "County Treasurer",
+   "rawName": "DEM County Treasurer",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 213,
+   "totalVotes": 213,
+   "overvotes": 0,
+   "undervotes": 11612,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "dem-register-of-deeds",
+   "party": "DEM",
+   "partyLabel": "Democratic",
+   "name": "Register of Deeds",
+   "rawName": "DEM Register of Deeds",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 208,
+   "totalVotes": 208,
+   "overvotes": 0,
+   "undervotes": 11617,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-united-states-senator",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "United States Senator",
+   "rawName": "REP United States Senator",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Eric Hovde",
+     "votes": 14178,
+     "pct": 86.42
+    },
+    {
+     "name": "Charles E. Barman",
+     "votes": 1189,
+     "pct": 7.25
+    },
+    {
+     "name": "Rejani Raveendran",
+     "votes": 1024,
+     "pct": 6.24
+    }
+   ],
+   "writeIns": 15,
+   "totalVotes": 16406,
+   "overvotes": 8,
+   "undervotes": 722,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": [
+    {
+     "ward": "City of Abbotsford Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 220,
+      "Charles E. Barman": 9,
+      "Rejani Raveendran": 8
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "City of Colby Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 219,
+      "Charles E. Barman": 13,
+      "Rejani Raveendran": 9
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "City of Marshfield",
+     "candidates": {
+      "Eric Hovde": 323,
+      "Charles E. Barman": 36,
+      "Rejani Raveendran": 9
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Mosinee Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 131,
+      "Charles E. Barman": 21,
+      "Rejani Raveendran": 26
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "City of Schofield Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 292,
+      "Charles E. Barman": 6,
+      "Rejani Raveendran": 7
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "City of Wausau Ward 6",
+     "candidates": {
+      "Eric Hovde": 252,
+      "Charles E. Barman": 29,
+      "Rejani Raveendran": 14
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Bergen Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 193,
+      "Charles E. Barman": 14,
+      "Rejani Raveendran": 12
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Berlin Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 72,
+      "Charles E. Barman": 35,
+      "Rejani Raveendran": 21
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Bern",
+     "candidates": {
+      "Eric Hovde": 330,
+      "Charles E. Barman": 42,
+      "Rejani Raveendran": 17
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Bevent Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 124,
+      "Charles E. Barman": 44,
+      "Rejani Raveendran": 6
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Brighton Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 311,
+      "Charles E. Barman": 23,
+      "Rejani Raveendran": 29
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Cassel Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 330,
+      "Charles E. Barman": 5,
+      "Rejani Raveendran": 24
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Cleveland",
+     "candidates": {
+      "Eric Hovde": 141,
+      "Charles E. Barman": 15,
+      "Rejani Raveendran": 18
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Day Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 320,
+      "Charles E. Barman": 13,
+      "Rejani Raveendran": 4
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Easton",
+     "candidates": {
+      "Eric Hovde": 37,
+      "Charles E. Barman": 17,
+      "Rejani Raveendran": 22
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Eau Pleine Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 221,
+      "Charles E. Barman": 21,
+      "Rejani Raveendran": 16
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Elderon",
+     "candidates": {
+      "Eric Hovde": 409,
+      "Charles E. Barman": 4,
+      "Rejani Raveendran": 21
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Emmet",
+     "candidates": {
+      "Eric Hovde": 108,
+      "Charles E. Barman": 27,
+      "Rejani Raveendran": 17
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Frankfort",
+     "candidates": {
+      "Eric Hovde": 334,
+      "Charles E. Barman": 6,
+      "Rejani Raveendran": 12
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Franzen",
+     "candidates": {
+      "Eric Hovde": 127,
+      "Charles E. Barman": 20,
+      "Rejani Raveendran": 17
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Green Valley",
+     "candidates": {
+      "Eric Hovde": 224,
+      "Charles E. Barman": 18,
+      "Rejani Raveendran": 12
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Guenther Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 42,
+      "Charles E. Barman": 7,
+      "Rejani Raveendran": 10
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Halsey Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 161,
+      "Charles E. Barman": 12,
+      "Rejani Raveendran": 14
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Hamburg Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 154,
+      "Charles E. Barman": 26,
+      "Rejani Raveendran": 16
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Harrison Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 124,
+      "Charles E. Barman": 16,
+      "Rejani Raveendran": 23
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Hewitt Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 492,
+      "Charles E. Barman": 4,
+      "Rejani Raveendran": 14
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Holton",
+     "candidates": {
+      "Eric Hovde": 442,
+      "Charles E. Barman": 12,
+      "Rejani Raveendran": 8
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Hull Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 416,
+      "Charles E. Barman": 20,
+      "Rejani Raveendran": 10
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Johnson Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 0,
+      "Charles E. Barman": 0,
+      "Rejani Raveendran": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Knowlton",
+     "candidates": {
+      "Eric Hovde": 0,
+      "Charles E. Barman": 0,
+      "Rejani Raveendran": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Marathon Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 62,
+      "Charles E. Barman": 33,
+      "Rejani Raveendran": 8
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of McMillan Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 57,
+      "Charles E. Barman": 13,
+      "Rejani Raveendran": 14
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Mosinee Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 262,
+      "Charles E. Barman": 14,
+      "Rejani Raveendran": 10
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Norrie",
+     "candidates": {
+      "Eric Hovde": 297,
+      "Charles E. Barman": 4,
+      "Rejani Raveendran": 15
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Plover Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 107,
+      "Charles E. Barman": 4,
+      "Rejani Raveendran": 32
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Reid",
+     "candidates": {
+      "Eric Hovde": 0,
+      "Charles E. Barman": 0,
+      "Rejani Raveendran": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Rib Falls Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 256,
+      "Charles E. Barman": 17,
+      "Rejani Raveendran": 20
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Rietbrock Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 230,
+      "Charles E. Barman": 4,
+      "Rejani Raveendran": 8
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Ringle",
+     "candidates": {
+      "Eric Hovde": 174,
+      "Charles E. Barman": 35,
+      "Rejani Raveendran": 23
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Spencer",
+     "candidates": {
+      "Eric Hovde": 186,
+      "Charles E. Barman": 33,
+      "Rejani Raveendran": 5
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Stettin",
+     "candidates": {
+      "Eric Hovde": 377,
+      "Charles E. Barman": 4,
+      "Rejani Raveendran": 11
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Texas",
+     "candidates": {
+      "Eric Hovde": 279,
+      "Charles E. Barman": 28,
+      "Rejani Raveendran": 8
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Wausau Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 214,
+      "Charles E. Barman": 21,
+      "Rejani Raveendran": 24
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Weston Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 129,
+      "Charles E. Barman": 13,
+      "Rejani Raveendran": 10
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Wien",
+     "candidates": {
+      "Eric Hovde": 231,
+      "Charles E. Barman": 32,
+      "Rejani Raveendran": 14
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Athens Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 223,
+      "Charles E. Barman": 14,
+      "Rejani Raveendran": 18
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Birnamwood Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 439,
+      "Charles E. Barman": 32,
+      "Rejani Raveendran": 3
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Dorchester",
+     "candidates": {
+      "Eric Hovde": 296,
+      "Charles E. Barman": 9,
+      "Rejani Raveendran": 11
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Edgar Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 209,
+      "Charles E. Barman": 25,
+      "Rejani Raveendran": 5
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Elderon",
+     "candidates": {
+      "Eric Hovde": 0,
+      "Charles E. Barman": 0,
+      "Rejani Raveendran": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Fenwood Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 134,
+      "Charles E. Barman": 2,
+      "Rejani Raveendran": 10
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Hatley Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 328,
+      "Charles E. Barman": 5,
+      "Rejani Raveendran": 10
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Kronenwetter Wards 1-4",
+     "candidates": {
+      "Eric Hovde": 226,
+      "Charles E. Barman": 45,
+      "Rejani Raveendran": 25
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Maine Wards 1-2",
+     "candidates": {
+      "Eric Hovde": 116,
+      "Charles E. Barman": 2,
+      "Rejani Raveendran": 9
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Marathon City",
+     "candidates": {
+      "Eric Hovde": 0,
+      "Charles E. Barman": 0,
+      "Rejani Raveendran": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rib Mountain",
+     "candidates": {
+      "Eric Hovde": 0,
+      "Charles E. Barman": 0,
+      "Rejani Raveendran": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rothschild",
+     "candidates": {
+      "Eric Hovde": 434,
+      "Charles E. Barman": 5,
+      "Rejani Raveendran": 4
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Spencer Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 183,
+      "Charles E. Barman": 14,
+      "Rejani Raveendran": 33
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Stratford Wards 1-3",
+     "candidates": {
+      "Eric Hovde": 367,
+      "Charles E. Barman": 28,
+      "Rejani Raveendran": 23
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Unity",
+     "candidates": {
+      "Eric Hovde": 230,
+      "Charles E. Barman": 21,
+      "Rejani Raveendran": 2
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Weston",
+     "candidates": {
+      "Eric Hovde": 327,
+      "Charles E. Barman": 19,
+      "Rejani Raveendran": 17
+     },
+     "writeIns": 3
+    }
+   ]
+  },
+  {
+   "id": "rep-representative-in-congress",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Representative in Congress",
+   "rawName": "REP Representative in Congress",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Tom Tiffany",
+     "votes": 15084,
+     "pct": 99.2
+    }
+   ],
+   "writeIns": 121,
+   "totalVotes": 15205,
+   "overvotes": 1,
+   "undervotes": 1930,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": [
+    {
+     "ward": "City of Abbotsford Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 203
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Colby Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 241
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "City of Marshfield Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 348
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "City of Mosinee",
+     "candidates": {
+      "Tom Tiffany": 641
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "City of Schofield Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 450
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "City of Wausau Ward 6",
+     "candidates": {
+      "Tom Tiffany": 487
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Bergen Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 416
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Berlin",
+     "candidates": {
+      "Tom Tiffany": 32
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Bern Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 72
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Bevent Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 99
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Brighton Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 54
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Cassel",
+     "candidates": {
+      "Tom Tiffany": 192
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Cleveland Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 117
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Day Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 283
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Easton",
+     "candidates": {
+      "Tom Tiffany": 32
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Eau Pleine Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 370
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Elderon",
+     "candidates": {
+      "Tom Tiffany": 227
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Emmet Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 324
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Frankfort",
+     "candidates": {
+      "Tom Tiffany": 146
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Franzen",
+     "candidates": {
+      "Tom Tiffany": 128
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Green Valley",
+     "candidates": {
+      "Tom Tiffany": 307
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Guenther Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 403
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Halsey",
+     "candidates": {
+      "Tom Tiffany": 285
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Hamburg",
+     "candidates": {
+      "Tom Tiffany": 115
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Harrison Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 396
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Hewitt",
+     "candidates": {
+      "Tom Tiffany": 49
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Holton",
+     "candidates": {
+      "Tom Tiffany": 351
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Hull",
+     "candidates": {
+      "Tom Tiffany": 104
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Johnson",
+     "candidates": {
+      "Tom Tiffany": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Knowlton Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Marathon Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 357
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of McMillan Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 165
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Mosinee",
+     "candidates": {
+      "Tom Tiffany": 247
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Norrie Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 416
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Town of Plover Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 463
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Reid",
+     "candidates": {
+      "Tom Tiffany": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Rib Falls Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 428
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Rietbrock Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 177
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Ringle",
+     "candidates": {
+      "Tom Tiffany": 92
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Spencer Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 328
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Stettin Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 180
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Texas",
+     "candidates": {
+      "Tom Tiffany": 290
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Town of Wausau",
+     "candidates": {
+      "Tom Tiffany": 47
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Town of Weston",
+     "candidates": {
+      "Tom Tiffany": 235
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Town of Wien",
+     "candidates": {
+      "Tom Tiffany": 332
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Athens Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 354
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Birnamwood Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 180
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Dorchester",
+     "candidates": {
+      "Tom Tiffany": 59
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Edgar",
+     "candidates": {
+      "Tom Tiffany": 622
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Elderon",
+     "candidates": {
+      "Tom Tiffany": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Fenwood",
+     "candidates": {
+      "Tom Tiffany": 149
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Hatley Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 153
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Kronenwetter Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 266
+     },
+     "writeIns": 3
+    },
+    {
+     "ward": "Village of Maine",
+     "candidates": {
+      "Tom Tiffany": 70
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Marathon City Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rib Mountain Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 0
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Rothschild",
+     "candidates": {
+      "Tom Tiffany": 253
+     },
+     "writeIns": 1
+    },
+    {
+     "ward": "Village of Spencer Wards 1-3",
+     "candidates": {
+      "Tom Tiffany": 324
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Stratford Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 114
+     },
+     "writeIns": 0
+    },
+    {
+     "ward": "Village of Unity Wards 1-2",
+     "candidates": {
+      "Tom Tiffany": 413
+     },
+     "writeIns": 2
+    },
+    {
+     "ward": "Village of Weston Wards 1-4",
+     "candidates": {
+      "Tom Tiffany": 395
+     },
+     "writeIns": 1
+    }
+   ]
+  },
+  {
+   "id": "rep-state-senator-district-12",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "State Senator District 12",
+   "rawName": "REP State Senator District 12",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Mary Felzkowski",
+     "votes": 1147,
+     "pct": 99.91
+    }
+   ],
+   "writeIns": 1,
+   "totalVotes": 1148,
+   "overvotes": 0,
+   "undervotes": 212,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-representative-to-the-assembly-district-35",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Representative to the Assembly District 35",
+   "rawName": "REP Representative to the Assembly District 35",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Calvin Callahan",
+     "votes": 1046,
+     "pct": 86.16
+    },
+    {
+     "name": "Todd Mayr",
+     "votes": 168,
+     "pct": 13.84
+    }
+   ],
+   "writeIns": 0,
+   "totalVotes": 1214,
+   "overvotes": 0,
+   "undervotes": 146,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-representative-to-the-assembly-district-69",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Representative to the Assembly District 69",
+   "rawName": "REP Representative to the Assembly District 69",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Lori j. Voss",
+     "votes": 745,
+     "pct": 61.77
+    },
+    {
+     "name": "Karen Hurd",
+     "votes": 460,
+     "pct": 38.14
+    }
+   ],
+   "writeIns": 1,
+   "totalVotes": 1206,
+   "overvotes": 0,
+   "undervotes": 55,
+   "precincts": {
+    "reported": 14,
+    "total": 14
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-representative-to-the-assembly-district-85",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Representative to the Assembly District 85",
+   "rawName": "REP Representative to the Assembly District 85",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Patrick Snyder",
+     "votes": 4845,
+     "pct": 99.43
+    }
+   ],
+   "writeIns": 28,
+   "totalVotes": 4873,
+   "overvotes": 0,
+   "undervotes": 495,
+   "precincts": {
+    "reported": 29,
+    "total": 29
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-representative-to-the-assembly-district-86",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Representative to the Assembly District 86",
+   "rawName": "REP Representative to the Assembly District 86",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "John Spiros",
+     "votes": 1517,
+     "pct": 42.41
+    },
+    {
+     "name": "Trine Spindler",
+     "votes": 1139,
+     "pct": 31.84
+    },
+    {
+     "name": "Donna M. Rozar",
+     "votes": 917,
+     "pct": 25.64
+    }
+   ],
+   "writeIns": 4,
+   "totalVotes": 3577,
+   "overvotes": 2,
+   "undervotes": 117,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-representative-to-the-assembly-district-87",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Representative to the Assembly District 87",
+   "rawName": "REP Representative to the Assembly District 87",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Brent Jacobson",
+     "votes": 4093,
+     "pct": 77.93
+    },
+    {
+     "name": "Cory Sillars",
+     "votes": 1152,
+     "pct": 21.93
+    }
+   ],
+   "writeIns": 7,
+   "totalVotes": 5252,
+   "overvotes": 0,
+   "undervotes": 199,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-district-attorney",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "District Attorney",
+   "rawName": "REP District Attorney",
+   "category": "County",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Kyle R. Mayo",
+     "votes": 13634,
+     "pct": 99.61
+    }
+   ],
+   "writeIns": 53,
+   "totalVotes": 13687,
+   "overvotes": 0,
+   "undervotes": 3449,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-county-clerk",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "County Clerk",
+   "rawName": "REP County Clerk",
+   "category": "County",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Kim Trueblood",
+     "votes": 12721,
+     "pct": 80.36
+    },
+    {
+     "name": "Toshia Ranallo",
+     "votes": 3091,
+     "pct": 19.52
+    }
+   ],
+   "writeIns": 19,
+   "totalVotes": 15831,
+   "overvotes": 1,
+   "undervotes": 1304,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-county-treasurer",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "County Treasurer",
+   "rawName": "REP County Treasurer",
+   "category": "County",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Connie Beyersdorff",
+     "votes": 10072,
+     "pct": 65.68
+    },
+    {
+     "name": "Jen Seliger",
+     "votes": 5247,
+     "pct": 34.22
+    }
+   ],
+   "writeIns": 16,
+   "totalVotes": 15335,
+   "overvotes": 4,
+   "undervotes": 1797,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "rep-register-of-deeds",
+   "party": "REP",
+   "partyLabel": "Republican",
+   "name": "Register of Deeds",
+   "rawName": "REP Register of Deeds",
+   "category": "County",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Jennifer Lemmer",
+     "votes": 14200,
+     "pct": 99.71
+    }
+   ],
+   "writeIns": 42,
+   "totalVotes": 14242,
+   "overvotes": 0,
+   "undervotes": 2894,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "con-united-states-senator",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "United States Senator",
+   "rawName": "CON United States Senator",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 3,
+   "totalVotes": 3,
+   "overvotes": 0,
+   "undervotes": 15,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "con-representative-in-congress",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Representative in Congress",
+   "rawName": "CON Representative in Congress",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 16,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "con-state-senator-district-12",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "State Senator District 12",
+   "rawName": "CON State Senator District 12",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 1,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "con-representative-to-the-assembly-district-35",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Representative to the Assembly District 35",
+   "rawName": "CON Representative to the Assembly District 35",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 1,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "con-representative-to-the-assembly-district-69",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Representative to the Assembly District 69",
+   "rawName": "CON Representative to the Assembly District 69",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 0,
+   "precincts": {
+    "reported": 14,
+    "total": 14
+   },
+   "wards": []
+  },
+  {
+   "id": "con-representative-to-the-assembly-district-85",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Representative to the Assembly District 85",
+   "rawName": "CON Representative to the Assembly District 85",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 4,
+   "precincts": {
+    "reported": 29,
+    "total": 29
+   },
+   "wards": []
+  },
+  {
+   "id": "con-representative-to-the-assembly-district-86",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Representative to the Assembly District 86",
+   "rawName": "CON Representative to the Assembly District 86",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 1,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "con-representative-to-the-assembly-district-87",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Representative to the Assembly District 87",
+   "rawName": "CON Representative to the Assembly District 87",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 8,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "con-district-attorney",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "District Attorney",
+   "rawName": "CON District Attorney",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 16,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "con-county-clerk",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "County Clerk",
+   "rawName": "CON County Clerk",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 16,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "con-county-treasurer",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "County Treasurer",
+   "rawName": "CON County Treasurer",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 16,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "con-register-of-deeds",
+   "party": "CON",
+   "partyLabel": "Constitution",
+   "name": "Register of Deeds",
+   "rawName": "CON Register of Deeds",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 2,
+   "totalVotes": 2,
+   "overvotes": 0,
+   "undervotes": 16,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-united-states-senator",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "United States Senator",
+   "rawName": "LIB United States Senator",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 3,
+   "totalVotes": 3,
+   "overvotes": 0,
+   "undervotes": 29,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-representative-in-congress",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Representative in Congress",
+   "rawName": "LIB Representative in Congress",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 32,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-state-senator-district-12",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "State Senator District 12",
+   "rawName": "LIB State Senator District 12",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 0,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-representative-to-the-assembly-district-35",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Representative to the Assembly District 35",
+   "rawName": "LIB Representative to the Assembly District 35",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 0,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-representative-to-the-assembly-district-69",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Representative to the Assembly District 69",
+   "rawName": "LIB Representative to the Assembly District 69",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 4,
+   "precincts": {
+    "reported": 14,
+    "total": 14
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-representative-to-the-assembly-district-85",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Representative to the Assembly District 85",
+   "rawName": "LIB Representative to the Assembly District 85",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 20,
+   "precincts": {
+    "reported": 29,
+    "total": 29
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-representative-to-the-assembly-district-86",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Representative to the Assembly District 86",
+   "rawName": "LIB Representative to the Assembly District 86",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 2,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-representative-to-the-assembly-district-87",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Representative to the Assembly District 87",
+   "rawName": "LIB Representative to the Assembly District 87",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 6,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-district-attorney",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "District Attorney",
+   "rawName": "LIB District Attorney",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 32,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-county-clerk",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "County Clerk",
+   "rawName": "LIB County Clerk",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 32,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-county-treasurer",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "County Treasurer",
+   "rawName": "LIB County Treasurer",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 32,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "lib-register-of-deeds",
+   "party": "LIB",
+   "partyLabel": "Libertarian",
+   "name": "Register of Deeds",
+   "rawName": "LIB Register of Deeds",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 32,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-united-states-senator",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "United States Senator",
+   "rawName": "WGN United States Senator",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 17,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-representative-in-congress",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Representative in Congress",
+   "rawName": "WGN Representative in Congress",
+   "category": "U.S. Congress",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 17,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-state-senator-district-12",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "State Senator District 12",
+   "rawName": "WGN State Senator District 12",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 1,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-representative-to-the-assembly-district-35",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Representative to the Assembly District 35",
+   "rawName": "WGN Representative to the Assembly District 35",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 1,
+   "precincts": {
+    "reported": 7,
+    "total": 7
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-representative-to-the-assembly-district-69",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Representative to the Assembly District 69",
+   "rawName": "WGN Representative to the Assembly District 69",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 1,
+   "precincts": {
+    "reported": 14,
+    "total": 14
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-representative-to-the-assembly-district-85",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Representative to the Assembly District 85",
+   "rawName": "WGN Representative to the Assembly District 85",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 8,
+   "precincts": {
+    "reported": 29,
+    "total": 29
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-representative-to-the-assembly-district-86",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Representative to the Assembly District 86",
+   "rawName": "WGN Representative to the Assembly District 86",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 5,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-representative-to-the-assembly-district-87",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Representative to the Assembly District 87",
+   "rawName": "WGN Representative to the Assembly District 87",
+   "category": "State Legislature",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 0,
+   "totalVotes": 0,
+   "overvotes": 0,
+   "undervotes": 2,
+   "precincts": {
+    "reported": 19,
+    "total": 19
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-district-attorney",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "District Attorney",
+   "rawName": "WGN District Attorney",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 17,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-county-clerk",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "County Clerk",
+   "rawName": "WGN County Clerk",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 17,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-county-treasurer",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "County Treasurer",
+   "rawName": "WGN County Treasurer",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 17,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "wgn-register-of-deeds",
+   "party": "WGN",
+   "partyLabel": "Wisconsin Green",
+   "name": "Register of Deeds",
+   "rawName": "WGN Register of Deeds",
+   "category": "County",
+   "seats": 1,
+   "candidates": [],
+   "writeIns": 1,
+   "totalVotes": 1,
+   "overvotes": 0,
+   "undervotes": 17,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "ref-question-1-delegation-of-appropriation-power",
+   "party": "REF",
+   "partyLabel": "Referendum",
+   "name": "Question 1: Delegation of appropriation power",
+   "rawName": "Question 1: Delegation of appropriation power",
+   "category": "Referendum",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Yes",
+     "votes": 14155,
+     "pct": 52.23
+    },
+    {
+     "name": "No",
+     "votes": 12944,
+     "pct": 47.77
+    }
+   ],
+   "writeIns": 0,
+   "totalVotes": 27099,
+   "overvotes": 14,
+   "undervotes": 2229,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  },
+  {
+   "id": "ref-question-2-allocation-of-federal-moneys",
+   "party": "REF",
+   "partyLabel": "Referendum",
+   "name": "Question 2: Allocation of federal moneys",
+   "rawName": "Question 2: Allocation of federal moneys",
+   "category": "Referendum",
+   "seats": 1,
+   "candidates": [
+    {
+     "name": "Yes",
+     "votes": 14296,
+     "pct": 52.59
+    },
+    {
+     "name": "No",
+     "votes": 12886,
+     "pct": 47.41
+    }
+   ],
+   "writeIns": 0,
+   "totalVotes": 27182,
+   "overvotes": 7,
+   "undervotes": 2153,
+   "precincts": {
+    "reported": 88,
+    "total": 88
+   },
+   "wards": []
+  }
+ ],
+ "precinctList": [
+  {
+   "name": "City of Abbotsford",
+   "status": "reported"
+  },
+  {
+   "name": "City of Colby",
+   "status": "reported"
+  },
+  {
+   "name": "City of Marshfield",
+   "status": "reported"
+  },
+  {
+   "name": "City of Mosinee",
+   "status": "reported"
+  },
+  {
+   "name": "City of Schofield",
+   "status": "reported"
+  },
+  {
+   "name": "City of Wausau",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Bergen",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Berlin",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Bern",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Bevent",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Brighton",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Cassel",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Cleveland",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Day",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Easton",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Eau Pleine",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Elderon",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Emmet",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Frankfort",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Franzen",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Green Valley",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Guenther",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Halsey",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Hamburg",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Harrison",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Hewitt",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Holton",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Hull",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Marathon",
+   "status": "reported"
+  },
+  {
+   "name": "Town of McMillan",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Mosinee",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Norrie",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Plover",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Rib Falls",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Rietbrock",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Ringle",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Spencer",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Stettin",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Texas",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Wausau",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Weston",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Wien",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Athens",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Birnamwood",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Dorchester",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Edgar",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Fenwood",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Hatley",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Kronenwetter",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Maine",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Rothschild",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Spencer",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Stratford",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Unity",
+   "status": "reported"
+  },
+  {
+   "name": "Village of Weston",
+   "status": "reported"
+  },
+  {
+   "name": "Town of Johnson",
+   "status": "notReported"
+  },
+  {
+   "name": "Town of Knowlton",
+   "status": "notReported"
+  },
+  {
+   "name": "Town of Reid",
+   "status": "notReported"
+  },
+  {
+   "name": "Village of Elderon",
+   "status": "notReported"
+  },
+  {
+   "name": "Village of Marathon City",
+   "status": "notReported"
+  },
+  {
+   "name": "Village of Rib Mountain",
+   "status": "notReported"
+  }
+ ]
+}

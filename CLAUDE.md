@@ -116,6 +116,15 @@ message names the exact line that didn't fit — bring it back to Claude.
    "pre", empty races).
 3. Commit and push. Done — nothing else references election specifics.
 
+## Demo page
+
+`public/demo.html` + `public/data/demo_results.json` — a shareable
+demonstration at /demo.html (real 2024 summary numbers, simulated ward
+detail, black "demonstration preview" banner, noindex, always-light).
+It is a generated copy of index.html: if index.html changes meaningfully,
+regenerate demo.html rather than patching it by hand. The live widget and
+results.json are completely independent of it.
+
 ## Stack notes
 
 - Windows / PowerShell 5.1; runner output is ASCII-only on purpose.

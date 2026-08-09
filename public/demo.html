@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMO — Election Results — Wausau Pilot &amp; Review</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Live, unofficial election results for Marathon County, Wisconsin, from Wausau Pilot &amp; Review.">
+<meta property="og:title" content="Election Results — Wausau Pilot &amp; Review">
+<meta property="og:description" content="Live, unofficial election results for Marathon County, Wisconsin, from Wausau Pilot &amp; Review.">
+<meta property="og:image" content="https://rowanflynnpilot.github.io/wpr-election-results/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/jpeg" href="wpr-badge.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F2E9;
+    --card: #FFFDF9;
+    --ink: #22302C;
+    --muted: #6E6A5E;
+    --teal: #3A867C;
+    --teal-ink: #2E6B62;
+    --teal-soft: #E2EDEA;
+    --dem: #3D5C96;
+    --dem-soft: #E4E9F3;
+    --rep: #A63D33;
+    --rep-soft: #F2E4E2;
+    --other: #5F6B70;
+    --other-soft: #E7EAEB;
+    --hairline: #E3DCCB;
+    --track: #EFEAE0;
+  }
+  @media (prefers-color-scheme: dark) {
+    html.allow-dark {
+      --cream: #1B211E;
+      --card: #242B28;
+      --ink: #EDE8DB;
+      --muted: #A8A294;
+      --teal: #4C9C90;
+      --teal-ink: #8AC7BC;
+      --teal-soft: #25423C;
+      --dem: #7E9CD0;
+      --dem-soft: #242E42;
+      --rep: #C97A6F;
+      --rep-soft: #3B2925;
+      --other: #93A0A5;
+      --other-soft: #2B3235;
+      --hairline: #3A423E;
+      --track: #2F3633;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 20px 16px 32px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  a:focus-visible, summary:focus-visible, button:focus-visible {
+    outline: 2px solid var(--teal-ink); outline-offset: 2px;
+  }
+
+  /* ── Demo banner ────────────────────────── */
+  .demo-banner {
+    background: var(--ink); color: var(--cream);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: center; padding: 9px 14px; line-height: 1.5;
+  }
+  .demo-banner small {
+    display: block; font-weight: 400; letter-spacing: 0.02em; text-transform: none;
+    font-size: 12px; opacity: 0.85;
+  }
+
+  /* ── Header ─────────────────────────────── */
+  .masthead {
+    display: inline-flex; align-items: center; gap: 13px;
+    font-family: 'Fraunces', serif; font-weight: 650;
+    font-size: clamp(21px, 4.5vw, 26px); line-height: 1.1; letter-spacing: 0.005em;
+    color: var(--ink); text-decoration: none;
+  }
+  .badge {
+    display: inline-block; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid var(--hairline);
+    background: var(--card) url("wpr-badge.jpg") center / cover no-repeat;
+  }
+  .mast-logo { width: 54px; height: 54px; }
+  @media (max-width: 480px) { .mast-logo { width: 46px; height: 46px; } }
+  .masthead:hover, .masthead:focus-visible { color: var(--teal-ink); }
+  .amp { color: var(--teal-ink); font-weight: 500; font-style: italic; }
+  .rule-double {
+    height: 4px; margin: 8px 0 12px;
+    border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--teal-ink);
+  }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 650;
+    font-size: clamp(26px, 5vw, 34px); line-height: 1.1; margin: 4px 0 2px;
+  }
+  .subhead { color: var(--muted); font-size: 14px; }
+
+  /* ── Reporting spine (signature) ────────── */
+  .spine {
+    margin-top: 14px; padding: 12px 14px;
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 10px;
+    display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center;
+  }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+  }
+  .status-pill .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); }
+  .status-live .dot { animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+  @media (prefers-reduced-motion: reduce) {
+    .status-live .dot { animation: none; }
+    .fill { transition: none !important; }
+  }
+  .spine-stat { font-size: 13px; color: var(--muted); }
+  .spine-stat b { color: var(--ink); font-weight: 600; font-size: 14px; }
+  .spine-track {
+    flex-basis: 100%; height: 5px; border-radius: 3px; background: var(--track);
+    overflow: hidden; margin-top: 2px;
+  }
+  .spine-track .fill { height: 100%; background: var(--teal); border-radius: 3px; transition: width 0.8s ease; }
+  @keyframes spine-flash { from { background: var(--teal-soft); } to { background: var(--card); } }
+  .spine.flash { animation: spine-flash 1.6s ease-out; }
+  @media (prefers-reduced-motion: reduce) { .spine.flash { animation: none; } }
+
+  /* ── Final banner ───────────────────────── */
+  .final-banner {
+    margin-top: 14px; padding: 13px 15px; border-radius: 10px;
+    background: var(--teal-soft); border: 1px solid var(--teal);
+    font-size: 14px; line-height: 1.5;
+  }
+  .final-banner b { font-family: 'Fraunces', serif; font-weight: 650; }
+
+  /* ── Turnout module ─────────────────────── */
+  .turnout { margin-top: 14px; padding: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
+  .module-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .t-row { display: grid; grid-template-columns: 110px 1fr minmax(74px, auto); gap: 10px; align-items: center; margin-bottom: 7px; }
+  .t-row:last-child { margin-bottom: 0; }
+  .t-name { font-size: 13px; font-weight: 600; }
+  .t-bar { height: 9px; background: var(--track); border-radius: 5px; overflow: hidden; }
+  .t-bar .fill { height: 100%; border-radius: 5px; transition: width 0.8s ease; }
+  .t-val { font-size: 12.5px; text-align: right; color: var(--muted); }
+
+  /* ── Tabs ───────────────────────────────── */
+  .tabs {
+    display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 4px; position: sticky; top: 0;
+    background: var(--cream); padding: 8px 0; z-index: 5;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tab {
+    appearance: none; border: 1px solid var(--hairline); background: var(--card);
+    color: var(--ink); font: 600 13px 'Public Sans', sans-serif;
+    padding: 10px 16px; border-radius: 999px; cursor: pointer;
+    white-space: nowrap; touch-action: manipulation;
+  }
+  .tab:focus-visible { outline: 2px solid var(--teal-ink); outline-offset: 2px; }
+  .tab[aria-selected="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .tab .n { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.65; margin-left: 4px; }
+
+  /* ── Big board ──────────────────────────── */
+  .bigboard { margin-top: 14px; }
+  .bb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .bb-grid { grid-template-columns: 1fr; } }
+  .bb-tile {
+    appearance: none; text-align: left; font: inherit; color: inherit;
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 11px 13px; cursor: pointer; touch-action: manipulation;
+  }
+  .bb-tile:hover { border-color: var(--teal); }
+  .bb-tile:focus-visible { outline: 2px solid var(--teal-ink); outline-offset: 2px; }
+  .bb-race {
+    font-family: 'Fraunces', serif; font-weight: 650; font-size: 14.5px; line-height: 1.25;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  }
+  .bb-party {
+    font: 700 10px 'Public Sans', sans-serif; letter-spacing: 0.06em;
+    padding: 2px 7px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+  }
+  .bb-lead { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; margin-top: 6px; }
+  .bb-lead b { font-weight: 700; }
+  .bb-bar { height: 7px; border-radius: 4px; background: var(--track); overflow: hidden; margin-top: 6px; }
+  .bb-bar .fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+  .bb-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 6px; }
+  @keyframes card-flash { from { background: var(--teal-soft); } to { background: var(--card); } }
+  .race.flash-target { animation: card-flash 1.6s ease-out; }
+  @media (prefers-reduced-motion: reduce) { .race.flash-target { animation: none; } }
+
+  /* ── Search ─────────────────────────────── */
+  .searchbox { position: relative; margin: 10px 0 2px; }
+  .searchbox input {
+    width: 100%; padding: 10px 40px 10px 15px; border-radius: 999px;
+    border: 1px solid var(--hairline); background: var(--card);
+    font: 400 14px 'Public Sans', sans-serif; color: var(--ink);
+  }
+  .searchbox input::placeholder { color: var(--muted); }
+  .searchbox input:focus-visible { outline: 2px solid var(--teal-ink); outline-offset: 1px; }
+  .search-clear {
+    position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
+    appearance: none; border: 0; background: var(--track); color: var(--muted);
+    width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+    font-size: 13px; line-height: 1; touch-action: manipulation;
+  }
+  .search-clear:hover { color: var(--ink); }
+  .search-note { font-size: 12.5px; color: var(--muted); margin: 8px 2px 0; }
+  .chip-party { color: var(--ink); font-weight: 700; }
+
+  /* ── Race sections & cards ──────────────── */
+  .cat-label {
+    font-family: 'Fraunces', serif; font-weight: 650; font-size: 13.5px;
+    text-transform: uppercase; letter-spacing: 0.09em;
+    margin: 22px 0 8px; padding-bottom: 5px; border-bottom: 2px solid var(--ink);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .race {
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 10px;
+  }
+  .race-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 10px; align-items: baseline; }
+  .race-title { font-family: 'Fraunces', serif; font-weight: 650; font-size: 18.5px; line-height: 1.2; }
+  .race-meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+  .chip {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 8px;
+    border-radius: 999px; white-space: nowrap;
+  }
+  .chip-precincts { font-family: 'JetBrains Mono', monospace; background: var(--track); color: var(--muted); font-weight: 600; }
+  .chip-precincts.done { background: var(--teal-soft); color: var(--teal-ink); }
+  .chip-margin { font-family: 'JetBrains Mono', monospace; background: var(--cream); border: 1px solid var(--hairline); color: var(--ink); font-weight: 600; }
+  .seats-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .cands { margin-top: 10px; }
+  .cand { display: grid; grid-template-columns: minmax(120px, 200px) 1fr 118px; gap: 10px; align-items: center; padding: 4px 0; }
+  .cand-name { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+  .cand-name .adv { font-weight: 700; }
+  .cand-bar { height: 11px; background: var(--track); border-radius: 6px; overflow: hidden; }
+  .cand-bar .fill { height: 100%; border-radius: 6px; transition: width 0.8s ease; }
+  .cand-num { font-size: 12.5px; text-align: right; white-space: nowrap; }
+  .cand-num .pct { color: var(--muted); margin-left: 6px; }
+  .fineprint { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+  /* ── Ward drill-down ────────────────────── */
+  details.wards { margin-top: 10px; border-top: 1px dashed var(--hairline); padding-top: 8px; }
+  details.wards summary {
+    cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--teal-ink);
+    list-style: none; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 0; touch-action: manipulation;
+  }
+  details.wards summary::-webkit-details-marker { display: none; }
+  details.wards summary::after { content: "▾"; transition: transform 0.15s; }
+  details.wards[open] summary::after { transform: rotate(180deg); }
+  .ward-scroll { max-height: 320px; overflow: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; border: 1px solid var(--hairline); border-radius: 8px; }
+  table.ward-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .ward-table th, .ward-table td { padding: 5px 9px; text-align: right; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+  .ward-table th { position: sticky; top: 0; background: var(--card); font-weight: 700; font-size: 11px; z-index: 1; }
+  .ward-table th:first-child, .ward-table td:first-child {
+    text-align: left; font-family: 'Public Sans', sans-serif;
+    position: sticky; left: 0; background: var(--card);
+  }
+  .ward-table th:first-child { z-index: 2; }
+
+  /* ── Ward map ───────────────────────────── */
+  .ward-map { margin-top: 8px; }
+  .ward-map svg { display: block; width: 100%; height: auto; }
+  .ward-map path { stroke: var(--card); stroke-width: 0.8; cursor: pointer; }
+  .ward-map path:hover { stroke: var(--ink); stroke-width: 1.4; }
+  .ward-map path.hi { stroke: var(--ink); stroke-width: 2.2; }
+  .map-legend { display: flex; flex-wrap: wrap; gap: 5px 14px; margin: 8px 0 2px; font-size: 11.5px; color: var(--muted); }
+  .map-legend .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; border: 1px solid var(--hairline); }
+  .map-detail { font-size: 12.5px; margin-top: 5px; min-height: 18px; }
+  .map-detail b { font-weight: 700; }
+  .ward-table td { font-family: 'JetBrains Mono', monospace; }
+  .ward-table tbody tr:hover td { background: var(--cream); }
+
+  /* ── Precinct status ────────────────────── */
+  .pstatus { margin-top: 18px; padding: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
+  .pstatus .names { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+
+  /* ── About ──────────────────────────────── */
+  details.about { margin-top: 22px; }
+  details.about summary {
+    cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--teal-ink);
+    list-style: none; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 0; touch-action: manipulation;
+  }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::after { content: "▾"; transition: transform 0.15s; }
+  details.about[open] summary::after { transform: rotate(180deg); }
+  .about-body { font-size: 13px; color: var(--muted); max-width: 62ch; }
+  .about-body p { margin: 6px 0 10px; }
+  .about-body b { color: var(--ink); font-weight: 600; }
+
+  /* ── States & footer ────────────────────── */
+  .waiting { margin-top: 18px; padding: 36px 24px 30px; text-align: center; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
+  .waiting-kicker {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal-ink);
+  }
+  .waiting h2 { font-family: 'Fraunces', serif; font-weight: 650; font-size: 24px; margin: 8px 0; }
+  .waiting p { color: var(--muted); font-size: 14px; max-width: 48ch; margin: 0 auto; }
+  .waiting-list {
+    list-style: none; margin: 18px auto 0; max-width: 460px; text-align: left;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 9px 20px; font-size: 13px;
+  }
+  .waiting-list li { position: relative; padding-left: 16px; }
+  .waiting-list li::before {
+    content: ""; position: absolute; left: 0; top: 6px;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+  }
+  .waiting-note { margin-top: 18px; font-size: 12.5px; }
+  @media (max-width: 480px) { .waiting-list { grid-template-columns: 1fr; } }
+  .errbox { margin-top: 18px; padding: 16px; border: 1px solid var(--rep); border-radius: 10px; background: var(--rep-soft); font-size: 14px; }
+  .errbox a { color: inherit; font-weight: 700; }
+  footer { margin-top: 26px; font-size: 12px; color: var(--muted); }
+  .foot-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
+  .foot-source { line-height: 1.5; }
+  .foot-brand { display: flex; align-items: center; gap: 11px; text-decoration: none; text-align: right; }
+  .foot-logo { width: 44px; height: 44px; }
+  .foot-brand:hover .foot-wordmark, .foot-brand:focus-visible .foot-wordmark { color: var(--teal-ink); }
+  .foot-wordmark {
+    display: block; font-family: 'Fraunces', serif; font-weight: 650;
+    font-size: 17px; line-height: 1.2; color: var(--ink);
+  }
+  .foot-url { display: block; font-size: 11px; color: var(--teal-ink); margin-top: 2px; }
+  @media (max-width: 480px) {
+    .cand { grid-template-columns: 1fr 92px; }
+    .cand-bar { grid-column: 1 / -1; }
+  }
+
+  /* ── Print ──────────────────────────────── */
+  @media print {
+    body { background: #fff; }
+    .tabs { position: static; background: #fff; }
+    .status-live .dot { animation: none; }
+    .waiting-note { display: none; }
+    .race, .turnout, .spine, .pstatus { break-inside: avoid; border-color: #bbb; }
+    .ward-scroll { max-height: none; overflow: visible; border-color: #bbb; }
+  }
+</style>
+</head>
+<body>
+<div class="demo-banner">Demonstration preview — not live results
+  <small>Sample data from the 2024 Partisan Primary; ward-level breakdowns are simulated.
+  On election night, live 2026 results appear on the real page.</small>
+</div>
+<div class="wrap">
+  <header>
+    <a class="masthead" href="https://wausaupilotandreview.com" target="_blank" rel="noopener"><span class="badge mast-logo" aria-hidden="true"></span><span>Wausau Pilot <span class="amp">&amp;</span> Review</span></a>
+    <div class="rule-double" aria-hidden="true"></div>
+    <div class="eyebrow">Election Results · Unofficial</div>
+    <h1 id="election-name">Election Results</h1>
+    <div class="subhead" id="election-sub"></div>
+    <div class="spine" id="spine" hidden>
+      <span class="status-pill" id="status-pill"><span class="dot" aria-hidden="true"></span><span id="status-text">LIVE</span></span>
+      <span class="spine-stat">Precincts <b class="mono" id="spine-precincts">–</b></span>
+      <span class="spine-stat">Ballots cast <b class="mono" id="spine-ballots">–</b></span>
+      <span class="spine-stat">Updated <b class="mono" id="spine-updated">–</b> <span id="spine-age"></span></span>
+      <div class="spine-track"><div class="fill" id="spine-fill" style="width:0%"></div></div>
+    </div>
+  </header>
+
+  <div class="final-banner" id="final-banner" hidden></div>
+
+  <section class="turnout" id="turnout" hidden>
+    <div class="module-label">Primary participation — ballots cast by party</div>
+    <div id="turnout-rows"></div>
+  </section>
+
+  <section class="turnout" id="partypref" hidden>
+    <div class="module-label">Party preference — as marked on ballots</div>
+    <div id="partypref-rows"></div>
+  </section>
+
+  <section class="bigboard" id="bigboard" hidden>
+    <div class="module-label">Featured races</div>
+    <div class="bb-grid" id="bb-grid"></div>
+  </section>
+
+  <div class="tabs" id="tabs" role="tablist" aria-label="Result sections" hidden></div>
+  <div class="searchbox" id="searchbox" hidden>
+    <input id="search" type="search" placeholder="Search races or candidates" aria-label="Search races or candidates" autocomplete="off">
+    <button class="search-clear" id="search-clear" hidden aria-label="Clear search">✕</button>
+  </div>
+  <div class="search-note" id="search-note" role="status" hidden></div>
+  <main id="races" role="tabpanel"></main>
+
+  <section class="pstatus" id="pstatus" hidden>
+    <div class="module-label" id="pstatus-label"></div>
+    <div class="names" id="pstatus-names"></div>
+  </section>
+
+  <div class="waiting" id="waiting" hidden>
+    <div class="waiting-kicker" id="waiting-kicker"></div>
+    <h2 id="waiting-head">Live results will appear here</h2>
+    <p id="waiting-text"></p>
+    <ul class="waiting-list">
+      <li>Democratic and Republican primaries, race by race</li>
+      <li>Ballots cast by party, countywide turnout</li>
+      <li>Precinct-by-precinct reporting status</li>
+      <li>Ward-level detail for every race</li>
+    </ul>
+    <p class="waiting-note">Updates automatically on this page — no need to refresh.</p>
+  </div>
+  <div class="errbox" id="errbox" role="status" hidden>Results are temporarily unavailable. This page retries automatically.</div>
+  <noscript>
+    <div class="errbox">This live results page needs JavaScript. For the raw reports, visit the
+      <a href="https://www.marathoncounty.gov/services/elections-voting/results">Marathon County election results page</a>.</div>
+  </noscript>
+
+  <details class="about">
+    <summary>About these results</summary>
+    <div class="about-body">
+      <p>Every number on this page comes from the <b>Marathon County Clerk's</b> official
+        election reports. On election night the page updates itself about once a minute
+        as new county reports are posted — no need to refresh.</p>
+      <p>Results are <b>unofficial</b> until they are certified by the county board of
+        canvassers in the days after the election. Precinct counts show how much of each
+        race has been tallied, and a leading candidate is marked ✓ only after every
+        precinct in that race has reported.</p>
+      <p>In a Wisconsin partisan primary, each voter chooses one party's ballot, so races
+        are counted and shown <b>by party</b> — use the tabs to switch between them.
+        Referendum questions are listed under their own tab.</p>
+    </div>
+  </details>
+
+  <footer>
+    <div class="rule-double" aria-hidden="true"></div>
+    <div class="foot-grid">
+      <div class="foot-source">Source: Marathon County Clerk<br>All results unofficial until canvassed</div>
+      <a class="foot-brand" href="https://wausaupilotandreview.com" target="_blank" rel="noopener">
+        <span>
+          <span class="foot-wordmark">Wausau Pilot <span class="amp">&amp;</span> Review</span>
+          <span class="foot-url mono">wausaupilotandreview.com</span>
+        </span>
+        <span class="badge foot-logo" aria-hidden="true"></span>
+      </a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var REFRESH_MS = 60000;
+  var CATEGORY_ORDER = ["Statewide", "U.S. Congress", "State Legislature", "County", "Local", "Referendum"];
+  var PARTY_COLORS = {
+    DEM: { bar: "var(--dem)", soft: "var(--dem-soft)" },
+    REP: { bar: "var(--rep)", soft: "var(--rep-soft)" },
+    REF: { bar: "var(--teal)", soft: "var(--teal-soft)" }
+  };
+  var TABS = [
+    { id: "DEM", label: "Democratic", match: function (r) { return r.party === "DEM"; } },
+    { id: "REP", label: "Republican", match: function (r) { return r.party === "REP"; } },
+    { id: "REF", label: "Referenda", match: function (r) { return r.party === "REF"; } },
+    { id: "OTH", label: "Other parties", match: function (r) { return ["DEM", "REP", "REF"].indexOf(r.party) === -1; } }
+  ];
+
+  var state = { data: null, tab: "DEM", lastGenerated: null, justUpdated: false, query: "" };
+
+  // Bars are rebuilt on every render; remembering the last width lets a
+  // rebuilt bar animate from its old value instead of snapping.
+  var lastWidths = {};
+  var pendingFills = [];
+  var firstRender = true;
+
+  function setFill(fill, key, pct) {
+    var target = Math.max(0, Math.min(100, pct));
+    var prev = lastWidths[key];
+    if (!firstRender && prev !== undefined && prev !== target) {
+      fill.style.width = prev + "%";
+      pendingFills.push({ el: fill, w: target });
+    } else {
+      fill.style.width = target + "%";
+    }
+    lastWidths[key] = target;
+  }
+
+  function flushFills() {
+    if (!pendingFills.length) return;
+    var fills = pendingFills;
+    pendingFills = [];
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fills.forEach(function (f) { f.el.style.width = f.w + "%"; });
+      });
+    });
+  }
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function fmt(n) { return (n || 0).toLocaleString("en-US"); }
+  function partyColor(p) { return PARTY_COLORS[p] || { bar: "var(--other)", soft: "var(--other-soft)" }; }
+  function fmtTime(iso) {
+    if (!iso) return "–";
+    var d = new Date(iso);
+    if (isNaN(d)) return "–";
+    return d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  }
+
+  function renderAge() {
+    var out = "";
+    var e = state.data && state.data.election;
+    if (e && e.lastUpdated && state.data.races && state.data.races.length) {
+      var then = new Date(e.lastUpdated);
+      if (!isNaN(then)) {
+        var mins = Math.floor((Date.now() - then.getTime()) / 60000);
+        if (mins >= 0 && mins < 1) out = "· just now";
+        else if (mins >= 1 && mins < 60) out = "· " + mins + " min ago";
+        else if (mins >= 60 && mins < 720) out = "· " + Math.floor(mins / 60) + " hr " + (mins % 60) + " min ago";
+      }
+    }
+    $("spine-age").textContent = out;
+  }
+
+  function fetchResults() {
+    fetch("data/demo_results.json?ts=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) {
+        $("errbox").hidden = true;
+        var gen = data.election && data.election.generatedAt;
+        if (gen !== state.lastGenerated || !state.data) {
+          state.justUpdated = !!state.data; // flash only on real updates, not first paint
+          state.data = data;
+          state.lastGenerated = gen;
+          render();
+        } else if (!state.data.races || !state.data.races.length) {
+          renderWaiting(state.data.election); // pre-election copy flips at 8 p.m. without a data change
+        }
+      })
+      .catch(function () { $("errbox").hidden = false; })
+      .then(postHeight);
+  }
+
+  function render() {
+    var d = state.data, e = d.election;
+    $("election-name").textContent = e.name || "Election Results";
+    $("election-sub").textContent = (e.county || "") + ", " + (e.state || "") + " · " + (e.displayDate || "");
+
+    var hasResults = d.races && d.races.length > 0;
+    $("waiting").hidden = hasResults;
+    $("spine").hidden = !hasResults;
+    $("turnout").hidden = !hasResults;
+    $("partypref").hidden = !hasResults;
+    $("bigboard").hidden = !hasResults;
+    $("tabs").hidden = !hasResults;
+    $("searchbox").hidden = !hasResults;
+    if (!hasResults) { renderWaiting(e); $("races").textContent = ""; $("pstatus").hidden = true; return; }
+
+    // Reporting spine
+    var pill = $("status-pill");
+    pill.classList.toggle("status-live", e.status === "live");
+    $("status-text").textContent = e.status === "final" ? "COMPLETE — UNOFFICIAL" : "LIVE";
+    $("spine-precincts").textContent = e.precinctsReported + " of " + e.precinctsTotal;
+    $("spine-ballots").textContent = fmt(d.statistics.ballotsCast);
+    $("spine-updated").textContent = fmtTime(e.lastUpdated);
+    renderAge();
+    var fb = $("final-banner");
+    fb.hidden = e.status !== "final";
+    if (e.status === "final") {
+      fb.textContent = "";
+      fb.appendChild(el("b", "", "All " + fmt(e.precinctsTotal) + " precincts have reported."));
+      fb.appendChild(document.createTextNode(
+        " Results are complete and unofficial until certified by the county board of canvassers."));
+    }
+    $("spine-fill").style.width = (e.precinctsTotal ? (100 * e.precinctsReported / e.precinctsTotal) : 0) + "%";
+    if (state.justUpdated) {
+      state.justUpdated = false;
+      var spine = $("spine");
+      spine.classList.remove("flash");
+      void spine.offsetWidth; // restart the animation
+      spine.classList.add("flash");
+    }
+
+    renderTurnout(d);
+    renderPartyPref(d);
+    renderBigBoard(d);
+    renderTabs(d);
+    renderRaces(d);
+    renderPrecinctStatus(d);
+    flushFills();
+    firstRender = false;
+    postHeight();
+  }
+
+  function pollsClosed(electionDate) {
+    // Wisconsin polls close at 8 p.m.; compare in county time, DST-safe.
+    if (!electionDate) return false;
+    try {
+      var now = new Date();
+      var day = now.toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+      var hour = parseInt(now.toLocaleTimeString("en-US", {
+        timeZone: "America/Chicago", hour: "2-digit", hourCycle: "h23"
+      }), 10);
+      return day > electionDate || (day === electionDate && hour >= 20);
+    } catch (err) { return false; }
+  }
+
+  function renderWaiting(e) {
+    var kicker, head, text;
+    if (pollsClosed(e.date)) {
+      kicker = "Polls closed at 8 p.m.";
+      head = "Counting is under way";
+      text = "The Marathon County Clerk typically posts the first numbers within " +
+        "the hour after polls close, then updates through the night as more precincts report.";
+    } else {
+      var dayName = "";
+      if (e.date) {
+        var d0 = new Date(e.date + "T12:00:00");
+        if (!isNaN(d0)) dayName = d0.toLocaleDateString("en-US", { weekday: "long" }) + ", ";
+      }
+      kicker = "Election Day · " + dayName + (e.displayDate || "");
+      head = "Live results will appear here";
+      text = "Polls across Marathon County are open until 8 p.m. on election day. " +
+        "Once they close, results from the County Clerk post here as they come in.";
+    }
+    $("waiting-kicker").textContent = kicker;
+    $("waiting-head").textContent = head;
+    $("waiting-text").textContent = text;
+  }
+
+  function renderTurnout(d) {
+    var rows = $("turnout-rows");
+    rows.textContent = "";
+    var bp = d.statistics.ballotsByParty || {};
+    var entries = Object.keys(bp).map(function (k) { return { name: k, votes: bp[k] }; })
+      .sort(function (a, b) { return b.votes - a.votes; });
+    if (!entries.length) { $("turnout").hidden = true; return; }
+    var max = entries[0].votes || 1;
+    var codeFor = { "Democratic": "DEM", "Republican": "REP" };
+    entries.forEach(function (p) {
+      var row = el("div", "t-row");
+      row.appendChild(el("div", "t-name", p.name));
+      var bar = el("div", "t-bar");
+      var fill = el("div", "fill");
+      setFill(fill, "turnout|" + p.name, 100 * p.votes / max);
+      fill.style.background = partyColor(codeFor[p.name]).bar;
+      bar.appendChild(fill);
+      row.appendChild(bar);
+      row.appendChild(el("div", "t-val mono", fmt(p.votes)));
+      rows.appendChild(row);
+    });
+    var t = d.statistics.turnoutPct;
+    if (t) {
+      var note = el("div", "fineprint", "Turnout: " + t.toFixed(1) + "% of registered voters");
+      rows.appendChild(note);
+    }
+  }
+
+  function renderPartyPref(d) {
+    var box = $("partypref");
+    var list = d.partyPreference || [];
+    if (!list.length) { box.hidden = true; return; }
+    box.hidden = false;
+    var rows = $("partypref-rows");
+    rows.textContent = "";
+    var codeFor = { "Democratic": "DEM", "Republican": "REP" };
+    var max = 1;
+    list.forEach(function (p) { if (p.votes > max) max = p.votes; });
+    list.slice().sort(function (a, b) { return b.votes - a.votes; }).forEach(function (p) {
+      var row = el("div", "t-row");
+      row.appendChild(el("div", "t-name", p.name));
+      var bar = el("div", "t-bar");
+      var fill = el("div", "fill");
+      setFill(fill, "pref|" + p.name, 100 * p.votes / max);
+      fill.style.background = partyColor(codeFor[p.name]).bar;
+      bar.appendChild(fill);
+      row.appendChild(bar);
+      row.appendChild(el("div", "t-val mono", fmt(p.votes) + " · " + p.pct.toFixed(1) + "%"));
+      rows.appendChild(row);
+    });
+  }
+
+  function renderTabs(d) {
+    var bar = $("tabs");
+    bar.textContent = "";
+    var available = TABS.filter(function (t) { return d.races.some(t.match); });
+    if (!available.some(function (t) { return t.id === state.tab; }) && available.length) {
+      state.tab = available[0].id;
+    }
+    available.forEach(function (t) {
+      var count = d.races.filter(t.match).length;
+      var b = el("button", "tab");
+      b.id = "tab-" + t.id;
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", String(state.tab === t.id));
+      b.setAttribute("aria-controls", "races");
+      b.setAttribute("aria-label", t.label + " — " + count + (count === 1 ? " race" : " races"));
+      b.tabIndex = state.tab === t.id ? 0 : -1;
+      b.appendChild(document.createTextNode(t.label));
+      b.appendChild(el("span", "n", String(count)));
+      b.addEventListener("click", function () {
+        state.tab = t.id;
+        if (state.query) { state.query = ""; $("search").value = ""; $("search-clear").hidden = true; }
+        render();
+      });
+      bar.appendChild(b);
+    });
+    $("races").setAttribute("aria-labelledby", "tab-" + state.tab);
+  }
+
+  function raceMargin(r) {
+    if (r.candidates.length < 2 || r.seats !== 1 || !r.candidates[0].votes) return null;
+    return r.candidates[0].pct - r.candidates[1].pct;
+  }
+
+  function tabIdForParty(p) {
+    return (p === "DEM" || p === "REP" || p === "REF") ? p : "OTH";
+  }
+
+  function renderBigBoard(d) {
+    var box = $("bigboard");
+    var grid = $("bb-grid");
+    var close = d.races.filter(function (r) {
+      var m = raceMargin(r);
+      return m !== null && m < 5;
+    }).sort(function (a, b) { return raceMargin(a) - raceMargin(b); });
+    var headline = d.races.filter(function (r) {
+      return (r.category === "Statewide" || r.category === "U.S. Congress") && r.candidates.length;
+    });
+    var seen = {}, picks = [];
+    close.concat(headline).forEach(function (r) {
+      if (picks.length < 4 && !seen[r.id]) { seen[r.id] = true; picks.push(r); }
+    });
+    grid.textContent = "";
+    if (!picks.length) { box.hidden = true; return; }
+    box.hidden = false;
+    picks.forEach(function (r) {
+      var colors = partyColor(r.party);
+      var tile = el("button", "bb-tile");
+      tile.setAttribute("aria-label", "Jump to " + (r.partyLabel ? r.partyLabel + " " : "") + r.name);
+      var head = el("div", "bb-race");
+      head.appendChild(el("span", "", r.name));
+      var pchip = el("span", "bb-party", r.partyLabel || (r.party === "REF" ? "Referendum" : r.party));
+      pchip.style.background = colors.soft;
+      head.appendChild(pchip);
+      tile.appendChild(head);
+      var lead = r.candidates[0];
+      var line = el("div", "bb-lead");
+      line.appendChild(el("b", "", lead.name));
+      line.appendChild(el("span", "mono", fmt(lead.votes) + " · " + lead.pct.toFixed(1) + "%"));
+      tile.appendChild(line);
+      var bar = el("div", "bb-bar");
+      var fill = el("div", "fill");
+      setFill(fill, "bb|" + r.id + "|" + lead.name, lead.pct);
+      fill.style.background = colors.bar;
+      bar.appendChild(fill);
+      tile.appendChild(bar);
+      var metaRow = el("div", "bb-meta");
+      metaRow.appendChild(el("span", "mono",
+        r.precincts ? r.precincts.reported + "/" + r.precincts.total + " precincts" : ""));
+      var m = raceMargin(r);
+      if (m !== null && m < 5) metaRow.appendChild(el("span", "mono", "margin " + m.toFixed(1) + "%"));
+      tile.appendChild(metaRow);
+      tile.addEventListener("click", function () {
+        state.tab = tabIdForParty(r.party);
+        if (state.query) { state.query = ""; $("search").value = ""; $("search-clear").hidden = true; }
+        render();
+        var card = document.getElementById("race-" + r.id);
+        if (card) {
+          var reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+          card.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+          card.classList.remove("flash-target");
+          void card.offsetWidth;
+          card.classList.add("flash-target");
+        }
+      });
+      grid.appendChild(tile);
+    });
+  }
+
+  function raceMatches(r, q) {
+    if ((r.name || "").toLowerCase().indexOf(q) !== -1) return true;
+    if ((r.rawName || "").toLowerCase().indexOf(q) !== -1) return true;
+    if ((r.partyLabel || "").toLowerCase().indexOf(q) !== -1) return true;
+    if ((r.category || "").toLowerCase().indexOf(q) !== -1) return true;
+    return r.candidates.some(function (c) { return c.name.toLowerCase().indexOf(q) !== -1; });
+  }
+
+  function renderRaces(d) {
+    var main = $("races");
+    main.textContent = "";
+    var q = state.query.trim().toLowerCase();
+    var races, showParty = false;
+    var note = $("search-note");
+    if (q) {
+      races = d.races.filter(function (r) { return raceMatches(r, q); });
+      showParty = true;
+      note.hidden = false;
+      note.textContent = races.length
+        ? races.length + (races.length === 1 ? " race matches" : " races match") + " — showing all parties"
+        : "No races match “" + state.query.trim() + "”";
+    } else {
+      var tab = TABS.filter(function (t) { return t.id === state.tab; })[0];
+      races = d.races.filter(tab.match);
+      note.hidden = true;
+    }
+    CATEGORY_ORDER.forEach(function (cat) {
+      var inCat = races.filter(function (r) { return r.category === cat; });
+      if (!inCat.length) return;
+      main.appendChild(el("div", "cat-label", cat));
+      inCat.forEach(function (r) { main.appendChild(raceCard(r, showParty)); });
+    });
+    // Anything with an unexpected category still renders
+    var known = {};
+    CATEGORY_ORDER.forEach(function (c) { known[c] = true; });
+    var stray = races.filter(function (r) { return !known[r.category]; });
+    if (stray.length) {
+      main.appendChild(el("div", "cat-label", "Other"));
+      stray.forEach(function (r) { main.appendChild(raceCard(r, showParty)); });
+    }
+  }
+
+  function raceCard(r, showParty) {
+    var colors = partyColor(r.party);
+    var card = el("article", "race");
+    card.id = "race-" + r.id;
+    var head = el("div", "race-head");
+    head.appendChild(el("h3", "race-title", r.name));
+    var meta = el("div", "race-meta");
+    if (showParty) {
+      var pchip = el("span", "chip chip-party",
+        r.partyLabel || (r.party === "REF" ? "Referendum" : r.party));
+      pchip.style.background = colors.soft;
+      meta.appendChild(pchip);
+    }
+    var done = r.precincts && r.precincts.total > 0 && r.precincts.reported >= r.precincts.total;
+    if (r.candidates.length >= 2 && r.candidates[0].votes > 0 && r.seats === 1) {
+      var gap = r.candidates[0].pct - r.candidates[1].pct;
+      if (gap < 5) meta.appendChild(el("span", "chip chip-margin", "margin " + gap.toFixed(1) + "%"));
+    }
+    var chip = el("span", "chip chip-precincts" + (done ? " done" : ""),
+      r.precincts ? (r.precincts.reported + "/" + r.precincts.total + " precincts") : "");
+    meta.appendChild(chip);
+    head.appendChild(meta);
+    card.appendChild(head);
+    if (r.seats > 1) card.appendChild(el("div", "seats-note", "Vote for " + r.seats));
+
+    var cands = el("div", "cands");
+    if (!r.candidates.length) {
+      cands.appendChild(el("div", "fineprint",
+        "No candidates on the ballot — " + fmt(r.writeIns) + " write-in votes"));
+    }
+    r.candidates.forEach(function (c, i) {
+      var leader = i === 0 && c.votes > 0;
+      var row = el("div", "cand");
+      var name = el("div", "cand-name");
+      var span = el("span", leader ? "adv" : "", c.name);
+      name.appendChild(span);
+      if (leader && done) {
+        var check = el("span", "", " ✓");
+        check.setAttribute("aria-hidden", "true");
+        name.appendChild(check);
+        name.appendChild(el("span", "sr-only", " — leads with all precincts reporting"));
+      }
+      row.appendChild(name);
+      var bar = el("div", "cand-bar");
+      var fill = el("div", "fill");
+      setFill(fill, r.id + "|" + c.name, c.pct);
+      fill.style.background = leader ? colors.bar : colors.soft;
+      if (!leader) fill.style.outline = "1px solid " + colors.bar;
+      bar.appendChild(fill);
+      row.appendChild(bar);
+      var num = el("div", "cand-num mono");
+      num.appendChild(el("span", "", fmt(c.votes)));
+      num.appendChild(el("span", "pct", c.pct.toFixed(1) + "%"));
+      row.appendChild(num);
+      cands.appendChild(row);
+    });
+    card.appendChild(cands);
+
+    if (r.candidates.length && (r.writeIns || r.undervotes)) {
+      card.appendChild(el("div", "fineprint",
+        "Write-ins: " + fmt(r.writeIns) + " · Undervotes: " + fmt(r.undervotes)));
+    }
+
+    if (r.wards && r.wards.length) card.appendChild(wardTable(r));
+    return card;
+  }
+
+  /* ── Municipality map (ward drill-down) ── */
+  // Candidate fills avoid DEM/REP hues on purpose: a primary is an
+  // intraparty contest and party colors here would mislead.
+  var MAP_COLORS = ["#3A867C", "#7B5A8A", "#B07A2A", "#5F6B70", "#8A5A46", "#4E7A9B"];
+  var geoPromise = null;
+
+  function ensureGeo() {
+    if (!geoPromise) {
+      geoPromise = fetch("data/marathon-munis.json")
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+    }
+    return geoPromise;
+  }
+
+  function muniKeyFromWard(name) {
+    var m = /^(city|town|village) of (.+?)(?:,? wards? [\d].*)?$/i.exec(name.trim());
+    if (!m) return null;
+    return (m[2] + " " + m[1]).toLowerCase();
+  }
+
+  function tigerToPdf(n) {
+    // "Wausau city" -> "City of Wausau"
+    var i = n.lastIndexOf(" ");
+    var type = n.slice(i + 1);
+    return type.charAt(0).toUpperCase() + type.slice(1) + " of " + n.slice(0, i);
+  }
+
+  function eachRing(geom, fn) {
+    if (geom.type === "Polygon") geom.coordinates.forEach(fn);
+    else if (geom.type === "MultiPolygon") {
+      geom.coordinates.forEach(function (poly) { poly.forEach(fn); });
+    }
+  }
+
+  function geoProjection(geo) {
+    if (geo.__proj) return geo.__proj;
+    var minLon = Infinity, maxLon = -Infinity, minLat = Infinity, maxLat = -Infinity;
+    geo.features.forEach(function (f) {
+      eachRing(f.geometry, function (ring) {
+        ring.forEach(function (p) {
+          if (p[0] < minLon) minLon = p[0]; if (p[0] > maxLon) maxLon = p[0];
+          if (p[1] < minLat) minLat = p[1]; if (p[1] > maxLat) maxLat = p[1];
+        });
+      });
+    });
+    var k = Math.cos((minLat + maxLat) / 2 * Math.PI / 180);
+    var W = 700, spanX = (maxLon - minLon) * k, spanY = maxLat - minLat;
+    var H = Math.round(W * spanY / spanX);
+    geo.__proj = {
+      W: W, H: H,
+      pt: function (p) {
+        return ((p[0] - minLon) * k / spanX * W).toFixed(1) + " " +
+               ((maxLat - p[1]) / spanY * H).toFixed(1);
+      }
+    };
+    return geo.__proj;
+  }
+
+  function hiPath(paths, key, on) {
+    var p = paths[key];
+    if (!p) return;
+    if (on) {
+      p.classList.add("hi");
+      p.parentNode.appendChild(p); // to front, so the outline isn't hidden by neighbors
+    } else {
+      p.classList.remove("hi");
+    }
+  }
+
+  function buildWardMap(box, r, geo, paths) {
+    var names = r.candidates.map(function (c) { return c.name; });
+    var colorOrder = names.slice().sort(); // alphabetical: stable across updates
+    function colorFor(name) { return MAP_COLORS[colorOrder.indexOf(name) % MAP_COLORS.length]; }
+
+    var agg = {};
+    r.wards.forEach(function (w) {
+      var key = muniKeyFromWard(w.ward);
+      if (!key) return;
+      var a = agg[key] || (agg[key] = { votes: {}, writeIns: 0, total: 0,
+        label: w.ward.replace(/,? wards? [\d].*$/i, "") });
+      names.forEach(function (n) {
+        var v = (w.candidates && w.candidates[n]) || 0;
+        a.votes[n] = (a.votes[n] || 0) + v;
+        a.total += v;
+      });
+      a.writeIns += w.writeIns || 0;
+    });
+
+    var proj = geoProjection(geo);
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 " + proj.W + " " + proj.H);
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Map of the leading candidate by municipality for " +
+      r.name + ". Full numbers are in the table below.");
+    var detail = el("div", "map-detail mono", "");
+    var anyWaiting = false, anyOutside = false;
+
+    geo.features.forEach(function (f) {
+      var d = [];
+      eachRing(f.geometry, function (ring) {
+        ring.forEach(function (p, i) { d.push((i ? "L" : "M") + proj.pt(p)); });
+        d.push("Z");
+      });
+      var path = document.createElementNS(NS, "path");
+      path.setAttribute("d", d.join(""));
+      var a = agg[f.properties.n.toLowerCase()];
+      var fill, tip;
+      if (!a) {
+        // this municipality's wards aren't in the race's report: not in the district
+        anyOutside = true;
+        fill = "var(--cream)";
+        tip = tigerToPdf(f.properties.n) + " — not part of this race";
+        path.style.cursor = "default";
+      } else if (a.total === 0) {
+        anyWaiting = true;
+        fill = "var(--track)";
+        tip = a.label + " — no votes yet";
+      } else {
+        var best = null, tie = false;
+        names.forEach(function (n) {
+          if (best === null || a.votes[n] > a.votes[best]) { best = n; tie = false; }
+          else if (a.votes[n] === a.votes[best]) { tie = true; }
+        });
+        fill = tie ? "var(--other)" : colorFor(best);
+        tip = a.label + ": " + names.map(function (n) {
+          return n + " " + fmt(a.votes[n]);
+        }).join(" · ") + (a.writeIns ? " · Write-ins " + fmt(a.writeIns) : "");
+      }
+      path.style.fill = fill;
+      var title = document.createElementNS(NS, "title");
+      title.textContent = tip;
+      path.appendChild(title);
+      path.addEventListener("click", function () { detail.textContent = tip; postHeight(); });
+      if (paths) paths[f.properties.n.toLowerCase()] = path;
+      svg.appendChild(path);
+    });
+
+    var legend = el("div", "map-legend");
+    function legendItem(color, label) {
+      var item = el("span", "");
+      var sw = el("span", "sw");
+      sw.style.background = color;
+      item.appendChild(sw);
+      item.appendChild(document.createTextNode(label));
+      legend.appendChild(item);
+    }
+    names.forEach(function (n) { legendItem(colorFor(n), n + " leads"); });
+    if (anyWaiting) legendItem("var(--track)", "No votes yet");
+    if (anyOutside) legendItem("var(--cream)", "Not part of this race");
+
+    box.textContent = "";
+    box.appendChild(svg);
+    box.appendChild(legend);
+    box.appendChild(detail);
+  }
+
+  function wardTable(r) {
+    var det = el("details", "wards");
+    det.appendChild(el("summary", "", "By ward (" + r.wards.length + ")"));
+    var mapBox = el("div", "ward-map");
+    det.appendChild(mapBox);
+    var mapPaths = {};
+    var scroll = el("div", "ward-scroll");
+    var table = el("table", "ward-table");
+    var caption = el("caption", "sr-only", "Ward-by-ward results: " + r.name);
+    table.appendChild(caption);
+    var thead = el("thead");
+    var hrow = el("tr");
+    var wardTh = el("th", "", "Ward");
+    wardTh.setAttribute("scope", "col");
+    hrow.appendChild(wardTh);
+    var names = r.candidates.map(function (c) { return c.name; });
+    names.forEach(function (n) {
+      var parts = n.split(" ");
+      var th = el("th", "", parts[parts.length - 1]);
+      th.setAttribute("scope", "col");
+      hrow.appendChild(th);
+    });
+    var wiTh = el("th", "", "Write-in");
+    wiTh.setAttribute("scope", "col");
+    hrow.appendChild(wiTh);
+    thead.appendChild(hrow);
+    table.appendChild(thead);
+    var tbody = el("tbody");
+    r.wards.forEach(function (w) {
+      var tr = el("tr");
+      tr.appendChild(el("td", "", w.ward));
+      names.forEach(function (n) {
+        tr.appendChild(el("td", "", fmt(w.candidates[n] || 0)));
+      });
+      tr.appendChild(el("td", "", fmt(w.writeIns || 0)));
+      var muniKey = muniKeyFromWard(w.ward);
+      if (muniKey) {
+        tr.addEventListener("mouseenter", function () { hiPath(mapPaths, muniKey, true); });
+        tr.addEventListener("mouseleave", function () { hiPath(mapPaths, muniKey, false); });
+      }
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    scroll.appendChild(table);
+    det.appendChild(scroll);
+    det.addEventListener("toggle", function () {
+      if (det.open && !mapBox.childNodes.length) {
+        ensureGeo()
+          .then(function (geo) { buildWardMap(mapBox, r, geo, mapPaths); postHeight(); })
+          .catch(function () { /* map data unavailable; the table still has everything */ });
+      }
+      postHeight();
+    });
+    return det;
+  }
+
+  function renderPrecinctStatus(d) {
+    var box = $("pstatus");
+    var list = d.precinctList || [];
+    var out = list.filter(function (p) { return p.status === "notReported"; });
+    if (!list.length || !out.length) { box.hidden = true; return; }
+    box.hidden = false;
+    $("pstatus-label").textContent = "Still waiting on " + out.length + " of " + list.length + " precincts";
+    $("pstatus-names").textContent = out.map(function (p) { return p.name; }).join(" · ");
+  }
+
+  function postHeight() {
+    try {
+      var h = document.documentElement.scrollHeight;
+      window.parent.postMessage({ type: "wpr-embed-height", height: h }, "*");
+    } catch (err) { /* not embedded */ }
+  }
+
+  document.querySelector("details.about").addEventListener("toggle", postHeight);
+
+  $("search").addEventListener("input", function () {
+    state.query = this.value;
+    $("search-clear").hidden = !this.value;
+    if (state.data) { renderRaces(state.data); postHeight(); }
+  });
+  $("search-clear").addEventListener("click", function () {
+    state.query = "";
+    $("search").value = "";
+    this.hidden = true;
+    if (state.data) { renderRaces(state.data); postHeight(); }
+    $("search").focus();
+  });
+
+  $("tabs").addEventListener("keydown", function (ev) {
+    if (["ArrowLeft", "ArrowRight", "Home", "End"].indexOf(ev.key) === -1) return;
+    var btns = Array.prototype.slice.call($("tabs").querySelectorAll(".tab"));
+    if (!btns.length) return;
+    var i = btns.indexOf(document.activeElement);
+    if (i === -1) i = 0;
+    if (ev.key === "ArrowLeft") i = (i - 1 + btns.length) % btns.length;
+    else if (ev.key === "ArrowRight") i = (i + 1) % btns.length;
+    else if (ev.key === "Home") i = 0;
+    else i = btns.length - 1;
+    ev.preventDefault();
+    var id = btns[i].id;
+    btns[i].click(); // rerenders the tab bar, so re-find by id before focusing
+    var fresh = document.getElementById(id);
+    if (fresh) fresh.focus();
+  });
+
+  window.addEventListener("resize", postHeight);
+  if (window.ResizeObserver) {
+    // catches every content-height change (font loads, map renders, toggles)
+    new ResizeObserver(postHeight).observe(document.body);
+  }
+  fetchResults();
+  setInterval(fetchResults, REFRESH_MS);
+  setInterval(renderAge, 30000);
+})();
+</script>
+</body>
+</html>
