@@ -13,6 +13,11 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/jpeg" href="wpr-badge.jpg">
+<script>
+  // Dark mode follows the reader's OS only when the page runs standalone.
+  // Inside the WordPress iframe the widget stays light to match the site.
+  try { if (window.self === window.top) document.documentElement.className += " allow-dark"; } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -33,6 +38,25 @@
     --other-soft: #E7EAEB;
     --hairline: #E3DCCB;
     --track: #EFEAE0;
+  }
+  @media (prefers-color-scheme: dark) {
+    html.allow-dark {
+      --cream: #1B211E;
+      --card: #242B28;
+      --ink: #EDE8DB;
+      --muted: #A8A294;
+      --teal: #4C9C90;
+      --teal-ink: #8AC7BC;
+      --teal-soft: #25423C;
+      --dem: #7E9CD0;
+      --dem-soft: #242E42;
+      --rep: #C97A6F;
+      --rep-soft: #3B2925;
+      --other: #93A0A5;
+      --other-soft: #2B3235;
+      --hairline: #3A423E;
+      --track: #2F3633;
+    }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
