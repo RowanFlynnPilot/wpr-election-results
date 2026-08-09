@@ -14,6 +14,7 @@
     --ink: #22302C;
     --muted: #6E6A5E;
     --teal: #3A867C;
+    --teal-ink: #2E6B62;
     --teal-soft: #E2EDEA;
     --dem: #3D5C96;
     --dem-soft: #E4E9F3;
@@ -36,9 +37,20 @@
   .mono { font-family: 'JetBrains Mono', monospace; }
 
   /* ── Header ─────────────────────────────── */
+  .masthead {
+    display: inline-block; font-family: 'Fraunces', serif; font-weight: 650;
+    font-size: clamp(21px, 4.5vw, 26px); line-height: 1.1; letter-spacing: 0.005em;
+    color: var(--ink); text-decoration: none;
+  }
+  .masthead:hover, .masthead:focus-visible { color: var(--teal-ink); }
+  .amp { color: var(--teal-ink); font-weight: 500; font-style: italic; }
+  .rule-double {
+    height: 4px; margin: 8px 0 12px;
+    border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
   .eyebrow {
     font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--teal);
+    text-transform: uppercase; color: var(--teal-ink);
   }
   h1 {
     font-family: 'Fraunces', serif; font-weight: 650;
@@ -98,7 +110,8 @@
 
   /* ── Race sections & cards ──────────────── */
   .cat-label {
-    font-family: 'Fraunces', serif; font-weight: 650; font-size: 15px;
+    font-family: 'Fraunces', serif; font-weight: 650; font-size: 13.5px;
+    text-transform: uppercase; letter-spacing: 0.09em;
     margin: 22px 0 8px; padding-bottom: 5px; border-bottom: 2px solid var(--ink);
     display: flex; justify-content: space-between; align-items: baseline;
   }
@@ -114,7 +127,7 @@
     border-radius: 999px; white-space: nowrap;
   }
   .chip-precincts { font-family: 'JetBrains Mono', monospace; background: var(--track); color: var(--muted); font-weight: 600; }
-  .chip-precincts.done { background: var(--teal-soft); color: var(--teal); }
+  .chip-precincts.done { background: var(--teal-soft); color: var(--teal-ink); }
   .seats-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .cands { margin-top: 10px; }
   .cand { display: grid; grid-template-columns: minmax(120px, 200px) 1fr 118px; gap: 10px; align-items: center; padding: 4px 0; }
@@ -129,7 +142,7 @@
   /* ── Ward drill-down ────────────────────── */
   details.wards { margin-top: 10px; border-top: 1px dashed var(--hairline); padding-top: 8px; }
   details.wards summary {
-    cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--teal);
+    cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--teal-ink);
     list-style: none; display: inline-flex; align-items: center; gap: 6px;
   }
   details.wards summary::-webkit-details-marker { display: none; }
@@ -151,8 +164,16 @@
   .waiting h2 { font-family: 'Fraunces', serif; font-weight: 650; font-size: 21px; margin-bottom: 6px; }
   .waiting p { color: var(--muted); font-size: 14px; }
   .errbox { margin-top: 18px; padding: 16px; border: 1px solid var(--rep); border-radius: 10px; background: var(--rep-soft); font-size: 14px; }
-  footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
-  footer a { color: var(--teal); font-weight: 600; text-decoration: none; }
+  footer { margin-top: 26px; font-size: 12px; color: var(--muted); }
+  .foot-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px 16px; }
+  .foot-source { line-height: 1.5; }
+  .foot-brand { text-decoration: none; text-align: right; }
+  .foot-brand:hover .foot-wordmark, .foot-brand:focus-visible .foot-wordmark { color: var(--teal-ink); }
+  .foot-wordmark {
+    display: block; font-family: 'Fraunces', serif; font-weight: 650;
+    font-size: 17px; line-height: 1.2; color: var(--ink);
+  }
+  .foot-url { display: block; font-size: 11px; color: var(--teal-ink); margin-top: 2px; }
   @media (max-width: 480px) {
     .cand { grid-template-columns: 1fr 92px; }
     .cand-bar { grid-column: 1 / -1; }
@@ -162,7 +183,9 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">Wausau Pilot &amp; Review · Election Results</div>
+    <a class="masthead" href="https://wausaupilotandreview.com" target="_blank" rel="noopener">Wausau Pilot <span class="amp">&amp;</span> Review</a>
+    <div class="rule-double" aria-hidden="true"></div>
+    <div class="eyebrow">Election Results · Unofficial</div>
     <h1 id="election-name">Election Results</h1>
     <div class="subhead" id="election-sub"></div>
     <div class="spine" id="spine" hidden>
@@ -194,8 +217,14 @@
   <div class="errbox" id="errbox" hidden>Results are temporarily unavailable. This page retries automatically.</div>
 
   <footer>
-    <span>Source: Marathon County Clerk · All results unofficial until canvassed</span>
-    <a href="https://wausaupilotandreview.com" target="_blank" rel="noopener">Wausau Pilot &amp; Review</a>
+    <div class="rule-double" aria-hidden="true"></div>
+    <div class="foot-grid">
+      <div class="foot-source">Source: Marathon County Clerk<br>All results unofficial until canvassed</div>
+      <a class="foot-brand" href="https://wausaupilotandreview.com" target="_blank" rel="noopener">
+        <span class="foot-wordmark">Wausau Pilot <span class="amp">&amp;</span> Review</span>
+        <span class="foot-url mono">wausaupilotandreview.com</span>
+      </a>
+    </div>
   </footer>
 </div>
 

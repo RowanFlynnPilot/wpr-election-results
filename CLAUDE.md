@@ -114,4 +114,6 @@ message names the exact line that didn't fit — bring it back to Claude.
 - The fetcher runs ONLY on the local machine. Never GitHub Actions — see above.
 - Deploys via GitHub Pages workflow on pushes touching `public/**`.
 - Widget fonts: Fraunces / Public Sans / JetBrains Mono (WPR design system:
-  teal #3A867C, cream #F6F2E9).
+  teal #3A867C, cream #F6F2E9). Small teal TEXT uses --teal-ink #2E6B62 —
+  brand teal is 3.85:1 on cream and fails WCAG AA; keep #3A867C for bars,
+  dots and fills only.
