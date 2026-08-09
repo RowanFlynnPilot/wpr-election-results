@@ -111,7 +111,7 @@
   /* ── Turnout module ─────────────────────── */
   .turnout { margin-top: 14px; padding: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
   .module-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .t-row { display: grid; grid-template-columns: 110px 1fr 74px; gap: 10px; align-items: center; margin-bottom: 7px; }
+  .t-row { display: grid; grid-template-columns: 110px 1fr minmax(74px, auto); gap: 10px; align-items: center; margin-bottom: 7px; }
   .t-row:last-child { margin-bottom: 0; }
   .t-name { font-size: 13px; font-weight: 600; }
   .t-bar { height: 9px; background: var(--track); border-radius: 5px; overflow: hidden; }
@@ -249,6 +249,11 @@
     <div id="turnout-rows"></div>
   </section>
 
+  <section class="turnout" id="partypref" hidden>
+    <div class="module-label">Party preference — as marked on ballots</div>
+    <div id="partypref-rows"></div>
+  </section>
+
   <div class="tabs" id="tabs" role="tablist" aria-label="Result sections" hidden></div>
   <main id="races" role="tabpanel"></main>
 
@@ -379,6 +384,7 @@
     $("waiting").hidden = hasResults;
     $("spine").hidden = !hasResults;
     $("turnout").hidden = !hasResults;
+    $("partypref").hidden = !hasResults;
     $("tabs").hidden = !hasResults;
     if (!hasResults) { renderWaiting(e); $("races").textContent = ""; $("pstatus").hidden = true; return; }
 
@@ -399,6 +405,7 @@
     }
 
     renderTurnout(d);
+    renderPartyPref(d);
     renderTabs(d);
     renderRaces(d);
     renderPrecinctStatus(d);
@@ -469,6 +476,30 @@
       var note = el("div", "fineprint", "Turnout: " + t.toFixed(1) + "% of registered voters");
       rows.appendChild(note);
     }
+  }
+
+  function renderPartyPref(d) {
+    var box = $("partypref");
+    var list = d.partyPreference || [];
+    if (!list.length) { box.hidden = true; return; }
+    box.hidden = false;
+    var rows = $("partypref-rows");
+    rows.textContent = "";
+    var codeFor = { "Democratic": "DEM", "Republican": "REP" };
+    var max = 1;
+    list.forEach(function (p) { if (p.votes > max) max = p.votes; });
+    list.slice().sort(function (a, b) { return b.votes - a.votes; }).forEach(function (p) {
+      var row = el("div", "t-row");
+      row.appendChild(el("div", "t-name", p.name));
+      var bar = el("div", "t-bar");
+      var fill = el("div", "fill");
+      setFill(fill, "pref|" + p.name, 100 * p.votes / max);
+      fill.style.background = partyColor(codeFor[p.name]).bar;
+      bar.appendChild(fill);
+      row.appendChild(bar);
+      row.appendChild(el("div", "t-val mono", fmt(p.votes) + " · " + p.pct.toFixed(1) + "%"));
+      rows.appendChild(row);
+    });
   }
 
   function renderTabs(d) {
