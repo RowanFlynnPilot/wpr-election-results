@@ -1150,6 +1150,10 @@
   });
 
   window.addEventListener("resize", postHeight);
+  if (window.ResizeObserver) {
+    // catches every content-height change (font loads, map renders, toggles)
+    new ResizeObserver(postHeight).observe(document.body);
+  }
   fetchResults();
   setInterval(fetchResults, REFRESH_MS);
   setInterval(renderAge, 30000);
