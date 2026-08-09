@@ -1,0 +1,16 @@
+{
+  "name": "2026 Partisan Primary",
+  "date": "2026-08-11",
+  "displayDate": "August 11, 2026",
+  "county": "Marathon County",
+  "state": "Wisconsin",
+  "watchDir": "C:\\Users\\rpfly\\Downloads",
+  "stopAtUtc": "2026-08-12T12:00:00Z",
+  "pollSeconds": 5,
+  "reportPages": {
+    "results": "https://www.marathoncounty.gov/services/elections-voting/results",
+    "electionSummary": "https://www.marathoncounty.gov/home/showpublisheddocument/18979/639213411072400000",
+    "precinctSummary": "https://www.marathoncounty.gov/home/showpublisheddocument/18983/639213411078830000",
+    "precinctStatus": "https://www.marathoncounty.gov/home/showpublisheddocument/18981/639213411076500000"
+  }
+}
