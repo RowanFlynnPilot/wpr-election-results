@@ -108,6 +108,14 @@
   .spine.flash { animation: spine-flash 1.6s ease-out; }
   @media (prefers-reduced-motion: reduce) { .spine.flash { animation: none; } }
 
+  /* ── Final banner ───────────────────────── */
+  .final-banner {
+    margin-top: 14px; padding: 13px 15px; border-radius: 10px;
+    background: var(--teal-soft); border: 1px solid var(--teal);
+    font-size: 14px; line-height: 1.5;
+  }
+  .final-banner b { font-family: 'Fraunces', serif; font-weight: 650; }
+
   /* ── Turnout module ─────────────────────── */
   .turnout { margin-top: 14px; padding: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
   .module-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
@@ -315,6 +323,8 @@
     </div>
   </header>
 
+  <div class="final-banner" id="final-banner" hidden></div>
+
   <section class="turnout" id="turnout" hidden>
     <div class="module-label">Primary participation — ballots cast by party</div>
     <div id="turnout-rows"></div>
@@ -498,6 +508,14 @@
     $("spine-ballots").textContent = fmt(d.statistics.ballotsCast);
     $("spine-updated").textContent = fmtTime(e.lastUpdated);
     renderAge();
+    var fb = $("final-banner");
+    fb.hidden = e.status !== "final";
+    if (e.status === "final") {
+      fb.textContent = "";
+      fb.appendChild(el("b", "", "All " + fmt(e.precinctsTotal) + " precincts have reported."));
+      fb.appendChild(document.createTextNode(
+        " Results are complete and unofficial until certified by the county board of canvassers."));
+    }
     $("spine-fill").style.width = (e.precinctsTotal ? (100 * e.precinctsReported / e.precinctsTotal) : 0) + "%";
     if (state.justUpdated) {
       state.justUpdated = false;
