@@ -134,6 +134,34 @@
   .tab[aria-selected="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
   .tab .n { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.65; margin-left: 4px; }
 
+  /* ── Big board ──────────────────────────── */
+  .bigboard { margin-top: 14px; }
+  .bb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 560px) { .bb-grid { grid-template-columns: 1fr; } }
+  .bb-tile {
+    appearance: none; text-align: left; font: inherit; color: inherit;
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 10px;
+    padding: 11px 13px; cursor: pointer; touch-action: manipulation;
+  }
+  .bb-tile:hover { border-color: var(--teal); }
+  .bb-tile:focus-visible { outline: 2px solid var(--teal-ink); outline-offset: 2px; }
+  .bb-race {
+    font-family: 'Fraunces', serif; font-weight: 650; font-size: 14.5px; line-height: 1.25;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  }
+  .bb-party {
+    font: 700 10px 'Public Sans', sans-serif; letter-spacing: 0.06em;
+    padding: 2px 7px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+  }
+  .bb-lead { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; margin-top: 6px; }
+  .bb-lead b { font-weight: 700; }
+  .bb-bar { height: 7px; border-radius: 4px; background: var(--track); overflow: hidden; margin-top: 6px; }
+  .bb-bar .fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+  .bb-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 6px; }
+  @keyframes card-flash { from { background: var(--teal-soft); } to { background: var(--card); } }
+  .race.flash-target { animation: card-flash 1.6s ease-out; }
+  @media (prefers-reduced-motion: reduce) { .race.flash-target { animation: none; } }
+
   /* ── Search ─────────────────────────────── */
   .searchbox { position: relative; margin: 10px 0 2px; }
   .searchbox input {
@@ -297,6 +325,11 @@
     <div id="partypref-rows"></div>
   </section>
 
+  <section class="bigboard" id="bigboard" hidden>
+    <div class="module-label">Featured races</div>
+    <div class="bb-grid" id="bb-grid"></div>
+  </section>
+
   <div class="tabs" id="tabs" role="tablist" aria-label="Result sections" hidden></div>
   <div class="searchbox" id="searchbox" hidden>
     <input id="search" type="search" placeholder="Search races or candidates" aria-label="Search races or candidates" autocomplete="off">
@@ -452,6 +485,7 @@
     $("spine").hidden = !hasResults;
     $("turnout").hidden = !hasResults;
     $("partypref").hidden = !hasResults;
+    $("bigboard").hidden = !hasResults;
     $("tabs").hidden = !hasResults;
     $("searchbox").hidden = !hasResults;
     if (!hasResults) { renderWaiting(e); $("races").textContent = ""; $("pstatus").hidden = true; return; }
@@ -475,6 +509,7 @@
 
     renderTurnout(d);
     renderPartyPref(d);
+    renderBigBoard(d);
     renderTabs(d);
     renderRaces(d);
     renderPrecinctStatus(d);
@@ -597,6 +632,76 @@
       bar.appendChild(b);
     });
     $("races").setAttribute("aria-labelledby", "tab-" + state.tab);
+  }
+
+  function raceMargin(r) {
+    if (r.candidates.length < 2 || r.seats !== 1 || !r.candidates[0].votes) return null;
+    return r.candidates[0].pct - r.candidates[1].pct;
+  }
+
+  function tabIdForParty(p) {
+    return (p === "DEM" || p === "REP" || p === "REF") ? p : "OTH";
+  }
+
+  function renderBigBoard(d) {
+    var box = $("bigboard");
+    var grid = $("bb-grid");
+    var close = d.races.filter(function (r) {
+      var m = raceMargin(r);
+      return m !== null && m < 5;
+    }).sort(function (a, b) { return raceMargin(a) - raceMargin(b); });
+    var headline = d.races.filter(function (r) {
+      return (r.category === "Statewide" || r.category === "U.S. Congress") && r.candidates.length;
+    });
+    var seen = {}, picks = [];
+    close.concat(headline).forEach(function (r) {
+      if (picks.length < 4 && !seen[r.id]) { seen[r.id] = true; picks.push(r); }
+    });
+    grid.textContent = "";
+    if (!picks.length) { box.hidden = true; return; }
+    box.hidden = false;
+    picks.forEach(function (r) {
+      var colors = partyColor(r.party);
+      var tile = el("button", "bb-tile");
+      tile.setAttribute("aria-label", "Jump to " + (r.partyLabel ? r.partyLabel + " " : "") + r.name);
+      var head = el("div", "bb-race");
+      head.appendChild(el("span", "", r.name));
+      var pchip = el("span", "bb-party", r.partyLabel || (r.party === "REF" ? "Referendum" : r.party));
+      pchip.style.background = colors.soft;
+      head.appendChild(pchip);
+      tile.appendChild(head);
+      var lead = r.candidates[0];
+      var line = el("div", "bb-lead");
+      line.appendChild(el("b", "", lead.name));
+      line.appendChild(el("span", "mono", fmt(lead.votes) + " · " + lead.pct.toFixed(1) + "%"));
+      tile.appendChild(line);
+      var bar = el("div", "bb-bar");
+      var fill = el("div", "fill");
+      setFill(fill, "bb|" + r.id + "|" + lead.name, lead.pct);
+      fill.style.background = colors.bar;
+      bar.appendChild(fill);
+      tile.appendChild(bar);
+      var metaRow = el("div", "bb-meta");
+      metaRow.appendChild(el("span", "mono",
+        r.precincts ? r.precincts.reported + "/" + r.precincts.total + " precincts" : ""));
+      var m = raceMargin(r);
+      if (m !== null && m < 5) metaRow.appendChild(el("span", "mono", "margin " + m.toFixed(1) + "%"));
+      tile.appendChild(metaRow);
+      tile.addEventListener("click", function () {
+        state.tab = tabIdForParty(r.party);
+        if (state.query) { state.query = ""; $("search").value = ""; $("search-clear").hidden = true; }
+        render();
+        var card = document.getElementById("race-" + r.id);
+        if (card) {
+          var reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+          card.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+          card.classList.remove("flash-target");
+          void card.offsetWidth;
+          card.classList.add("flash-target");
+        }
+      });
+      grid.appendChild(tile);
+    });
   }
 
   function raceMatches(r, q) {
