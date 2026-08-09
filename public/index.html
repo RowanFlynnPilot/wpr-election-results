@@ -258,6 +258,20 @@
   .pstatus { margin-top: 18px; padding: 14px; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
   .pstatus .names { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 
+  /* ── About ──────────────────────────────── */
+  details.about { margin-top: 22px; }
+  details.about summary {
+    cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--teal-ink);
+    list-style: none; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 0; touch-action: manipulation;
+  }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary::after { content: "▾"; transition: transform 0.15s; }
+  details.about[open] summary::after { transform: rotate(180deg); }
+  .about-body { font-size: 13px; color: var(--muted); max-width: 62ch; }
+  .about-body p { margin: 6px 0 10px; }
+  .about-body b { color: var(--ink); font-weight: 600; }
+
   /* ── States & footer ────────────────────── */
   .waiting { margin-top: 18px; padding: 36px 24px 30px; text-align: center; background: var(--card); border: 1px solid var(--hairline); border-radius: 10px; }
   .waiting-kicker {
@@ -370,6 +384,22 @@
     <div class="errbox">This live results page needs JavaScript. For the raw reports, visit the
       <a href="https://www.marathoncounty.gov/services/elections-voting/results">Marathon County election results page</a>.</div>
   </noscript>
+
+  <details class="about">
+    <summary>About these results</summary>
+    <div class="about-body">
+      <p>Every number on this page comes from the <b>Marathon County Clerk's</b> official
+        election reports. On election night the page updates itself about once a minute
+        as new county reports are posted — no need to refresh.</p>
+      <p>Results are <b>unofficial</b> until they are certified by the county board of
+        canvassers in the days after the election. Precinct counts show how much of each
+        race has been tallied, and a leading candidate is marked ✓ only after every
+        precinct in that race has reported.</p>
+      <p>In a Wisconsin partisan primary, each voter chooses one party's ballot, so races
+        are counted and shown <b>by party</b> — use the tabs to switch between them.
+        Referendum questions are listed under their own tab.</p>
+    </div>
+  </details>
 
   <footer>
     <div class="rule-double" aria-hidden="true"></div>
@@ -1060,6 +1090,8 @@
       window.parent.postMessage({ type: "wpr-embed-height", height: h }, "*");
     } catch (err) { /* not embedded */ }
   }
+
+  document.querySelector("details.about").addEventListener("toggle", postHeight);
 
   $("search").addEventListener("input", function () {
     state.query = this.value;
