@@ -245,6 +245,8 @@
   .chip-precincts.done { background: var(--teal-soft); color: var(--teal-ink); }
   .chip-margin { font-family: 'JetBrains Mono', monospace; background: var(--cream); border: 1px solid var(--hairline); color: var(--ink); font-weight: 600; }
   .seats-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .scope-note { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 4px; }
+  .scope-note a { color: var(--teal-ink); font-weight: 600; text-decoration: none; font-style: normal; }
   .cands { margin-top: 10px; }
   .cand { display: grid; grid-template-columns: minmax(120px, 200px) 1fr 118px; gap: 10px; align-items: center; padding: 4px 0; }
   .cand-name { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
@@ -856,6 +858,15 @@
     head.appendChild(meta);
     card.appendChild(head);
     if (r.seats > 1) card.appendChild(el("div", "seats-note", "Vote for " + r.seats));
+    var scopeText = null;
+    if (r.category === "Statewide") {
+      scopeText = "Marathon County votes only — this race is decided statewide.";
+    } else if (r.category === "U.S. Congress") {
+      scopeText = "Marathon County votes only — this district extends beyond the county.";
+    } else if (r.category === "State Legislature") {
+      scopeText = "Marathon County votes only — this district may extend beyond the county.";
+    }
+    if (scopeText) card.appendChild(el("div", "scope-note", scopeText));
 
     var cands = el("div", "cands");
     if (!r.candidates.length) {
