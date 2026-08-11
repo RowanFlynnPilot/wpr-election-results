@@ -95,19 +95,19 @@ never a candidate. A spring (nonpartisan) election may print unprefixed
 race names that look candidate-like ('...District 7'); if a future ward
 parse raises on that, this is why -- bring the real PDF to the harness.
 
-## Validation before election night
+## Validation status (complete)
 
-The parser is tested against the county's real 2024 Partisan Primary summary
-(embedded fixture, `python tests/test_parse.py`). The ward-detail format is
-built from the April parser's proven structure but has NOT been checked
-against a real partisan ward PDF. Before Tuesday: download the 2024 Partisan
-Primary "By Ward Detail" PDF from the county results page (historical section)
-and run:
-
-    python tests/test_parse.py --real path\to\that.pdf
-
-If it parses and the numbers match the PDF, we're set. If it raises, the error
-message names the exact line that didn't fit — bring it back to Claude.
+The parser is validated two ways, both against real county documents:
+unit tests with an embedded real-2024-summary fixture
+(`python tests/test_parse.py`), and a full real-PDF run
+(`python tests/test_parse.py --real summary.pdf ward.pdf`) against the
+county's actual 2024 Partisan Primary summary AND its 447-page By Ward
+Detail PDF — all 62 races parse and every race's ward votes sum exactly
+to its summary total (v2.3, re-confirmed Aug 10 2026). The county's
+historical archive only keeps summary PDFs; the real ward PDF lives at
+`C:\Users\rpfly\Downloads\pp2024-ward.pdf` if a re-check is ever needed.
+If a future election's PDF raises, the error names the exact line that
+didn't fit — bring it back to Claude.
 
 ## Per-election checklist (next election)
 
