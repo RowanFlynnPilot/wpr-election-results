@@ -726,11 +726,28 @@
       var m = raceMargin(r);
       return m !== null && m < 5;
     }).sort(function (a, b) { return raceMargin(a) - raceMargin(b); });
+    // Featured = contested marquee races, interleaved by party so one
+    // party's document order can't own the board.
     var headline = d.races.filter(function (r) {
-      return (r.category === "Statewide" || r.category === "U.S. Congress") && r.candidates.length;
+      return (r.category === "Statewide" || r.category === "U.S. Congress") &&
+        r.candidates.length >= 2;
     });
+    var buckets = [], byP = {};
+    headline.forEach(function (r) {
+      if (!byP[r.party]) { byP[r.party] = []; buckets.push(byP[r.party]); }
+      byP[r.party].push(r);
+    });
+    var RANK = { DEM: 0, REP: 1, REF: 2 };
+    buckets.sort(function (a, b) {
+      return (RANK[a[0].party] !== undefined ? RANK[a[0].party] : 9) -
+             (RANK[b[0].party] !== undefined ? RANK[b[0].party] : 9);
+    });
+    var interleaved = [];
+    for (var bi = 0; interleaved.length < headline.length; bi++) {
+      buckets.forEach(function (b) { if (b[bi]) interleaved.push(b[bi]); });
+    }
     var seen = {}, picks = [];
-    close.concat(headline).forEach(function (r) {
+    close.concat(interleaved).forEach(function (r) {
       if (picks.length < 4 && !seen[r.id]) { seen[r.id] = true; picks.push(r); }
     });
     grid.textContent = "";
