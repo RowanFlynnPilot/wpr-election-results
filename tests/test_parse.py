@@ -193,6 +193,62 @@ def test_summary_marker_before_name():
     print("  summary (marker-before-name ordering): passed")
 
 
+def test_summary_zero_state():
+    """Pre-results summary, exactly as the county published it on election
+    day 2026 ('2026 Fall Primary'): every count is zero and the tabulator
+    omits the 'Total Votes Cast' line from every block, including Party
+    Preference. Must parse with totals of 0 -- and must still refuse a
+    block that has votes but no stated total."""
+    cfg = dict(CONFIG_2024, name="2026 Fall Primary")
+    zero = [
+        "Summary Results Report UNOFFICIAL RESULTS",
+        "2026 Fall Primary",
+        "August 11, 2026 Marathon County",
+        "Statistics TOTAL",
+        "Precincts Complete 0 of 88",
+        "Ballots Cast - Total 0",
+        "Ballots Cast - Blank 0",
+        "Voter Turnout - Total 0.00%",
+        "Party Preference Section",
+        "Vote For 1",
+        "TOTAL VOTE %",
+        "Republican 0",
+        "Democratic 0",
+        "Overvotes 0",
+        "Undervotes 0",
+        "Precincts Reporting 0 of 88",
+        "REP Governor",
+        "Vote For 1",
+        "TOTAL VOTE %",
+        "Tom Tiffany 0",
+        "Andy Manske 0",
+        "Write-In Totals 0",
+        "Overvotes 0",
+        "Undervotes 0",
+        "Precincts Reporting 0 of 88",
+    ]
+    pages = extract_text(build_pdf(zero))
+    check("zero-state classify", parse.classify(pages[0], cfg), "summary")
+    data = parse.parse_summary("\n".join(pages), cfg)
+    check("zero-state status", data["election"]["status"], "live")
+    check("zero-state race count", len(data["races"]), 1)
+    check("zero-state total", data["races"][0]["totalVotes"], 0)
+    check("zero-state precincts", data["races"][0]["precincts"], {"reported": 0, "total": 88})
+    check("zero-state party pref", [p["name"] for p in data["partyPreference"]],
+          ["Republican", "Democratic"])
+
+    # fail-fast must survive: votes present but no 'Total Votes Cast' line
+    bad = list(zero)
+    bad[bad.index("Tom Tiffany 0")] = "Tom Tiffany 4,123 61.00%"
+    try:
+        parse.parse_summary("\n".join(extract_text(build_pdf(bad))), cfg)
+        raise AssertionError("votes without 'Total Votes Cast' must raise")
+    except ValueError as e:
+        if "no 'Total Votes Cast'" not in str(e):
+            raise
+    print("  summary (zero-state, missing Total Votes Cast): passed incl. fail-fast")
+
+
 def test_ward_pages():
     """Ward detail in its true condensed shape (verified against the real
     2024 PDF): no Total/Over/Under/Precincts lines, a keyword-less Party
@@ -390,6 +446,7 @@ if __name__ == "__main__":
         test_summary_name_first()
         test_summary_name_after()
         test_summary_marker_before_name()
+        test_summary_zero_state()
         test_ward_pages()
         test_link_discovery()
         test_bytes_ingest()
