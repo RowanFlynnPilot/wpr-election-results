@@ -5,14 +5,1748 @@
     "displayDate": "August 11, 2026",
     "county": "Marathon County",
     "state": "Wisconsin",
-    "status": "pre",
-    "lastUpdated": null,
-    "generatedAt": null,
+    "status": "live",
+    "lastUpdated": "2026-08-10T08:37:00",
+    "generatedAt": "2026-08-12T00:31:02.011421+00:00",
     "precinctsReported": 0,
-    "precinctsTotal": 0
+    "precinctsTotal": 88
   },
-  "statistics": { "ballotsCast": 0, "ballotsByParty": {}, "blank": 0, "turnoutPct": 0 },
-  "partyPreference": null,
-  "races": [],
+  "statistics": {
+    "ballotsCast": 0,
+    "ballotsByParty": {
+      "Republican": 0,
+      "Democratic": 0,
+      "Constitution": 0,
+      "Libertarian": 0,
+      "Wisconsin Green": 0,
+      "Nonpartisan": 0,
+      "CrossOver": 0
+    },
+    "blank": 0,
+    "turnoutPct": 0.0
+  },
+  "partyPreference": [
+    {
+      "name": "Republican",
+      "votes": 0,
+      "pct": 0.0
+    },
+    {
+      "name": "Democratic",
+      "votes": 0,
+      "pct": 0.0
+    },
+    {
+      "name": "Constitution",
+      "votes": 0,
+      "pct": 0.0
+    },
+    {
+      "name": "Libertarian",
+      "votes": 0,
+      "pct": 0.0
+    },
+    {
+      "name": "Wisconsin Green",
+      "votes": 0,
+      "pct": 0.0
+    }
+  ],
+  "races": [
+    {
+      "id": "rep-governor",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Governor",
+      "rawName": "REP Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Tom Tiffany",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Andy Manske",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-lieutenant-governor",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Lieutenant Governor",
+      "rawName": "REP Lieutenant Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "David Varnam",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Will Martin",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-attorney-general",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Attorney General",
+      "rawName": "REP Attorney General",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Eric Toney",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-secretary-of-state",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Secretary of State",
+      "rawName": "REP Secretary of State",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Jay Schroeder",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Brayden Myer",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Nate Pollnow",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Cindy Werner",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-state-treasurer",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "State Treasurer",
+      "rawName": "REP State Treasurer",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "John S. Leiber",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-representative-in-congress-district-7",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Representative in Congress District 7",
+      "rawName": "REP Representative in Congress District 7",
+      "category": "U.S. Congress",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Don Raihala",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Michael Alfonso",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Jessi Ebben",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Kevin Hermening",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Niina Baum",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-state-senator-district-23",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "State Senator District 23",
+      "rawName": "REP State Senator District 23",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Romaine Robert Quinn",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-state-senator-district-29",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "State Senator District 29",
+      "rawName": "REP State Senator District 29",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Cory Tomczyk",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 67
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-representative-to-the-assembly-district-35",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Representative to the Assembly District 35",
+      "rawName": "REP Representative to the Assembly District 35",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Calvin Callahan",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 7
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-representative-to-the-assembly-district-69",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Representative to the Assembly District 69",
+      "rawName": "REP Representative to the Assembly District 69",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Karen Hurd",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-representative-to-the-assembly-district-85",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Representative to the Assembly District 85",
+      "rawName": "REP Representative to the Assembly District 85",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Patrick Snyder",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 29
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-representative-to-the-assembly-district-86",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Representative to the Assembly District 86",
+      "rawName": "REP Representative to the Assembly District 86",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "John Spiros",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-representative-to-the-assembly-district-87",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Representative to the Assembly District 87",
+      "rawName": "REP Representative to the Assembly District 87",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Brent Jacobson",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-sheriff",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Sheriff",
+      "rawName": "REP Sheriff",
+      "category": "County",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Chad D. Billeb",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "rep-clerk-of-circuit-court",
+      "party": "REP",
+      "partyLabel": "Republican",
+      "name": "Clerk of Circuit Court",
+      "rawName": "REP Clerk of Circuit Court",
+      "category": "County",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Kelly Schremp",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-governor",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Governor",
+      "rawName": "DEM Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "David Crowley",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Sara Rodriguez",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Joel Brennan",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Francesca Hong",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Kelda Roys",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Missy Hughes",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Mandela Barnes",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-lieutenant-governor",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Lieutenant Governor",
+      "rawName": "DEM Lieutenant Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Sarah Godlewski",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-attorney-general",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Attorney General",
+      "rawName": "DEM Attorney General",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Josh Kaul",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-secretary-of-state",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Secretary of State",
+      "rawName": "DEM Secretary of State",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "JoCasta Zamarripa",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-state-treasurer",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "State Treasurer",
+      "rawName": "DEM State Treasurer",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Yee Leng Xiong",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Dylan Ray Helmenstine",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-representative-in-congress-district-7",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Representative in Congress District 7",
+      "rawName": "DEM Representative in Congress District 7",
+      "category": "U.S. Congress",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Chris Armstrong",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Fred Clark",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Ginger Murray",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-state-senator-district-23",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "State Senator District 23",
+      "rawName": "DEM State Senator District 23",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Richard Pulcher",
+          "votes": 0,
+          "pct": 0.0
+        },
+        {
+          "name": "Jeff Foster",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-state-senator-district-29",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "State Senator District 29",
+      "rawName": "DEM State Senator District 29",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Gillian Battino",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 67
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-representative-to-the-assembly-district-35",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Representative to the Assembly District 35",
+      "rawName": "DEM Representative to the Assembly District 35",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Elizabeth McCrank",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 7
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-representative-to-the-assembly-district-69",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Representative to the Assembly District 69",
+      "rawName": "DEM Representative to the Assembly District 69",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Roger Halls",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-representative-to-the-assembly-district-85",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Representative to the Assembly District 85",
+      "rawName": "DEM Representative to the Assembly District 85",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "John Kroll",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 29
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-representative-to-the-assembly-district-86",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Representative to the Assembly District 86",
+      "rawName": "DEM Representative to the Assembly District 86",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Andy Wuethrich",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-representative-to-the-assembly-district-87",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Representative to the Assembly District 87",
+      "rawName": "DEM Representative to the Assembly District 87",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Bob Look",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-sheriff",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Sheriff",
+      "rawName": "DEM Sheriff",
+      "category": "County",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "dem-clerk-of-the-circuit-court",
+      "party": "DEM",
+      "partyLabel": "Democratic",
+      "name": "Clerk of the Circuit Court",
+      "rawName": "DEM Clerk of the Circuit Court",
+      "category": "Local",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-governor",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Governor",
+      "rawName": "CON Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-lieutenant-governor",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Lieutenant Governor",
+      "rawName": "CON Lieutenant Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-attorney-general",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Attorney General",
+      "rawName": "CON Attorney General",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-secretary-of-state",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Secretary of State",
+      "rawName": "CON Secretary of State",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-state-treasurer",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "State Treasurer",
+      "rawName": "CON State Treasurer",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-representative-in-congress-district-7",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Representative in Congress District 7",
+      "rawName": "CON Representative in Congress District 7",
+      "category": "U.S. Congress",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-state-senator-district-23",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "State Senator District 23",
+      "rawName": "CON State Senator District 23",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "con-state-senator-district-29",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "State Senator District 29",
+      "rawName": "CON State Senator District 29",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 67
+      },
+      "wards": []
+    },
+    {
+      "id": "con-representative-to-the-assembly-district-35",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Representative to the Assembly District 35",
+      "rawName": "CON Representative to the Assembly District 35",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 7
+      },
+      "wards": []
+    },
+    {
+      "id": "con-representative-to-the-assembly-district-69",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Representative to the Assembly District 69",
+      "rawName": "CON Representative to the Assembly District 69",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "con-representative-to-the-assembly-district-85",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Representative to the Assembly District 85",
+      "rawName": "CON Representative to the Assembly District 85",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 29
+      },
+      "wards": []
+    },
+    {
+      "id": "con-representative-to-the-assembly-district-86",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Representative to the Assembly District 86",
+      "rawName": "CON Representative to the Assembly District 86",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "con-representative-to-the-assembly-district-87",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Representative to the Assembly District 87",
+      "rawName": "CON Representative to the Assembly District 87",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "con-sheriff",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Sheriff",
+      "rawName": "CON Sheriff",
+      "category": "County",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "con-clerk-of-the-circuit-court",
+      "party": "CON",
+      "partyLabel": "Constitution",
+      "name": "Clerk of the Circuit Court",
+      "rawName": "CON Clerk of the Circuit Court",
+      "category": "Local",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-governor",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Governor",
+      "rawName": "LIB Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-lieutenant-governor",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Lieutenant Governor",
+      "rawName": "LIB Lieutenant Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-attorney-general",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Attorney General",
+      "rawName": "LIB Attorney General",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-secretary-of-state",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Secretary of State",
+      "rawName": "LIB Secretary of State",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-state-treasurer",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "State Treasurer",
+      "rawName": "LIB State Treasurer",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-representative-in-congress-district-7",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Representative in Congress District 7",
+      "rawName": "LIB Representative in Congress District 7",
+      "category": "U.S. Congress",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-state-senator-district-23",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "State Senator District 23",
+      "rawName": "LIB State Senator District 23",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-state-senator-district-29",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "State Senator District 29",
+      "rawName": "LIB State Senator District 29",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 67
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-representative-to-the-assembly-district-35",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Representative to the Assembly District 35",
+      "rawName": "LIB Representative to the Assembly District 35",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 7
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-representative-to-the-assembly-district-69",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Representative to the Assembly District 69",
+      "rawName": "LIB Representative to the Assembly District 69",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-representative-to-the-assembly-district-85",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Representative to the Assembly District 85",
+      "rawName": "LIB Representative to the Assembly District 85",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 29
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-representative-to-the-assembly-district-86",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Representative to the Assembly District 86",
+      "rawName": "LIB Representative to the Assembly District 86",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-representative-to-the-assembly-district-87",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Representative to the Assembly District 87",
+      "rawName": "LIB Representative to the Assembly District 87",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-sheriff",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Sheriff",
+      "rawName": "LIB Sheriff",
+      "category": "County",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "lib-clerk-of-the-circuit-court",
+      "party": "LIB",
+      "partyLabel": "Libertarian",
+      "name": "Clerk of the Circuit Court",
+      "rawName": "LIB Clerk of the Circuit Court",
+      "category": "Local",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-governor",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Governor",
+      "rawName": "WGN Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-lieutenant-governor",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Lieutenant Governor",
+      "rawName": "WGN Lieutenant Governor",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-attorney-general",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Attorney General",
+      "rawName": "WGN Attorney General",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-secretary-of-state",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Secretary of State",
+      "rawName": "WGN Secretary of State",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [
+        {
+          "name": "Pete Karas",
+          "votes": 0,
+          "pct": 0.0
+        }
+      ],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-state-treasurer",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "State Treasurer",
+      "rawName": "WGN State Treasurer",
+      "category": "Statewide",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-representative-in-congress-district-7",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Representative in Congress District 7",
+      "rawName": "WGN Representative in Congress District 7",
+      "category": "U.S. Congress",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-state-senator-district-23",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "State Senator District 23",
+      "rawName": "WGN State Senator District 23",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-state-senator-district-29",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "State Senator District 29",
+      "rawName": "WGN State Senator District 29",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 67
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-representative-to-the-assembly-district-35",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Representative to the Assembly District 35",
+      "rawName": "WGN Representative to the Assembly District 35",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 7
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-representative-to-the-assembly-district-69",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Representative to the Assembly District 69",
+      "rawName": "WGN Representative to the Assembly District 69",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 14
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-representative-to-the-assembly-district-85",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Representative to the Assembly District 85",
+      "rawName": "WGN Representative to the Assembly District 85",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 29
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-representative-to-the-assembly-district-86",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Representative to the Assembly District 86",
+      "rawName": "WGN Representative to the Assembly District 86",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-representative-to-the-assembly-district-87",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Representative to the Assembly District 87",
+      "rawName": "WGN Representative to the Assembly District 87",
+      "category": "State Legislature",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 19
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-sheriff",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Sheriff",
+      "rawName": "WGN Sheriff",
+      "category": "County",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    },
+    {
+      "id": "wgn-clerk-of-the-circuit-court",
+      "party": "WGN",
+      "partyLabel": "Wisconsin Green",
+      "name": "Clerk of the Circuit Court",
+      "rawName": "WGN Clerk of the Circuit Court",
+      "category": "Local",
+      "seats": 1,
+      "candidates": [],
+      "writeIns": 0,
+      "totalVotes": 0,
+      "overvotes": 0,
+      "undervotes": 0,
+      "precincts": {
+        "reported": 0,
+        "total": 88
+      },
+      "wards": []
+    }
+  ],
   "precinctList": []
 }
