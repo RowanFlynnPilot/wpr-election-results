@@ -240,10 +240,17 @@
   .scope-note { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 4px; }
   .scope-note a { color: var(--teal-ink); font-weight: 600; text-decoration: none; font-style: normal; }
   .cands { margin-top: 10px; }
-  .cand { display: grid; grid-template-columns: minmax(120px, 200px) 1fr 118px; gap: 10px; align-items: center; padding: 4px 0; }
+  .cand { display: grid; grid-template-columns: minmax(120px, 200px) 1fr minmax(118px, auto); gap: 10px; align-items: center; padding: 4px 0; }
+  .delta { color: var(--teal-ink); font-size: 11px; margin-left: 6px; white-space: nowrap; }
   .cand-name { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
   .cand-name .adv { font-weight: 700; }
-  .cand-bar { height: 11px; background: var(--track); border-radius: 6px; overflow: hidden; }
+  .cand-bar {
+    height: 11px; border-radius: 6px; overflow: hidden;
+    background: linear-gradient(to right,
+      transparent calc(25% - 1px), var(--hairline) calc(25% - 1px), var(--hairline) 25%, transparent 25%,
+      transparent calc(50% - 1px), var(--hairline) calc(50% - 1px), var(--hairline) 50%, transparent 50%,
+      transparent calc(75% - 1px), var(--hairline) calc(75% - 1px), var(--hairline) 75%, transparent 75%) var(--track);
+  }
   .cand-bar .fill { height: 100%; border-radius: 6px; transition: width 0.8s ease; }
   .cand-num { font-size: 12.5px; text-align: right; white-space: nowrap; }
   .cand-num .pct { color: var(--muted); margin-left: 6px; }
@@ -462,7 +469,7 @@
     { id: "OTH", label: "Other parties", match: function (r) { return ["DEM", "REP", "REF"].indexOf(r.party) === -1; } }
   ];
 
-  var state = { data: null, tab: "DEM", lastGenerated: null, justUpdated: false, query: "" };
+  var state = { data: null, tab: "DEM", lastGenerated: null, justUpdated: false, query: "", deltas: {} };
 
   // Bars are rebuilt on every render; remembering the last width lets a
   // rebuilt bar animate from its old value instead of snapping.
@@ -532,6 +539,20 @@
         var gen = data.election && data.election.generatedAt;
         if (gen !== state.lastGenerated || !state.data) {
           state.justUpdated = !!state.data; // flash only on real updates, not first paint
+          // vote deltas vs the previous update, keyed race|candidate
+          state.deltas = {};
+          if (state.data && state.data.races) {
+            var oldVotes = {};
+            state.data.races.forEach(function (r) {
+              r.candidates.forEach(function (c) { oldVotes[r.id + "|" + c.name] = c.votes; });
+            });
+            (data.races || []).forEach(function (r) {
+              r.candidates.forEach(function (c) {
+                var k = r.id + "|" + c.name;
+                if (k in oldVotes && c.votes !== oldVotes[k]) state.deltas[k] = c.votes - oldVotes[k];
+              });
+            });
+          }
           state.data = data;
           state.lastGenerated = gen;
           render();
@@ -855,7 +876,9 @@
     var done = r.precincts && r.precincts.total > 0 && r.precincts.reported >= r.precincts.total;
     if (r.candidates.length >= 2 && r.candidates[0].votes > 0 && r.seats === 1) {
       var gap = r.candidates[0].pct - r.candidates[1].pct;
-      if (gap < 5) meta.appendChild(el("span", "chip chip-margin", "margin " + gap.toFixed(1) + "%"));
+      var gapVotes = r.candidates[0].votes - r.candidates[1].votes;
+      if (gap < 5) meta.appendChild(el("span", "chip chip-margin",
+        "margin " + fmt(gapVotes) + (gapVotes === 1 ? " vote" : " votes") + " · " + gap.toFixed(1) + "%"));
     }
     var chip = el("span", "chip chip-precincts" + (done ? " done" : ""),
       r.precincts ? (r.precincts.reported + "/" + r.precincts.total + " precincts") : "");
@@ -901,14 +924,17 @@
       var num = el("div", "cand-num mono");
       num.appendChild(el("span", "", fmt(c.votes)));
       num.appendChild(el("span", "pct", c.pct.toFixed(1) + "%"));
+      var dv = state.deltas && state.deltas[r.id + "|" + c.name];
+      if (dv) num.appendChild(el("span", "delta", (dv > 0 ? "+" : "") + fmt(dv)));
       row.appendChild(num);
       cands.appendChild(row);
     });
     card.appendChild(cands);
 
-    if (r.candidates.length && (r.writeIns || r.undervotes)) {
+    if (r.candidates.length && (r.totalVotes || r.writeIns || r.undervotes)) {
       card.appendChild(el("div", "fineprint",
-        "Write-ins: " + fmt(r.writeIns) + " · Undervotes: " + fmt(r.undervotes)));
+        "Votes in this race: " + fmt(r.totalVotes) +
+        " · Write-ins: " + fmt(r.writeIns) + " · Undervotes: " + fmt(r.undervotes)));
     }
 
     if (r.wards && r.wards.length) card.appendChild(wardTable(r));
