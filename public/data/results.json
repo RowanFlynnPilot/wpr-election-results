@@ -5,51 +5,51 @@
     "displayDate": "August 11, 2026",
     "county": "Marathon County",
     "state": "Wisconsin",
-    "status": "live",
-    "lastUpdated": "2026-08-11T20:36:00",
-    "generatedAt": "2026-08-12T01:51:08.907696+00:00",
-    "precinctsReported": 62,
+    "status": "final",
+    "lastUpdated": "2026-08-11T21:49:00",
+    "generatedAt": "2026-08-12T02:49:42.497209+00:00",
+    "precinctsReported": 88,
     "precinctsTotal": 88
   },
   "statistics": {
-    "ballotsCast": 23817,
+    "ballotsCast": 32374,
     "ballotsByParty": {
-      "Republican": 13718,
-      "Democratic": 9978,
-      "Constitution": 13,
-      "Libertarian": 11,
-      "Wisconsin Green": 7,
-      "Nonpartisan": 90,
-      "CrossOver": 87
+      "Republican": 17884,
+      "Democratic": 14315,
+      "Constitution": 17,
+      "Libertarian": 17,
+      "Wisconsin Green": 14,
+      "Nonpartisan": 127,
+      "CrossOver": 120
     },
-    "blank": 3,
-    "turnoutPct": 29.08
+    "blank": 5,
+    "turnoutPct": 39.52
   },
   "partyPreference": [
     {
       "name": "Republican",
-      "votes": 11898,
-      "pct": 59.67
+      "votes": 15515,
+      "pct": 57.35
     },
     {
       "name": "Democratic",
-      "votes": 8015,
-      "pct": 40.2
+      "votes": 11498,
+      "pct": 42.5
     },
     {
       "name": "Constitution",
-      "votes": 8,
+      "votes": 11,
       "pct": 0.04
     },
     {
       "name": "Libertarian",
-      "votes": 11,
+      "votes": 17,
       "pct": 0.06
     },
     {
       "name": "Wisconsin Green",
-      "votes": 7,
-      "pct": 0.04
+      "votes": 14,
+      "pct": 0.05
     }
   ],
   "races": [
@@ -64,21 +64,21 @@
       "candidates": [
         {
           "name": "Tom Tiffany",
-          "votes": 12943,
-          "pct": 95.26
+          "votes": 16829,
+          "pct": 95.06
         },
         {
           "name": "Andy Manske",
-          "votes": 638,
-          "pct": 4.7
+          "votes": 867,
+          "pct": 4.9
         }
       ],
-      "writeIns": 6,
-      "totalVotes": 13587,
+      "writeIns": 8,
+      "totalVotes": 17704,
       "overvotes": 0,
-      "undervotes": 131,
+      "undervotes": 180,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -887,21 +887,21 @@
       "candidates": [
         {
           "name": "David Varnam",
-          "votes": 6521,
-          "pct": 54.34
+          "votes": 8393,
+          "pct": 53.69
         },
         {
           "name": "Will Martin",
-          "votes": 5459,
-          "pct": 45.49
+          "votes": 7209,
+          "pct": 46.11
         }
       ],
-      "writeIns": 20,
-      "totalVotes": 12000,
+      "writeIns": 31,
+      "totalVotes": 15633,
       "overvotes": 3,
-      "undervotes": 1715,
+      "undervotes": 2248,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -1710,16 +1710,16 @@
       "candidates": [
         {
           "name": "Eric Toney",
-          "votes": 11706,
-          "pct": 99.75
+          "votes": 15290,
+          "pct": 99.77
         }
       ],
-      "writeIns": 29,
-      "totalVotes": 11735,
+      "writeIns": 36,
+      "totalVotes": 15326,
       "overvotes": 0,
-      "undervotes": 1983,
+      "undervotes": 2558,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -2440,31 +2440,31 @@
       "candidates": [
         {
           "name": "Jay Schroeder",
-          "votes": 5667,
-          "pct": 47.84
+          "votes": 7379,
+          "pct": 47.83
         },
         {
           "name": "Nate Pollnow",
-          "votes": 2424,
-          "pct": 20.46
+          "votes": 3179,
+          "pct": 20.61
         },
         {
           "name": "Cindy Werner",
-          "votes": 2056,
-          "pct": 17.36
+          "votes": 2651,
+          "pct": 17.19
         },
         {
           "name": "Brayden Myer",
-          "votes": 1682,
+          "votes": 2191,
           "pct": 14.2
         }
       ],
-      "writeIns": 17,
-      "totalVotes": 11846,
-      "overvotes": 1,
-      "undervotes": 1871,
+      "writeIns": 26,
+      "totalVotes": 15426,
+      "overvotes": 3,
+      "undervotes": 2455,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -3449,16 +3449,16 @@
       "candidates": [
         {
           "name": "John S. Leiber",
-          "votes": 11363,
+          "votes": 14822,
           "pct": 99.84
         }
       ],
-      "writeIns": 18,
-      "totalVotes": 11381,
-      "overvotes": 0,
-      "undervotes": 2337,
+      "writeIns": 24,
+      "totalVotes": 14846,
+      "overvotes": 1,
+      "undervotes": 3037,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -4179,36 +4179,36 @@
       "candidates": [
         {
           "name": "Michael Alfonso",
-          "votes": 5990,
-          "pct": 44.56
+          "votes": 7766,
+          "pct": 44.33
         },
         {
           "name": "Kevin Hermening",
-          "votes": 4978,
-          "pct": 37.03
+          "votes": 6674,
+          "pct": 38.09
         },
         {
           "name": "Jessi Ebben",
-          "votes": 1831,
-          "pct": 13.62
+          "votes": 2242,
+          "pct": 12.8
         },
         {
           "name": "Niina Baum",
-          "votes": 403,
-          "pct": 3.0
+          "votes": 531,
+          "pct": 3.03
         },
         {
           "name": "Don Raihala",
-          "votes": 239,
-          "pct": 1.78
+          "votes": 305,
+          "pct": 1.74
         }
       ],
       "writeIns": 2,
-      "totalVotes": 13443,
-      "overvotes": 6,
-      "undervotes": 269,
+      "totalVotes": 17520,
+      "overvotes": 7,
+      "undervotes": 357,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -5290,7 +5290,7 @@
       "overvotes": 0,
       "undervotes": 217,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -5419,16 +5419,16 @@
       "candidates": [
         {
           "name": "Cory Tomczyk",
-          "votes": 9978,
-          "pct": 99.78
+          "votes": 13491,
+          "pct": 99.76
         }
       ],
-      "writeIns": 22,
-      "totalVotes": 10000,
+      "writeIns": 33,
+      "totalVotes": 13524,
       "overvotes": 0,
-      "undervotes": 1183,
+      "undervotes": 1624,
       "precincts": {
-        "reported": 46,
+        "reported": 67,
         "total": 67
       },
       "wards": [
@@ -5981,16 +5981,16 @@
       "candidates": [
         {
           "name": "Calvin Callahan",
-          "votes": 1130,
-          "pct": 99.74
+          "votes": 1306,
+          "pct": 99.77
         }
       ],
       "writeIns": 3,
-      "totalVotes": 1133,
+      "totalVotes": 1309,
       "overvotes": 0,
-      "undervotes": 177,
+      "undervotes": 202,
       "precincts": {
-        "reported": 6,
+        "reported": 7,
         "total": 7
       },
       "wards": [
@@ -6072,7 +6072,7 @@
       "overvotes": 0,
       "undervotes": 193,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -6201,16 +6201,16 @@
       "candidates": [
         {
           "name": "Patrick Snyder",
-          "votes": 3278,
-          "pct": 99.7
+          "votes": 5188,
+          "pct": 99.65
         }
       ],
-      "writeIns": 10,
-      "totalVotes": 3288,
+      "writeIns": 18,
+      "totalVotes": 5206,
       "overvotes": 0,
-      "undervotes": 328,
+      "undervotes": 545,
       "precincts": {
-        "reported": 14,
+        "reported": 29,
         "total": 29
       },
       "wards": [
@@ -6459,16 +6459,16 @@
       "candidates": [
         {
           "name": "John Spiros",
-          "votes": 2846,
-          "pct": 99.62
+          "votes": 3205,
+          "pct": 99.63
         }
       ],
-      "writeIns": 11,
-      "totalVotes": 2857,
+      "writeIns": 12,
+      "totalVotes": 3217,
       "overvotes": 0,
-      "undervotes": 411,
+      "undervotes": 456,
       "precincts": {
-        "reported": 17,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -6637,16 +6637,16 @@
       "candidates": [
         {
           "name": "Brent Jacobson",
-          "votes": 3851,
-          "pct": 100.0
+          "votes": 5128,
+          "pct": 99.98
         }
       ],
-      "writeIns": 0,
-      "totalVotes": 3851,
+      "writeIns": 1,
+      "totalVotes": 5129,
       "overvotes": 0,
-      "undervotes": 448,
+      "undervotes": 595,
       "precincts": {
-        "reported": 15,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -6815,16 +6815,16 @@
       "candidates": [
         {
           "name": "Chad D. Billeb",
-          "votes": 11993,
-          "pct": 99.75
+          "votes": 15670,
+          "pct": 99.76
         }
       ],
-      "writeIns": 30,
-      "totalVotes": 12023,
+      "writeIns": 37,
+      "totalVotes": 15707,
       "overvotes": 2,
-      "undervotes": 1693,
+      "undervotes": 2175,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -7545,16 +7545,16 @@
       "candidates": [
         {
           "name": "Kelly Schremp",
-          "votes": 11864,
+          "votes": 15494,
           "pct": 99.81
         }
       ],
-      "writeIns": 22,
-      "totalVotes": 11886,
+      "writeIns": 30,
+      "totalVotes": 15524,
       "overvotes": 3,
-      "undervotes": 1829,
+      "undervotes": 2357,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -8275,46 +8275,46 @@
       "candidates": [
         {
           "name": "Francesca Hong",
-          "votes": 3828,
-          "pct": 38.98
+          "votes": 5734,
+          "pct": 40.68
         },
         {
           "name": "David Crowley",
-          "votes": 3824,
-          "pct": 38.94
+          "votes": 5229,
+          "pct": 37.09
         },
         {
           "name": "Mandela Barnes",
-          "votes": 614,
-          "pct": 6.25
+          "votes": 899,
+          "pct": 6.38
         },
         {
           "name": "Kelda Roys",
-          "votes": 599,
-          "pct": 6.1
+          "votes": 849,
+          "pct": 6.02
         },
         {
           "name": "Sara Rodriguez",
-          "votes": 516,
-          "pct": 5.25
+          "votes": 770,
+          "pct": 5.46
         },
         {
           "name": "Joel Brennan",
-          "votes": 364,
-          "pct": 3.71
+          "votes": 509,
+          "pct": 3.61
         },
         {
           "name": "Missy Hughes",
-          "votes": 73,
-          "pct": 0.74
+          "votes": 102,
+          "pct": 0.72
         }
       ],
-      "writeIns": 3,
-      "totalVotes": 9821,
-      "overvotes": 22,
-      "undervotes": 135,
+      "writeIns": 5,
+      "totalVotes": 14097,
+      "overvotes": 31,
+      "undervotes": 187,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -9563,16 +9563,16 @@
       "candidates": [
         {
           "name": "Sarah Godlewski",
-          "votes": 8890,
-          "pct": 99.79
+          "votes": 12781,
+          "pct": 99.77
         }
       ],
-      "writeIns": 19,
-      "totalVotes": 8909,
-      "overvotes": 0,
-      "undervotes": 1069,
+      "writeIns": 29,
+      "totalVotes": 12810,
+      "overvotes": 1,
+      "undervotes": 1503,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -10293,16 +10293,16 @@
       "candidates": [
         {
           "name": "Josh Kaul",
-          "votes": 8969,
-          "pct": 99.73
+          "votes": 12898,
+          "pct": 99.76
         }
       ],
-      "writeIns": 24,
-      "totalVotes": 8993,
+      "writeIns": 31,
+      "totalVotes": 12929,
       "overvotes": 1,
-      "undervotes": 984,
+      "undervotes": 1385,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -11023,16 +11023,16 @@
       "candidates": [
         {
           "name": "JoCasta Zamarripa",
-          "votes": 8572,
-          "pct": 99.79
+          "votes": 12320,
+          "pct": 99.8
         }
       ],
-      "writeIns": 18,
-      "totalVotes": 8590,
+      "writeIns": 25,
+      "totalVotes": 12345,
       "overvotes": 0,
-      "undervotes": 1388,
+      "undervotes": 1970,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -11753,21 +11753,21 @@
       "candidates": [
         {
           "name": "Yee Leng Xiong",
-          "votes": 6169,
-          "pct": 67.82
+          "votes": 9179,
+          "pct": 70.24
         },
         {
           "name": "Dylan Ray Helmenstine",
-          "votes": 2918,
-          "pct": 32.08
+          "votes": 3875,
+          "pct": 29.65
         }
       ],
-      "writeIns": 9,
-      "totalVotes": 9096,
+      "writeIns": 14,
+      "totalVotes": 13068,
       "overvotes": 1,
-      "undervotes": 881,
+      "undervotes": 1243,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -12576,26 +12576,26 @@
       "candidates": [
         {
           "name": "Ginger Murray",
-          "votes": 3291,
-          "pct": 36.16
+          "votes": 4728,
+          "pct": 36.18
         },
         {
           "name": "Fred Clark",
-          "votes": 3020,
-          "pct": 33.19
+          "votes": 4454,
+          "pct": 34.09
         },
         {
           "name": "Chris Armstrong",
-          "votes": 2776,
-          "pct": 30.51
+          "votes": 3869,
+          "pct": 29.61
         }
       ],
-      "writeIns": 13,
-      "totalVotes": 9100,
-      "overvotes": 2,
-      "undervotes": 876,
+      "writeIns": 16,
+      "totalVotes": 13067,
+      "overvotes": 4,
+      "undervotes": 1244,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -13506,7 +13506,7 @@
       "overvotes": 0,
       "undervotes": 93,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -13649,16 +13649,16 @@
       "candidates": [
         {
           "name": "Gillian Battino",
-          "votes": 7590,
+          "votes": 11281,
           "pct": 99.83
         }
       ],
-      "writeIns": 13,
-      "totalVotes": 7603,
+      "writeIns": 19,
+      "totalVotes": 11300,
       "overvotes": 0,
-      "undervotes": 1184,
+      "undervotes": 1743,
       "precincts": {
-        "reported": 46,
+        "reported": 67,
         "total": 67
       },
       "wards": [
@@ -14211,16 +14211,16 @@
       "candidates": [
         {
           "name": "Elizabeth McCrank",
-          "votes": 583,
-          "pct": 99.83
+          "votes": 654,
+          "pct": 99.85
         }
       ],
       "writeIns": 1,
-      "totalVotes": 584,
+      "totalVotes": 655,
       "overvotes": 0,
-      "undervotes": 120,
+      "undervotes": 130,
       "precincts": {
-        "reported": 6,
+        "reported": 7,
         "total": 7
       },
       "wards": [
@@ -14302,7 +14302,7 @@
       "overvotes": 0,
       "undervotes": 119,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -14431,16 +14431,16 @@
       "candidates": [
         {
           "name": "John Kroll",
-          "votes": 3066,
-          "pct": 99.71
+          "votes": 5811,
+          "pct": 99.79
         }
       ],
-      "writeIns": 9,
-      "totalVotes": 3075,
+      "writeIns": 12,
+      "totalVotes": 5823,
       "overvotes": 0,
-      "undervotes": 577,
+      "undervotes": 992,
       "precincts": {
-        "reported": 14,
+        "reported": 29,
         "total": 29
       },
       "wards": [
@@ -14689,16 +14689,16 @@
       "candidates": [
         {
           "name": "Andy Wuethrich",
-          "votes": 1498,
-          "pct": 99.87
+          "votes": 1633,
+          "pct": 99.88
         }
       ],
       "writeIns": 2,
-      "totalVotes": 1500,
+      "totalVotes": 1635,
       "overvotes": 0,
-      "undervotes": 257,
+      "undervotes": 285,
       "precincts": {
-        "reported": 17,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -14867,16 +14867,16 @@
       "candidates": [
         {
           "name": "Bob Look",
-          "votes": 2909,
+          "votes": 3683,
           "pct": 99.86
         }
       ],
-      "writeIns": 4,
-      "totalVotes": 2913,
+      "writeIns": 5,
+      "totalVotes": 3688,
       "overvotes": 0,
-      "undervotes": 465,
+      "undervotes": 620,
       "precincts": {
-        "reported": 15,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -15043,12 +15043,12 @@
       "category": "County",
       "seats": 1,
       "candidates": [],
-      "writeIns": 316,
-      "totalVotes": 316,
+      "writeIns": 481,
+      "totalVotes": 481,
       "overvotes": 0,
-      "undervotes": 9662,
+      "undervotes": 13834,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -15591,12 +15591,12 @@
       "category": "Local",
       "seats": 1,
       "candidates": [],
-      "writeIns": 249,
-      "totalVotes": 249,
+      "writeIns": 391,
+      "totalVotes": 391,
       "overvotes": 0,
-      "undervotes": 9729,
+      "undervotes": 13924,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -16139,12 +16139,12 @@
       "category": "Statewide",
       "seats": 1,
       "candidates": [],
-      "writeIns": 6,
-      "totalVotes": 6,
+      "writeIns": 7,
+      "totalVotes": 7,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 10,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -16690,9 +16690,9 @@
       "writeIns": 6,
       "totalVotes": 6,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 11,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -17238,9 +17238,9 @@
       "writeIns": 5,
       "totalVotes": 5,
       "overvotes": 0,
-      "undervotes": 8,
+      "undervotes": 12,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -17786,9 +17786,9 @@
       "writeIns": 5,
       "totalVotes": 5,
       "overvotes": 0,
-      "undervotes": 8,
+      "undervotes": 12,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -18334,9 +18334,9 @@
       "writeIns": 5,
       "totalVotes": 5,
       "overvotes": 0,
-      "undervotes": 8,
+      "undervotes": 12,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -18882,9 +18882,9 @@
       "writeIns": 4,
       "totalVotes": 4,
       "overvotes": 0,
-      "undervotes": 9,
+      "undervotes": 13,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -19432,7 +19432,7 @@
       "overvotes": 0,
       "undervotes": 2,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -19534,9 +19534,9 @@
       "writeIns": 1,
       "totalVotes": 1,
       "overvotes": 0,
-      "undervotes": 9,
+      "undervotes": 13,
       "precincts": {
-        "reported": 46,
+        "reported": 67,
         "total": 67
       },
       "wards": [
@@ -19958,7 +19958,7 @@
       "overvotes": 0,
       "undervotes": 0,
       "precincts": {
-        "reported": 6,
+        "reported": 7,
         "total": 7
       },
       "wards": [
@@ -20020,7 +20020,7 @@
       "overvotes": 0,
       "undervotes": 2,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -20122,9 +20122,9 @@
       "writeIns": 1,
       "totalVotes": 1,
       "overvotes": 0,
-      "undervotes": 4,
+      "undervotes": 7,
       "precincts": {
-        "reported": 14,
+        "reported": 29,
         "total": 29
       },
       "wards": [
@@ -20318,7 +20318,7 @@
       "overvotes": 0,
       "undervotes": 2,
       "precincts": {
-        "reported": 17,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -20450,9 +20450,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 3,
+      "undervotes": 4,
       "precincts": {
-        "reported": 15,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -20584,9 +20584,9 @@
       "writeIns": 3,
       "totalVotes": 3,
       "overvotes": 0,
-      "undervotes": 10,
+      "undervotes": 14,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -21132,9 +21132,9 @@
       "writeIns": 2,
       "totalVotes": 2,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 15,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -21680,9 +21680,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -22228,9 +22228,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -22776,9 +22776,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -23324,9 +23324,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -23872,9 +23872,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -24420,9 +24420,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -24970,7 +24970,7 @@
       "overvotes": 0,
       "undervotes": 2,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -25072,9 +25072,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 9,
+      "undervotes": 15,
       "precincts": {
-        "reported": 46,
+        "reported": 67,
         "total": 67
       },
       "wards": [
@@ -25496,7 +25496,7 @@
       "overvotes": 0,
       "undervotes": 0,
       "precincts": {
-        "reported": 6,
+        "reported": 7,
         "total": 7
       },
       "wards": [
@@ -25558,7 +25558,7 @@
       "overvotes": 0,
       "undervotes": 2,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -25660,9 +25660,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 3,
+      "undervotes": 6,
       "precincts": {
-        "reported": 14,
+        "reported": 29,
         "total": 29
       },
       "wards": [
@@ -25856,7 +25856,7 @@
       "overvotes": 0,
       "undervotes": 4,
       "precincts": {
-        "reported": 17,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -25988,9 +25988,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 2,
+      "undervotes": 5,
       "precincts": {
-        "reported": 15,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -26122,9 +26122,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -26670,9 +26670,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 11,
+      "undervotes": 17,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -27215,12 +27215,12 @@
       "category": "Statewide",
       "seats": 1,
       "candidates": [],
-      "writeIns": 2,
-      "totalVotes": 2,
+      "writeIns": 3,
+      "totalVotes": 3,
       "overvotes": 0,
-      "undervotes": 5,
+      "undervotes": 10,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -27763,12 +27763,12 @@
       "category": "Statewide",
       "seats": 1,
       "candidates": [],
-      "writeIns": 2,
-      "totalVotes": 2,
+      "writeIns": 3,
+      "totalVotes": 3,
       "overvotes": 0,
-      "undervotes": 5,
+      "undervotes": 10,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -28314,9 +28314,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 13,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -28861,16 +28861,16 @@
       "candidates": [
         {
           "name": "Pete Karas",
-          "votes": 2,
+          "votes": 6,
           "pct": 100.0
         }
       ],
       "writeIns": 0,
-      "totalVotes": 2,
+      "totalVotes": 6,
       "overvotes": 0,
-      "undervotes": 5,
+      "undervotes": 7,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -29592,9 +29592,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 13,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -30140,9 +30140,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 13,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -30690,7 +30690,7 @@
       "overvotes": 0,
       "undervotes": 0,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -30792,9 +30792,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 13,
       "precincts": {
-        "reported": 46,
+        "reported": 67,
         "total": 67
       },
       "wards": [
@@ -31216,7 +31216,7 @@
       "overvotes": 0,
       "undervotes": 0,
       "precincts": {
-        "reported": 6,
+        "reported": 7,
         "total": 7
       },
       "wards": [
@@ -31278,7 +31278,7 @@
       "overvotes": 0,
       "undervotes": 0,
       "precincts": {
-        "reported": 13,
+        "reported": 14,
         "total": 14
       },
       "wards": [
@@ -31380,9 +31380,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 3,
+      "undervotes": 8,
       "precincts": {
-        "reported": 14,
+        "reported": 29,
         "total": 29
       },
       "wards": [
@@ -31576,7 +31576,7 @@
       "overvotes": 0,
       "undervotes": 2,
       "precincts": {
-        "reported": 17,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -31708,9 +31708,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 2,
+      "undervotes": 3,
       "precincts": {
-        "reported": 15,
+        "reported": 19,
         "total": 19
       },
       "wards": [
@@ -31842,9 +31842,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 13,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
@@ -32390,9 +32390,9 @@
       "writeIns": 0,
       "totalVotes": 0,
       "overvotes": 0,
-      "undervotes": 7,
+      "undervotes": 13,
       "precincts": {
-        "reported": 65,
+        "reported": 88,
         "total": 88
       },
       "wards": [
