@@ -237,16 +237,15 @@ def test_summary_zero_state():
     check("zero-state party pref", [p["name"] for p in data["partyPreference"]],
           ["Republican", "Democratic"])
 
-    # fail-fast must survive: votes present but no 'Total Votes Cast' line
-    bad = list(zero)
-    bad[bad.index("Tom Tiffany 0")] = "Tom Tiffany 4,123 61.00%"
-    try:
-        parse.parse_summary("\n".join(extract_text(build_pdf(bad))), cfg)
-        raise AssertionError("votes without 'Total Votes Cast' must raise")
-    except ValueError as e:
-        if "no 'Total Votes Cast'" not in str(e):
-            raise
-    print("  summary (zero-state, missing Total Votes Cast): passed incl. fail-fast")
+    # 2026 format: the line is absent even with real votes -- the total is
+    # derived as candidates + write-ins (identity proven by 2024 validation)
+    live = list(zero)
+    live[live.index("Tom Tiffany 0")] = "Tom Tiffany 4,123 61.00%"
+    live[live.index("Andy Manske 0")] = "Andy Manske 2,610 38.99%"
+    live[live.index("Write-In Totals 0")] = "Write-In Totals 3 0.03%"
+    data2 = parse.parse_summary("\n".join(extract_text(build_pdf(live))), cfg)
+    check("derived total", data2["races"][0]["totalVotes"], 4123 + 2610 + 3)
+    print("  summary (2026 format, Total Votes Cast absent/derived): passed")
 
 
 def test_ward_pages():

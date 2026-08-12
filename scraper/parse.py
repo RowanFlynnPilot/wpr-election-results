@@ -324,16 +324,15 @@ def parse_summary(text: str, config: dict) -> dict:
                 f"summary: race '{b['rawName']}' is missing 'Precincts Reporting' "
                 f"-- wrong report type or format change")
         if b["totalVotes"] is None:
-            # The tabulator omits 'Total Votes Cast' while a race's total is
-            # zero (observed in the county's real 2026 Fall Primary zero-state
-            # summary). A zero total is exactly candidates+writeIns == 0, so
-            # accept the omission only then; any counted vote without a stated
-            # total is still a format change we refuse to guess about.
-            if sum(c["votes"] for c in b["candidates"]) + b["writeIns"] != 0:
-                raise ValueError(
-                    f"summary: race '{b['rawName']}' has votes but no "
-                    f"'Total Votes Cast' -- format change, refusing to guess")
-            b["totalVotes"] = 0
+            # The county's 2026 report format omits 'Total Votes Cast'
+            # entirely -- confirmed against the real zero-state AND live
+            # mid-count election-night documents (races with thousands of
+            # votes, zero such lines in the whole PDF). Derive it from the
+            # identity the 2024 full validation proved exact for all 62
+            # races: total = candidates + write-ins. Whenever the line IS
+            # present, the cross-check in parse_race_blocks still enforces
+            # that same identity against the stated value.
+            b["totalVotes"] = sum(c["votes"] for c in b["candidates"]) + b["writeIns"]
         if b["rawName"].lower().startswith("party preference"):
             party_preference = b["candidates"]
             continue
